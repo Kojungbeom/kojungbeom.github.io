@@ -1,5 +1,5 @@
 ---
-title: Github 블로그 기능추가
+title: Github
 date: 2020-4-6 12:00:00
 categories:
 - Information
