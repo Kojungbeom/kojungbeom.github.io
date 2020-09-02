@@ -1,0 +1,1324 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Data Structure," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ko" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+<meta name="keywords" content="Data Structure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structure week5">
+<meta property="og:url" content="http://localhost:4000/data%20structure/2020/04/05/Data_structure_week5-post/">
+<meta property="og:site_name" content="Ko">
+<meta property="og:description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+<meta property="og:locale" content="ko">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Structure week5">
+<meta name="twitter:description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>Data Structure week5 | Ko</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ko</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/data%20structure/2020/04/05/Data_structure_week5-post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="고중범">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="assets/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ko">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            Data Structure week5
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="" itemprop="dateCreated datePublished" datetime="2020-04-05T21:00:00+09:00">
+                2020-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Data%20Structure" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr />
+
+<h1 id="data-structure-week-5">Data Structure Week 5</h1>
+
+<p>KAIST 산업및시스템공학과 문일철 교수님의</p>
+
+<p><a href="https://www.edwith.org/datastructure-2019s/joinLectures/21992">데이터 구조 및 분석: Linear Structure and Dynamic Programming</a></p>
+
+<p><a href="https://www.edwith.org/">edwith</a> 강의를 보고 정리한 내용입니다.</p>
+
+<hr />
+
+<h2 id="weekly-objectives">Weekly Objectives</h2>
+
+<ul>
+  <li>This week, we briefly learn the concept and the application of conputer simulations
+    <ul>
+      <li>Introduction purpose</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Objectives are</p>
+
+<ul>
+  <li>Understanding the concepts of modeling and simulation.</li>
+</ul>
+
+<p>Application 중 하나인 Simulation의 종류와 정의에 대해 알려주십니다.</p>
+
+<p>크게 3가지 종류의 Simulation에 대해 언급하시는데, 저같은 경우는 헷갈리는게 많았습니다.</p>
+
+<p>이번 강의들은 이런게 있다고 생각하면서 들으시고 넘어가면 좋을 것 같습니다.</p>
+
+<hr />
+
+<h2 id="real-world-problems">Real World Problems</h2>
+
+<p>Real world problem을 해결하기 위해서 과학적이고, 공학적으로 해결하는 구체적인 <strong>Solution도 찾아야하고,</strong></p>
+
+<p>Computational analyses를 이용해서 관리하는 <strong>Solution을 만들어 내는것도 해야함</strong></p>
+
+<p>-&gt; <strong>Simulation을 만들어야 한다!</strong></p>
+
+<p>하지만 이런 Solution을 잘 만들기 위해선, <strong>먼저 Problem에 대해 이해해야 한다!</strong></p>
+
+<p>(이해가 바탕이 되지않으면 엉뚱한 Solution을 내놓을수도 있기 때문)</p>
+
+<hr />
+
+<h2 id="how-to-comprehend-a-problem">How to comprehend a problem?</h2>
+
+<p>먼저 Program에서 이해한다는게 무엇인지 생각해보자.</p>
+
+<p><strong>Program을 어떻게 이해할 수 있을까?</strong></p>
+
+<ul>
+  <li>
+    <p>주어진  Input에 대해서 <strong>Output이 무엇일지 예상한다.</strong></p>
+
+    <p>Output를 예상할 수 있다는 말은 <strong>“프로그램이 어떻게 구동되고 있는지 이해하고 있다” 라는 말과 같다.</strong></p>
+  </li>
+  <li>
+    <p><strong>Estimate the progress of the program in the system</strong> (어떻게 돌아가고 있는지 추정한다.)</p>
+  </li>
+  <li>
+    <p>Just as we <strong>traced</strong> the function calls of the recursion in <strong>the</strong> <strong>execution timeline</strong></p>
+
+    <p>(Recursion에서 그랬던것 처럼 프로그램의 실행을 역추적해서 살펴본다.)</p>
+  </li>
+</ul>
+
+<p><strong>문제 해결 과정</strong></p>
+
+<ol>
+  <li>
+    <p>Fibonacci Sequence라는 문제가 있다.</p>
+  </li>
+  <li>
+    <p>Program으로 표현든다. (Modeling)</p>
+  </li>
+  <li>
+    <p>Program을 Execution하고 Trace해서 어떻게 돌아가는지 알아낸다.</p>
+  </li>
+</ol>
+
+<p>예측 -&gt; 표현(프로그램으로) -&gt; <strong>Execution</strong></p>
+
+<p><strong>How to comprehend a problem in real world?</strong></p>
+
+<p><strong>현실 세계의 문제는 어떻게 이해해야할까?</strong></p>
+
+<p>ex)  Markets/Finance</p>
+
+<ul>
+  <li>Estimate the future of a given status-quo</li>
+  <li>Estimate the progress of problem factors in the system</li>
+  <li><strong>However, the real-world problem is not a program in a well-defined programming language</strong></li>
+</ul>
+
+<p><strong>문제 해결 과정</strong></p>
+
+<ol>
+  <li>
+    <p>“가격예측과 형성”이라는 현실문제가 있다.</p>
+  </li>
+  <li>
+    <p>Supply and Demand curve로 만들었다 (Modeling)</p>
+  </li>
+  <li>
+    <p>Supply and Demand curve의 <strong>해를 구한다.</strong></p>
+  </li>
+</ol>
+
+<p>예측 -&gt; 표현(Supply and Demand curve) -&gt; Solve(Execution)</p>
+
+<p>보기에는 현실문제를 다루는게 어려워보이지 않지만,</p>
+
+<p><strong>Fibonacci sequence는 수학적으로 아주 잘 정의되어 있지만,</strong></p>
+
+<p><strong>현실의 문제는 그렇지 않기 때문에, 표현하는것 자체부터가 어렵다!</strong></p>
+
+<hr />
+
+<h2 id="models-and-why-modeling">Models and Why Modeling</h2>
+
+<p>표현하기 어려운 현실모델을 <strong>간략화</strong>(Simplification)하여 <strong>Model</strong>을 만든다.</p>
+
+<p>(단순화하지만, 핵심적인 특성은 다 있도록 만드는게 목적)</p>
+
+<dl>
+  <dt><strong>Model</strong></dt>
+  <dd>
+    <p><strong>A simplification of the real world problems.</strong></p>
+  </dd>
+</dl>
+
+<p>ex) 몽타주는 왜 쓸까? 사진이랑 다를수도 있는데?</p>
+
+<p>사진과는 다르지만, <strong>얼굴의 특징을 잘 따서 만들었기 때문에 가치가 있음</strong></p>
+
+<p>ex) <strong>Antoine de Saint-Exupery said</strong></p>
+
+<blockquote>
+  <p><strong>“Perfection is achieved, not when there is nothing more to add,</strong></p>
+
+  <p><strong>but when there is nothing left to take away”</strong></p>
+</blockquote>
+
+<p>(교수님께서 이 말은 공학자들이 Modeling에 대해서 듣고 기억할만한 말이라고 하심.)</p>
+
+<p><strong>핵심만 표현하여서 더이상 뺄게 없는것이 완벽한 것 이다.</strong></p>
+
+<p>공학자들이 <strong>Modeling</strong>이라는것을 할 때 <strong>현실문제를 왜 simplification을 해야되고</strong>,</p>
+
+<p><strong>무엇이 simplification의 대상이 되어야하는지</strong>에 대한 문구로 볼 수도 있겠다.</p>
+
+<dl>
+  <dt><strong>무엇을 빼야할까?</strong></dt>
+  <dd>
+    <p>분석의 목적에 따라서 달라진다.</p>
+  </dd>
+</dl>
+
+<ul>
+  <li>What to leave in the model</li>
+  <li>What to remove from the real world</li>
+</ul>
+
+<hr />
+
+<h2 id="two-types-of-models">Two Types of Models</h2>
+
+<h3 id="models-to-solve"><strong>Models to solve</strong></h3>
+
+<ul>
+  <li><strong>Numerical modeling</strong>
+    <ul>
+      <li>Linear programming, integer programming</li>
+      <li><strong>목표는 현실의 문제를 formula로 표현해내는 것.</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>최종적으로, 어떤 시점에서 해를 구해내는 것이 목표.</strong></p>
+</blockquote>
+
+<p>하지만, <strong>Real World를 항상 이런식으로 formula로 만들거나 할 수 있는건 아님.</strong></p>
+
+<p>너무 복잡해서 <strong>수학적인 해를 찾기 어려운 모델</strong>도 존재</p>
+
+<p>ex) Manufacturing Domain에서 반도체 생산</p>
+
+<p>단순화해보면</p>
+
+<ul>
+  <li>프로세서</li>
+  <li>카트리지</li>
+  <li>자원의 배분 ..</li>
+</ul>
+
+<p><strong>이런것들 하나하나를 수학적으로 표현하는건 어렵다.</strong></p>
+
+<p>이것들의 행동을 하나하나 표현을 하는건 너무 복잡하니까,</p>
+
+<p>그래서 이런 문제들을 Simulate함으로써 <strong>최적의 운영방법을 찾는 방법</strong>을 <strong>Simulation</strong>이라고 한다.</p>
+
+<hr />
+
+<h3 id="models-to-simulate"><strong>Models to simulate</strong></h3>
+
+<ul>
+  <li>
+    <p><strong>System dynamics, Discrete event models, Agent based models</strong></p>
+
+    <ul>
+      <li>
+        <p>Event graphs, petri-net, agent modeling</p>
+
+        <p>Numerical modeling처럼 <strong>딱 떨어지는 해가 나오지않음</strong></p>
+
+        <p>==대신 <strong>예측치</strong>를 만들어냄==</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>“다양한 세팅에 대해서 아주 여러번 Simulation을 하면 최적의 Solution를 찾을 수 있을까”라고</strong></p>
+
+  <p><strong>하는 Model이 바로  Simulation Model</strong></p>
+</blockquote>
+
+<p>이렇게 구해낸 해가 최적이다라고 장담은 못함</p>
+
+<hr />
+
+<h4 id="system-dynamics"><strong>System Dynamics</strong></h4>
+
+<p><a href="https://m.blog.naver.com/PostView.nhn?blogId=eugene4213&amp;logNo=221082416976&amp;categoryNo=62&amp;proxyReferer=https%3A%2F%2Fwww.google.com%2F">혀노님 블로그 참고</a></p>
+
+<p>일반적으로 <strong>장기적인, 전략적 모델에서 사용</strong>됨</p>
+
+<p>사람들, 제품, 이벤트, 그리고 그 밖의 다른 개별적인 품목들을 <strong>그들의 수량</strong>으로 나타냅니다.</p>
+
+<p><strong>비선형 모델, 순환적 연동에 근간</strong>(the many circular, interlocking..)</p>
+
+<hr />
+
+<h5 id="infectious-disease">Infectious Disease</h5>
+
+<p><strong>SIR Model (1925)</strong></p>
+
+<ul>
+  <li>S : Susceptible (병에 걸릴 수 있는 상태)</li>
+  <li>I : Infectious (병에 걸린 상태)</li>
+  <li>R : Recovery (병에서 회복한 상태)</li>
+</ul>
+
+<p>: 인구상태를 세개의 상태로 표현한 Model</p>
+
+<p><strong>수가 변화되어가는 과정을 컴퓨터 Simulation함</strong> (구체적인 해는 굳이 구해내지 않음)</p>
+
+<script type="math/tex; mode=display">\frac{dS}{dt}=\ -βIS ,   
+\frac{dI}{dt}=\ βIS -vI, 
+\frac{dR}{dt}=\ vI \\\</script>
+
+<p><strong>첫번째 식</strong></p>
+
+<ul>
+  <li>시간에 차이에 따른 S의 차이는, I와 S를 곱한 것 이다.</li>
+  <li>S와 I의 관계를 잘 생각해보기</li>
+</ul>
+
+<p><strong>두번째 식</strong></p>
+
+<ul>
+  <li>시간의 차이에 따른 I는, I와 S를 곱한것이지만, 회복한 사람만큼 줄어든다.</li>
+</ul>
+
+<p><strong>세번째 식</strong></p>
+
+<ul>
+  <li>시간의 차이에 따른 R은, v와 I를 곱한 것 이다.</li>
+  <li>상태였던 사람은 시간에 따라서 R상태로 간다.</li>
+</ul>
+
+<blockquote>
+  <p><strong>수식으로 표현된 상태에 따른 인구수의 변화를 컴퓨터 Simulation으로 만든거</strong></p>
+</blockquote>
+
+<p>어떤 시간대를 주고 그때의 상황을 <strong>계산할수도 있긴 하지만</strong>(해를 구할 수도 있지만),</p>
+
+<p>대신에 <strong>Computer Simulation을 이용해서 Approximation(근사)함.</strong></p>
+
+<p>현실문제를 공식에 따라서 <strong>표현</strong>한 것을 프로그램으로 만든 후에,</p>
+
+<p><strong>execution을 통해 미래를 예측하는것을 Simulation!</strong></p>
+
+<p>특히 위와같은 기법은 <strong>System Dynamics</strong>라고 함</p>
+
+<p>-&gt; 미분방정식 기반(?)의 Simulation을 활용한 현실문제 추정과 표현 기법</p>
+
+<hr />
+
+<h4 id="discrete-event-simulation">Discrete Event Simulation</h4>
+
+<p><a href="https://m.blog.naver.com/PostView.nhn?blogId=eugene4213&amp;logNo=221082416976&amp;categoryNo=62&amp;proxyReferer=https%3A%2F%2Fwww.google.com%2F">혀노님 블로그 참고</a></p>
+
+<p>==연속 사건 사이에서 <strong>System의 변경은 발생하지 않는다고 가정</strong>합니다. ==</p>
+
+<p>따라서 Simulation은 한 Event에서 다음 사건으로 제 시간에 <strong>직접 점프</strong> 할 수 있습니다.</p>
+
+<p>이는 Simulation이 시간이 지남에 따라 <strong>System Dynamics를 지속적으로 추적하는</strong></p>
+
+<p><strong>연속 시뮬레이션(Continuous Simulation)과는 대조적</strong>입니다.</p>
+
+<p>(여기서 말하는 연속시뮬레이션은 실수단위의 데이터에 기반하여 모델링 되는 시스템)</p>
+
+<ul>
+  <li>
+    <p><strong>미분방정식</strong>을 통해 <strong>시간의 변화에 따른 연속적인 변화</strong>를 나타내는 Simulation기법</p>
+
+    <p>(뭔가 아까 앞에서 나왔던 System Dynamics와 비슷해보입니다.)</p>
+  </li>
+</ul>
+
+<p><strong>Discrete Event Simulation</strong>은 <strong>고정된 환경</strong>하에서</p>
+
+<p><strong>일률적이며 연속적으로 발생하는 사건들은 시스템의 직,간접적인 변화를 일으키지 않는다고 가정</strong>한 모델</p>
+
+<ul>
+  <li>
+    <p>사실 현실에서 일어나는 거의 모든 일이 확률적이고 랜덤하다.</p>
+
+    <p>그 와중에 확정적으로 일어나는 일 또한 분명있다.</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>결국 Discrete Event simulation에서 연속적으로 일어나는 Event는 시스템에 큰 영향을 끼칠만한 것이 아니라는 전제를 깔고간다.</strong></p>
+</blockquote>
+
+<hr />
+
+<h5 id="hospital-management">Hospital Management</h5>
+
+<p>ex) 병원에서 사람들은</p>
+
+<ul>
+  <li>대기실</li>
+  <li>Exam room</li>
+  <li>치료실</li>
+  <li>출구</li>
+</ul>
+
+<p>이런곳을 돌아다닌다.</p>
+
+<p>SIR Model과 다른점은, <strong>여기에는 여러 Object들이 있음</strong></p>
+
+<ul>
+  <li>의사</li>
+  <li>환자</li>
+  <li>간호사</li>
+  <li>…</li>
+</ul>
+
+<p>이 Object들과 Resource들이 서로서로  <strong>Interaction</strong>을 일으킨다.</p>
+
+<p>그리고 예를들어 환자라는 Object는 환자진료 프로세스에 따라서 움직인다.</p>
+
+<p>There are <strong>a sequence of the patient care process.</strong></p>
+
+<p>환자가 병원에 옴 -&gt; 예약 -&gt; 진료 -&gt; Exit</p>
+
+<p>(<strong>Chaining 되어있는 작업들</strong>)</p>
+
+<p>이런 <strong>Procedure</strong>와 병원의 <strong>Layout</strong>(Procedure가 일어나는 공간)이 합쳐져서,</p>
+
+<p><strong>Simulation</strong>이 된다. (7:35)</p>
+
+<p>여기서 <strong>Object</strong>들이 각각의 <strong>Procedure</strong>를 만나는것을 <strong>Event가 발생했다고 하고,</strong></p>
+
+<p>앞의 SIR과 다른점은 <strong>Event가 나눠져있다는 것이다.</strong></p>
+
+<p>(<strong>SIR은 시간의 변화에 따라 지속적으로 변하는 것이었음. Event 단위가 아님</strong>)</p>
+
+<hr />
+
+<h5 id="airport-model">Airport Model</h5>
+
+<p>두번째 Discrete event simulation 예시</p>
+
+<p>공항에서는</p>
+
+<ul>
+  <li>체크인</li>
+  <li>보안검사</li>
+  <li>식당</li>
+  <li>Gates</li>
+  <li>Plane 등등</li>
+</ul>
+
+<p>같은 Event들이 있다.</p>
+
+<p>이런 <strong>Event들을 정의</strong>하고, <strong>통계를 많이 확보</strong>하면 공항이라는 공간을 어떻게</p>
+
+<p>보다 효과적으로 관리를 할 수 있을지 알 수 있다.(Simulation을 통해서)</p>
+
+<p>Layout도 중요하지만,</p>
+
+<p><strong>Event들의 Sequence를 어떻게 설계하느냐가 성능을 좌지우지한다.</strong></p>
+
+<p>공항이 생긴다면 많은 사람이 방문하기 때문에 <strong>최적화</strong>(Optimization)시키는것이 중요하다.</p>
+
+<p><strong>Simulation</strong>을 만들어서 실험하는 것은 필수적이다. (한번 만들려면 돈이 엄청드니까 잘만들어야함)</p>
+
+<hr />
+
+<h4 id="agent-based-simulation">Agent Based Simulation</h4>
+
+<p><a href="https://m.blog.naver.com/PostView.nhn?blogId=eugene4213&amp;logNo=221082416976&amp;categoryNo=62&amp;proxyReferer=https%3A%2F%2Fwww.google.com%2F">혀노님 블로그 참고</a></p>
+
+<p>핵심단어는 Decentralized(분산적), <strong>Individual-centric</strong>(개인중심)</p>
+
+<p>The <strong>active entities</strong>(Object or Agent)를 <strong>식별</strong>하고,</p>
+
+<p><strong>행동을 정의</strong>하고,</p>
+
+<p>그것들을 <strong>특정환경에 배치</strong>하고 <strong>연결</strong>하여 시뮬레이션을 실행</p>
+
+<p>Discrete Event Simulation은 한계가 있음</p>
+
+<ul>
+  <li>같은 종류의 Object라도 <strong>하는일들도 다르다</strong></li>
+  <li><strong>목적</strong>도 다를 수있음 (특성이 다르다)</li>
+</ul>
+
+<p>단순히 움직이는 것이 아니라, <strong>인구학적인 특성</strong>을 가지고, <strong>여러 변수들을 생각</strong>해서</p>
+
+<p><strong>개체(Entities or Object) 하나하나에 특징을 살리는 방식이 Agent Based Simulation</strong></p>
+
+<hr />
+
+<h5 id="traffic-simulation">Traffic Simulation</h5>
+
+<p>또다른 형태의 Simulation인 Traffic Simulation</p>
+
+<ul>
+  <li>자동차들마다 목적지도 다름</li>
+  <li>수송용 트럭일수도 있고, 관광용 버스일수도 있다.</li>
+</ul>
+
+<p><strong>Graphic structure를 활용할 것임 (나중에 배움)</strong></p>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/Data%20Structure" rel="tag"># Data Structure</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/information/2020/04/06/add_utility-post/" rel="next" title="Github 블로그 기능추가">
+                <i class="fa fa-chevron-left"></i> Github 블로그 기능추가
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/os/2020/04/01/OS4-post/" rel="prev" title="OS Lecture 4">
+                OS Lecture 4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+<script src="https://utteranc.es/client.js"
+        repo="Kojungbeom/kojungbeom.github.io"
+        issue-term="title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="고중범" />
+          <p class="site-author-name" itemprop="name">고중범</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#data-structure-week-5"> <span class="nav-number">1</span> <span class="nav-text">Data Structure Week 5</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#weekly-objectives"> <span class="nav-number">1.1</span> <span class="nav-text">Weekly Objectives</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#real-world-problems"> <span class="nav-number">1.2</span> <span class="nav-text">Real World Problems</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#how-to-comprehend-a-problem"> <span class="nav-number">1.3</span> <span class="nav-text">How to comprehend a problem?</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#models-and-why-modeling"> <span class="nav-number">1.4</span> <span class="nav-text">Models and Why Modeling</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#two-types-of-models"> <span class="nav-number">1.5</span> <span class="nav-text">Two Types of Models</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#models-to-solve"> <span class="nav-number">1.5.1</span> <span class="nav-text">Models to solve</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#models-to-simulate"> <span class="nav-number">1.5.2</span> <span class="nav-text">Models to simulate</strong</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#system-dynamics"> <span class="nav-number">1.5.2.1</span> <span class="nav-text">System Dynamics</strong</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#infectious-disease"> <span class="nav-number">1.5.2.1.1</span> <span class="nav-text">Infectious Disease</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#discrete-event-simulation"> <span class="nav-number">1.5.2.2</span> <span class="nav-text">Discrete Event Simulation</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#hospital-management"> <span class="nav-number">1.5.2.2.1</span> <span class="nav-text">Hospital Management</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#airport-model"> <span class="nav-number">1.5.2.2.2</span> <span class="nav-text">Airport Model</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#agent-based-simulation"> <span class="nav-number">1.5.2.3</span> <span class="nav-text">Agent Based Simulation</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#traffic-simulation"> <span class="nav-number">1.5.2.3.1</span> <span class="nav-text">Traffic Simulation</span> </a> </li> </ol> </li> </ol> </li> </ol> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">고중범</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

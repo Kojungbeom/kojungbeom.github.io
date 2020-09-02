@@ -1,0 +1,1287 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ko" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="김덕수 교수님의 OS강의 Lecture 2">
+<meta name="keywords" content="OS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS Lecture 2">
+<meta property="og:url" content="http://localhost:4000/os/2020/03/28/OS2-post/">
+<meta property="og:site_name" content="Ko">
+<meta property="og:description" content="김덕수 교수님의 OS강의 Lecture 2">
+<meta property="og:locale" content="ko">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OS Lecture 2">
+<meta name="twitter:description" content="김덕수 교수님의 OS강의 Lecture 2">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>OS Lecture 2 | Ko</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ko</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/os/2020/03/28/OS2-post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="고중범">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="assets/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ko">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            OS Lecture 2
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="" itemprop="dateCreated datePublished" datetime="2020-03-28T21:00:00+09:00">
+                2020-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/OS" itemprop="url" rel="index">
+                    <span itemprop="name">OS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <p>유튜브 <a href="https://www.youtube.com/channel/UCHvXywxOtwLedY5OX-Teg5w">HPC Lab. KOREATECH 채널</a>, 김덕수 교수님의 OS 강의를 보고 정리한 내용입니다.</p>
+
+<hr />
+
+<h1 id="lecture2">Lecture2</h1>
+
+<hr />
+
+<h1 id="os-overview">OS Overview</h1>
+
+<hr />
+
+<h2 id="운영체제의-역할">운영체제의 역할</h2>
+
+<ul>
+  <li><strong>User Interface</strong> (편리성)
+    <ul>
+      <li>CUI (Character user interface)</li>
+      <li>GUI (Graphical user interface)</li>
+      <li>EUCI (End-User Comfortable interface)</li>
+    </ul>
+  </li>
+  <li><strong>Resource Management</strong> (효율성)
+    <ul>
+      <li>HW resource</li>
+      <li>SW resource</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Process and Thread management</strong> (Process는 “실행주체”, Thread는 가벼운 Process)</p>
+  </li>
+  <li><strong>System management</strong> (시스템 보호)</li>
+</ul>
+
+<hr />
+
+<h2 id="컴퓨터-시스템의-구성">컴퓨터 시스템의 구성</h2>
+
+<p>Hardware위에 OS가 존재하고 그 위에 Software와 Application들..</p>
+
+<p>운영체제의 핵심은 <strong>Kernel</strong> (뒤로가서 자세히 보신다고 함)</p>
+
+<dl>
+  <dt><strong>System Call Interface</strong></dt>
+  <dd>
+    <p>사용자가 kernel을 마음대로 조작해버리면 문제를 일으킬 수 있으니까,</p>
+
+    <p><strong>필요한 기능이 있으면 OS에 요청하는 통로</strong></p>
+  </dd>
+</dl>
+
+<p>혹은 kernel이 할 수 있는 기능중에서 <strong>사용자가 쓸 수 있는걸 모아둔 것이다.</strong></p>
+
+<hr />
+
+<h2 id="운영체제의-구분">운영체제의 구분</h2>
+
+<h3 id="동시-사용자-수">동시 사용자 수</h3>
+
+<ul>
+  <li>
+    <p>혼자 씀 (한명의 사용자가 모든 시스템 자원을 독점한다.)</p>
+
+    <ul>
+      <li>ex) Window 7/10 , Android…)</li>
+    </ul>
+  </li>
+  <li>
+    <p>동시에 여러명이서 씀 (<strong>자원</strong>들에 대한 <strong>소유 권한 관리가 필요하다.</strong>)</p>
+
+    <ul>
+      <li>ex) Unix, Linux…</li>
+    </ul>
+
+    <p>-&gt; 동시에 쓰는건 기본적으로 <strong>Multi-tasking 기능이 필요하다.</strong></p>
+  </li>
+</ul>
+
+<h3 id="동시-실행-프로세스-수">동시 실행 프로세스 수</h3>
+
+<ul>
+  <li>
+    <p>Single-tasking system (단일작업, 한번에 하나의 프로세스만 존재,</p>
+
+    <ul>
+      <li>ex) MS-DOS</li>
+    </ul>
+
+    <p>-&gt; 하나가 끝나야 다음 것을 실행할 수 있다.</p>
+  </li>
+  <li>
+    <p>Multi-tasking system (다중작업, 작업들 사이의 <strong>동시 수행, 동기화 등을 관리</strong>해야한다.)</p>
+
+    <ul>
+      <li>ex) Unix/Linux..</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="작업-수행-방식">작업 수행 방식</h3>
+
+<ul>
+  <li>
+    <h4 id="순차-처리">순차 처리</h4>
+
+    <p>옛날에는 OS가 존재하지 않았기 때문에, 기계어로 프로그램을 직접 작성했어야했다.</p>
+
+    <p><strong>하드웨어 관리를 OS가 아니라 직접해야했기 때문에</strong> 하드웨어에 대한 이해또한 필요했다.</p>
+
+    <p>-&gt; 실행하는 작업에 대한 <strong>각각의 준비 시간</strong>이 소요된다.</p>
+  </li>
+  <li>
+    <h4 id="batch-systems">Batch Systems</h4>
+
+    <ul>
+      <li>중앙에서 작업을 모아서 <strong>한번에 일괄처리</strong> - &gt; 준비시간을 줄여준다.</li>
+      <li>시스템 지향적 (System-oriented)</li>
+      <li>장점
+        <ul>
+          <li>시스템 자원 공유</li>
+          <li>처리효율(Throughput) 향상</li>
+        </ul>
+      </li>
+      <li>단점
+        <ul>
+          <li>같은 유형의 <strong>작업들이 모이기를 기다려야 함</strong> -&gt; 긴 응답시간</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="time-sharing-sytems-시분할-시스템">Time Sharing Sytems (시분할 시스템)</h4>
+
+    <p>: <strong>시간을 나눠서</strong> 여러 프로그램을 나눠서 조금씩 사용하는 시스템</p>
+
+    <ul>
+      <li>시스템 자원 공유</li>
+      <li><strong>사용자 지향적 (User-oriented)</strong></li>
+      <li>여러명이서 같이 쓰려고하다보니 <strong>파일 시스템 및 가상 메모리 관리가 필요하다.</strong></li>
+      <li>장점
+        <ul>
+          <li>응답시간 단축</li>
+          <li>생산성 향상</li>
+        </ul>
+      </li>
+      <li>단점
+        <ul>
+          <li>통신 비용 증가, 보안문제가 있음 (단말기로 접속하니까)</li>
+          <li>사용자 수가 증가하면 속도가 저하된다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="personal-computing">Personal Computing</h4>
+
+    <p>: 개인이 시스템을 <strong>전체 독점</strong>해서 사용하는 방식</p>
+
+    <ul>
+      <li>
+        <p>앞에 시스템들은 <strong>cpu를 쉬지않고 돌려서 활용률을 높이려고 했지만</strong>,</p>
+
+        <p>Personal Computing에서는 고려 대상이 아님</p>
+      </li>
+      <li>
+        <p>OS가 상대적으로 단순</p>
+
+        <ul>
+          <li>But, 사용자의 <strong>편리성을 높여주는 다양한 기능</strong>들이 많다.</li>
+        </ul>
+      </li>
+      <li>
+        <p>장점</p>
+
+        <ul>
+          <li>빠르다.</li>
+        </ul>
+      </li>
+      <li>
+        <p>단점</p>
+
+        <ul>
+          <li>혼자 사서 써야되서 성능이 낮음</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="parallel-processing-systems-병렬처리시스템">Parallel Processing Systems (병렬처리시스템)</h4>
+
+    <ul>
+      <li>단일 시스템 내에서 둘 이상의 Processor 사용 (ex) CPU 여러개)</li>
+      <li><strong>메모리 등의 자원 공유</strong> (Tightly-coupled system)</li>
+      <li>사용 목적
+        <ul>
+          <li>성능향상</li>
+          <li><strong>Tolerence 보장</strong></li>
+        </ul>
+      </li>
+      <li><strong>프로세서간 관계 및 역할 관리 필요하다.</strong></li>
+      <li>확장하는데 한계가 있다.</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="distributed-processing-systems-분산처리시스템">Distributed Processing Systems (분산처리시스템)</h4>
+
+    <p>: <strong>네트워크를 기반</strong>으로 구축된 병렬처리 시스템</p>
+
+    <ul>
+      <li><strong>물리적인 통신망을 이용해서 연결</strong></li>
+      <li><strong>분산운영체제</strong>를 통해 하나의 프로그램, 자원처럼 사용가능</li>
+      <li>Cluster system, client-server system</li>
+      <li>장점
+        <ul>
+          <li>자원 공유 -&gt; 높은 성능</li>
+          <li><strong>Fault tolerence</strong></li>
+        </ul>
+      </li>
+      <li>단점
+        <ul>
+          <li>구축 및 관리가 어렵다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="real-time-systems">Real-time Systems</h4>
+
+    <p>: 작업 처리에 제한 시간을 가지는 시스템 (제한 시간 내에 서비스를 제공하는것이 자원 활용 효율보다 중요!)</p>
+
+    <ul>
+      <li>Task의 종류
+        <ul>
+          <li>Hard real-time task
+            <ul>
+              <li>발전소, 무기제어</li>
+            </ul>
+          </li>
+          <li>Soft real-time task
+            <ul>
+              <li>동영상 재생</li>
+            </ul>
+          </li>
+          <li>Non real-time task</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="운영체제의-구조-os-structure">운영체제의 구조 (<strong>OS Structure</strong>)</h2>
+
+<h3 id="커널-kernel">커널 (Kernel)</h3>
+
+<p>: OS의 <strong>알맹이</strong></p>
+
+<ul>
+  <li>OS의 <strong>핵심 부분</strong> (메모리 상주)
+    <ul>
+      <li>가장 빈번하게 사용되는 기능들 담당한다.
+        <ul>
+          <li>ex) processor, memory 등등..</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>동의어로는 핵(neucleus), 관리자(Supervisor), 상주 프로그램(Resident program)이 있다.</li>
+</ul>
+
+<h3 id="유틸리티-utility">유틸리티 (Utility)</h3>
+
+<p>: 운영체제에서 <strong>커널을 제외한 나머지 부분</strong>에 있는 것들이다.</p>
+
+<ul>
+  <li>비상주 프로그램 (메모리에 항상 올라와있지는 않다.)</li>
+  <li>UI등 서비스 프로그램</li>
+</ul>
+
+<p>안쪽부터</p>
+
+<p>하드웨어 - Kernel - system calls - utilities 까지가 OS (동심원을 생각)</p>
+
+<h3 id="단일구조-single-structure">단일구조 (Single structure)</h3>
+
+<p>: 운영체제의 기능을 <strong>하나의 거대한 커널로 모아놓은 구조</strong></p>
+
+<p>ex) main 함수안에 다 넣어서 만든 프로그램.</p>
+
+<ul>
+  <li>장점
+    <ul>
+      <li>커널 내 모듈간 직접 통신 가능 -&gt; 빠르다</li>
+    </ul>
+  </li>
+  <li>단점
+    <ul>
+      <li>Kernel의 <strong>거대화</strong> -&gt; 추가 기능 구현, 유지보수가 어렵다.</li>
+      <li>한 모듈의 문제가 전체 시스템에 영향을 준다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="계층구조-hierarchy">계층구조 (<strong>hierarchy</strong>)</h3>
+
+<ul>
+  <li>장점
+    <ul>
+      <li>모듈화 (<strong>Modulization</strong>)
+        <ul>
+          <li>각각의 기능에만 집중하면 됨 -&gt; 단순화</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>단점
+    <ul>
+      <li>단일 구조에 비해 상대적으로 성능 저하
+        <ul>
+          <li>원하는 기능 수행을 하기 위해서는 <strong>여러 계층을 거쳐야 하기 때문이다.</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="마이크로-커널구조-microkernel-structure">마이크로 커널구조 (Microkernel Structure)</h3>
+
+<p>: Kernel의 크기 최소화</p>
+
+<ul>
+  <li>필수 기능만 포함한다.</li>
+  <li><strong>기타 기능은 사용자 영역에서 수행한다.</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="운영체제의-기능-os-features">운영체제의 기능 (OS features)</h2>
+
+<p>: 관리를 총괄한다.</p>
+
+<h3 id="process-management">Process Management</h3>
+
+<ul>
+  <li>프로세스(Process)
+    <ul>
+      <li><strong>프로세스는 커널에 등록된 실행 단위 (실행중인 프로그램)</strong></li>
+      <li><strong>프로그램 수행 주체 (entity)</strong></li>
+    </ul>
+  </li>
+  <li>OS의 프로세스 관리 기능
+    <ul>
+      <li>생성/삭제, 상태관리</li>
+      <li>자원 할당</li>
+      <li>프로세스 간 통신 및 동기화 (<strong>Synchronization</strong>)</li>
+      <li><strong>교착상태(Deadlock) 해결</strong></li>
+    </ul>
+  </li>
+  <li>프로세스 정보 관리
+    <ul>
+      <li>PCB (Process Control Block)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="processor-management">Processor Management</h3>
+
+<ul>
+  <li>CPU (Central Processing Unit)</li>
+  <li>Process Scheduling -&gt; 처리 순서 결정</li>
+  <li><strong>Processor 할당 관리</strong>
+    <ul>
+      <li>Process들에 대한 Processor 할당 관리</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="memory-management">Memory Management</h3>
+
+<p>: 주기억장치 (<strong>Computer memory</strong>)</p>
+
+<ul>
+  <li><strong>Multi-user, Multi tasking 시스템</strong>
+    <ul>
+      <li>메모리 할당 및 회수</li>
+      <li>메모리 여유 공간 관리</li>
+      <li>메모리 영역 접근 보호</li>
+    </ul>
+  </li>
+  <li>메모리 할당 방법 (scheme)
+    <ul>
+      <li>전체 적재</li>
+      <li>일부 적재</li>
+    </ul>
+  </li>
+</ul>
+
+<p><em>이 부분은 뒤에가서 자세히 다루신다고 합니다.</em></p>
+
+<h3 id="file-management">File Management</h3>
+
+<p>파일 : 논리적인 데이터의 저장 단위</p>
+
+<ul>
+  <li>사용자 및 시스템의 파일 관리(생성/삭제, 백업 등등..)</li>
+  <li>Directory 구조 지원</li>
+</ul>
+
+<h3 id="io-management">I/O Management</h3>
+
+<p>: 입출력 처리장치에서 운영체제를 거쳐서 프로세서로 보낸다.</p>
+
+<p>이 외에도 하는 일은 굉장히 많지만</p>
+
+<p>ex) 디스크, 네트워크, 보안 등등..</p>
+
+<p>일단 큰그림만 그려보기로!</p>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/OS" rel="tag"># OS</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/data%20structure/2020/03/30/Data_Structure_week4-post/" rel="next" title="Data Structure week4">
+                <i class="fa fa-chevron-left"></i> Data Structure week4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/os/2020/03/28/OS1-post/" rel="prev" title="OS Lecture 1">
+                OS Lecture 1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+<script src="https://utteranc.es/client.js"
+        repo="Kojungbeom/kojungbeom.github.io"
+        issue-term="title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="고중범" />
+          <p class="site-author-name" itemprop="name">고중범</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#lecture2"> <span class="nav-number">1</span> <span class="nav-text">Lecture2</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#os-overview"> <span class="nav-number">2</span> <span class="nav-text">OS Overview</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#운영체제의-역할"> <span class="nav-number">2.1</span> <span class="nav-text">운영체제의 역할</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#컴퓨터-시스템의-구성"> <span class="nav-number">2.2</span> <span class="nav-text">컴퓨터 시스템의 구성</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#운영체제의-구분"> <span class="nav-number">2.3</span> <span class="nav-text">운영체제의 구분</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#동시-사용자-수"> <span class="nav-number">2.3.1</span> <span class="nav-text">동시 사용자 수</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#동시-실행-프로세스-수"> <span class="nav-number">2.3.2</span> <span class="nav-text">동시 실행 프로세스 수</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#작업-수행-방식"> <span class="nav-number">2.3.3</span> <span class="nav-text">작업 수행 방식</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#순차-처리"> <span class="nav-number">2.3.3.1</span> <span class="nav-text">순차 처리</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#batch-systems"> <span class="nav-number">2.3.3.2</span> <span class="nav-text">Batch Systems</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#time-sharing-sytems-시분할-시스템"> <span class="nav-number">2.3.3.3</span> <span class="nav-text">Time Sharing Sytems (시분할 시스템)</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#personal-computing"> <span class="nav-number">2.3.3.4</span> <span class="nav-text">Personal Computing</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#parallel-processing-systems-병렬처리시스템"> <span class="nav-number">2.3.3.5</span> <span class="nav-text">Parallel Processing Systems (병렬처리시스템)</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#distributed-processing-systems-분산처리시스템"> <span class="nav-number">2.3.3.6</span> <span class="nav-text">Distributed Processing Systems (분산처리시스템)</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#real-time-systems"> <span class="nav-number">2.3.3.7</span> <span class="nav-text">Real-time Systems</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#운영체제의-구조-os-structure"> <span class="nav-number">2.4</span> <span class="nav-text">운영체제의 구조 (OS Structure)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#커널-kernel"> <span class="nav-number">2.4.1</span> <span class="nav-text">커널 (Kernel)</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#유틸리티-utility"> <span class="nav-number">2.4.2</span> <span class="nav-text">유틸리티 (Utility)</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#단일구조-single-structure"> <span class="nav-number">2.4.3</span> <span class="nav-text">단일구조 (Single structure)</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#계층구조-hierarchy"> <span class="nav-number">2.4.4</span> <span class="nav-text">계층구조 (hierarchy)</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#마이크로-커널구조-microkernel-structure"> <span class="nav-number">2.4.5</span> <span class="nav-text">마이크로 커널구조 (Microkernel Structure)</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#운영체제의-기능-os-features"> <span class="nav-number">2.5</span> <span class="nav-text">운영체제의 기능 (OS features)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#process-management"> <span class="nav-number">2.5.1</span> <span class="nav-text">Process Management</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#processor-management"> <span class="nav-number">2.5.2</span> <span class="nav-text">Processor Management</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#memory-management"> <span class="nav-number">2.5.3</span> <span class="nav-text">Memory Management</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#file-management"> <span class="nav-number">2.5.4</span> <span class="nav-text">File Management</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#io-management"> <span class="nav-number">2.5.5</span> <span class="nav-text">I/O Management</span> </a> </li> </ol> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">고중범</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

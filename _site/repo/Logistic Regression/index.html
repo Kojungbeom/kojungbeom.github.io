@@ -1,0 +1,811 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Jekyll, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ko" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="이 [블로그]([https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/](https://ratsgo.github.io/machine learning/2017/04/02/logistic/))와 김행근교수님의 강의 참고 블로그를 아주 적극참고한 자료입니다. # Logistic Regression Logistic Regression은 왜 나왔을까? ## 문제의식 &amp;gt; Multiple Linear Regression은 수치형 독립변수 X와 연속된 숫자(실수)값으로 이루어진 종속변수 Y간의 관계를 선형으로 **가정**하고 이를 가장 잘 표현할 수 있는 Parameter를 데이터 X로 부터 추정하는 Model이다. 이때 X와 Y를 가장 잘 표현할 수 있는 Parameter라는건 MSE를 최소로 하는 값들을 의미한다. 선형적인 문제는 미분을 통해서 Normal equation같은 방법으로 explicit한 해를 구할 수가 있다. 하지만 만약 Y가 연속적인 실수값이 아닌 Interval을 가진 nominal attribute라면 Multiple Linear Regression model을 사용할 수 없을 것이다. (사용한다고 하더라도 안하느니만 못한 모델이 될 것이다.) 이때문에 Logistic Regression Model이 제안되었다. ## Logistic Function and Odds ### Logistic Function &amp;gt; 실제로 많은 자연현상, 사회현상에서는 특정 변수에 대한 확률값이 선형이 아닌 S-Curve 형태를 따르는 경우가 많다고 한다. 이러한 S-Curve를 함수로 표현해낸 것이 바로 **Logistic Function**이다. (=Sigmoid Function) ![img](https://i.imgur.com/E0eI8OU.png) $$ y = {1 \over 1+e^{-x}} \\ 출처: imgur.com $$ - 위 그래프처럼 x값으로 +,- 어떤값이든 받을 수 있고, 출력값은 0에서 1 사이가 된다. ### Odds (승산) &amp;gt; Odds란 임의의 사건 A가 발생하지 않을 확률 대비 일어난 확률의 비율을 뜻하는 개념이다. $$ Odds = {P \over 1-P} $$ 식에서 알 수 있듯이 P(확률)이 커지면 Odds가 커지고, Odds가 커질수록 P가 커지는 걸 알 수있다. ## Logistic Regression 회귀식의 장점은 그대로 유지하되, 종속변수 Y를 Category가 아니라 P(확률)로 두고 식을 세우려면? 1. 우변은 그대로 두고 좌변을 P로 바꾼다 - 좌변의 범위는 0~1사이, 하지만 우변의 범위는 -무한대 ~ +무한대의 범위라서 식이 성립하지 않는다. 2. 좌변은 Odds로 설정해보자 - 좌변의 범위는 0~무한대, 하지만 우변은 그대로 -무한대 ~ +무한대 범위 3. 좌변에 Log를 취한다. - Log Odds 범위가 우변과 똑같이 -무한대 ~ +무한대로 변해서 일치하게 된다. $$ log{(P(Y=1|X= \vec x) \over 1-P(Y=1|X=\vec x)} = \vec \beta^T\vec x $$ 위의 식은 P에 대한 식으로 정리해주면 $$ {P(x) \over {1-P(x)}} = e^{\vec \beta^T\vec x}, \\ P(x) = {1 \over 1+e^{\vec \beta^T\vec x}} $$ 이제 이 식에서 e의 계수가 0일떄를 Hyperplane으로 해서 값을 분류한다. $$ y = {1 \over 1+exp^{\beta^T\vec x}} = \begin{cases} y \rightarrow 1 &amp; \mbox {if} \ \beta^Tx \rightarrow \infin &amp; \\ y={1\over2} &amp; \mbox {if} \ \beta^Tx=0 &amp; \\ y \rightarrow 0 &amp; \mbox {if} \ \beta^Tx \rightarrow -\infin \end{cases} $$ 여기서 잊으면 안되는건 &amp;\beta&amp;는 category 1과 0을 대표하는 대표 vector라는 것! 두 class의 데이터가 같은 방향으로 존재할 경우 분류하기 어려운데, bias term이 평행이동시키는 역할을 해서 괜찮다! ## Multiple Logistic Regression Category가 3개뿐이라고 가정하면 Logistic regression Model이 몇개가 필요할까? -&amp;gt; 2개 왜냐면 우선 1번째와 2번째 category를 구하면, 3번째 category에 속할 확률은 1 - 첫번째 - 두번쨰로 구할수가 있기 때문이다. ---- bias는 정답과 떨어져있는 정도를 의미하는 경우 variance는 training dataset의 바뀜에 의해 모델의 parameter가 바뀌는 정도 모델에서 bias를 낮춰주는 작업을 하면 variance가 커진다 반대로 variance를 낮춰주는 작업을 하면 bias가 커진다. -&amp;gt; 둘간의 적절한 조절이 필요하다. (Tradeoff 관계) ![image-20200522182614510](/home/ines/.config/Typora/typora-user-images/image-20200522182614510.png) y와 predict값 간의 오차를 generalization error라고 한다. 기대값이란 평균이란 비슷한 의미이다. $$ E[(y-\hat f(x))^2] = (Bias[\hat f(x)])^2 + Var[\hat f(x)] + \sigma^2 $$ Bias와 Var가 MSE(Generalization)의 구성원들이네! Bias는 원래 구해내고자했던 모델과의 차이! Variance는 훈련데이터간에 존재하는 작은 차이들에 대해 얼마나 민감하게 반응하는지에 대한 지표! - 복잡한 모델일수록 커질 수 밖에 없음 - 혹은 오버피팅이 심하게 되면될수록 variance가 큰것이라고 볼수도있지 - 사소한 패턴까지 외웠다는 뜻! -&amp;gt; Bias가 클 수록 underfit, Variance가 클수록 Overfit되기 쉬운거지 뒤에 \$sigma^2$는 y자체에 있는 noise를 의미하는데, 이럴때는 nosie를 줄이는 방법밖에 없음;; 위식에서 봤을때 결국 MSE가 고정되어있다고 하면, 하나가 올라가면 하나가 떨어지고, 하나가 떨어지면 하나가 올라가겠지. - 해적마크 칼처럼 크로스 Standard deviation공식처럼 전개하는거 외우면 될듯 ㅎ 그래서 입실론을 \sigma^2라고 한다면(=Var) y= f(x) - 입실론 이라고 할 수가 있다.그리고 입실론의 기댓값은 0 그래서 결국 E[y] = E(f(x) +입실론] = E[f(x)] + E[입실론] = f(x) $$ Var[y] = E[(y - E[y])^2] = E[(y-f(x))] 어쪄구저쩌구 $$ predict값과 실제값(y) 간의 MSE를 풀어서 구하면 아까 앞에서 봤던식 나올거임 단순한 모델일수록 분산이 낮고, bias는 큼 feature를 추가하거나해서 뭐 polynomial같은거 사용하면 bias는 줄겠지만 variance는 커진다는거지 **그리고 데이터의 수가 증가하면 variance를 감소시키지.** - bias가 클때는 모델을 단순하게 하거나 좀 더 복잡한 모델을 사용하거나! Bias -Variacne Trade off 검색하고 자료 찾아보기! # Odds (승률) Odds와 log라는 개념을 이용해서 regression model을 가지로 classification을 가능하게함 Odds = p / 1 - p NC의 우승 odds가 1/9라면 우승확률은 1/10 SK의 우승 odds는 1/250라면 우승확률은 1/251 log(Odds) = log(p/1-p) 그래프보면 semantic하네! 0.5보다 크면 positive 05보다 작으면 negative logistic regression equation 찾아보기;; sigmoid구하는것도 한번봅시다~ MLEM은 뭐야? 1이 나올확률이 0.8이라고하자 근데 앞에서 하던거처럼 기대값가지고하면 어떻게되냐면, 0이 나올확률 구하려다가 그냥 0곱해져서 0되버림. 이러면 안된다고 뭐라는건지 모르겠으니까 책을 보는게 좋겠다. Linear regression과 다른점은 closed form solution이 존재하지 않는다. [https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/](https://ratsgo.github.io/machine learning/2017/04/02/logistic/) activation function 찾아보기 expectation function Lkelihood and log-likelihood Geometric interpretation log loss Cross entropy (무조건 찾아보자) &amp;gt;8가지를 표현할때 균일할때는 3bit면 최선인데, 균일하지 않으면(빈도수가) 빈도가 높은거는 짧게, 빈도가 낮은거는 길게 만드는게 bit를 아끼는 최선의 방법? 일어날 확률이 적은 녀석들은 큰비트로 인코딩하고 일어날 확률이 큰 녀석들은 작은비트로 인코딩하면 효율적으로 데이터를 보낼 수 있다. (균일할때보다) 그래서 cross entropy란 평균적으로 필요한 비트의 양이다. 근데 내가 구한 Cross entropy에 대한 가정이 완벽하지 않다면(분포를 완벽하게 모른다면) 모르니까 효율적으로 데이터보내기를 할 수가 없다. (1.6bit이면 보내는데 3bit이나 쓰게된거임) &amp;gt; 이상적인 확률분포가 있다고했을때, 이거에 대한 예측값이 진짜 측정값하고 같을때 Cross entropy는 원래써야하는 정보량과 같게 나온다. 하지만 그렇지 않을경우에는 cross entropy가 크거나 같게 나온다. - 정보량은 1.6bit 인데 3bit을 썼다? -&amp;gt; KL divergence = 1.4 **예측량과 실제값이 다르면 다를수록 Cross entropy가 커지니까 cost function으로 딱이다.** 그리고 Cross entropy cost function에 K에 2가 들어가면 Logistic regression이 된다는거 logic은 뭐냐, sigmoid는 뭐고 softmax는 뭐냐">
+<meta name="keywords" content="Jekyll, NexT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ko">
+<meta property="og:url" content="http://localhost:4000/repo/Logistic%20Regression/">
+<meta property="og:site_name" content="Ko">
+<meta property="og:description" content="이 [블로그]([https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/](https://ratsgo.github.io/machine learning/2017/04/02/logistic/))와 김행근교수님의 강의 참고 블로그를 아주 적극참고한 자료입니다. # Logistic Regression Logistic Regression은 왜 나왔을까? ## 문제의식 &amp;gt; Multiple Linear Regression은 수치형 독립변수 X와 연속된 숫자(실수)값으로 이루어진 종속변수 Y간의 관계를 선형으로 **가정**하고 이를 가장 잘 표현할 수 있는 Parameter를 데이터 X로 부터 추정하는 Model이다. 이때 X와 Y를 가장 잘 표현할 수 있는 Parameter라는건 MSE를 최소로 하는 값들을 의미한다. 선형적인 문제는 미분을 통해서 Normal equation같은 방법으로 explicit한 해를 구할 수가 있다. 하지만 만약 Y가 연속적인 실수값이 아닌 Interval을 가진 nominal attribute라면 Multiple Linear Regression model을 사용할 수 없을 것이다. (사용한다고 하더라도 안하느니만 못한 모델이 될 것이다.) 이때문에 Logistic Regression Model이 제안되었다. ## Logistic Function and Odds ### Logistic Function &amp;gt; 실제로 많은 자연현상, 사회현상에서는 특정 변수에 대한 확률값이 선형이 아닌 S-Curve 형태를 따르는 경우가 많다고 한다. 이러한 S-Curve를 함수로 표현해낸 것이 바로 **Logistic Function**이다. (=Sigmoid Function) ![img](https://i.imgur.com/E0eI8OU.png) $$ y = {1 \over 1+e^{-x}} \\ 출처: imgur.com $$ - 위 그래프처럼 x값으로 +,- 어떤값이든 받을 수 있고, 출력값은 0에서 1 사이가 된다. ### Odds (승산) &amp;gt; Odds란 임의의 사건 A가 발생하지 않을 확률 대비 일어난 확률의 비율을 뜻하는 개념이다. $$ Odds = {P \over 1-P} $$ 식에서 알 수 있듯이 P(확률)이 커지면 Odds가 커지고, Odds가 커질수록 P가 커지는 걸 알 수있다. ## Logistic Regression 회귀식의 장점은 그대로 유지하되, 종속변수 Y를 Category가 아니라 P(확률)로 두고 식을 세우려면? 1. 우변은 그대로 두고 좌변을 P로 바꾼다 - 좌변의 범위는 0~1사이, 하지만 우변의 범위는 -무한대 ~ +무한대의 범위라서 식이 성립하지 않는다. 2. 좌변은 Odds로 설정해보자 - 좌변의 범위는 0~무한대, 하지만 우변은 그대로 -무한대 ~ +무한대 범위 3. 좌변에 Log를 취한다. - Log Odds 범위가 우변과 똑같이 -무한대 ~ +무한대로 변해서 일치하게 된다. $$ log{(P(Y=1|X= \vec x) \over 1-P(Y=1|X=\vec x)} = \vec \beta^T\vec x $$ 위의 식은 P에 대한 식으로 정리해주면 $$ {P(x) \over {1-P(x)}} = e^{\vec \beta^T\vec x}, \\ P(x) = {1 \over 1+e^{\vec \beta^T\vec x}} $$ 이제 이 식에서 e의 계수가 0일떄를 Hyperplane으로 해서 값을 분류한다. $$ y = {1 \over 1+exp^{\beta^T\vec x}} = \begin{cases} y \rightarrow 1 &amp; \mbox {if} \ \beta^Tx \rightarrow \infin &amp; \\ y={1\over2} &amp; \mbox {if} \ \beta^Tx=0 &amp; \\ y \rightarrow 0 &amp; \mbox {if} \ \beta^Tx \rightarrow -\infin \end{cases} $$ 여기서 잊으면 안되는건 &amp;\beta&amp;는 category 1과 0을 대표하는 대표 vector라는 것! 두 class의 데이터가 같은 방향으로 존재할 경우 분류하기 어려운데, bias term이 평행이동시키는 역할을 해서 괜찮다! ## Multiple Logistic Regression Category가 3개뿐이라고 가정하면 Logistic regression Model이 몇개가 필요할까? -&amp;gt; 2개 왜냐면 우선 1번째와 2번째 category를 구하면, 3번째 category에 속할 확률은 1 - 첫번째 - 두번쨰로 구할수가 있기 때문이다. ---- bias는 정답과 떨어져있는 정도를 의미하는 경우 variance는 training dataset의 바뀜에 의해 모델의 parameter가 바뀌는 정도 모델에서 bias를 낮춰주는 작업을 하면 variance가 커진다 반대로 variance를 낮춰주는 작업을 하면 bias가 커진다. -&amp;gt; 둘간의 적절한 조절이 필요하다. (Tradeoff 관계) ![image-20200522182614510](/home/ines/.config/Typora/typora-user-images/image-20200522182614510.png) y와 predict값 간의 오차를 generalization error라고 한다. 기대값이란 평균이란 비슷한 의미이다. $$ E[(y-\hat f(x))^2] = (Bias[\hat f(x)])^2 + Var[\hat f(x)] + \sigma^2 $$ Bias와 Var가 MSE(Generalization)의 구성원들이네! Bias는 원래 구해내고자했던 모델과의 차이! Variance는 훈련데이터간에 존재하는 작은 차이들에 대해 얼마나 민감하게 반응하는지에 대한 지표! - 복잡한 모델일수록 커질 수 밖에 없음 - 혹은 오버피팅이 심하게 되면될수록 variance가 큰것이라고 볼수도있지 - 사소한 패턴까지 외웠다는 뜻! -&amp;gt; Bias가 클 수록 underfit, Variance가 클수록 Overfit되기 쉬운거지 뒤에 \$sigma^2$는 y자체에 있는 noise를 의미하는데, 이럴때는 nosie를 줄이는 방법밖에 없음;; 위식에서 봤을때 결국 MSE가 고정되어있다고 하면, 하나가 올라가면 하나가 떨어지고, 하나가 떨어지면 하나가 올라가겠지. - 해적마크 칼처럼 크로스 Standard deviation공식처럼 전개하는거 외우면 될듯 ㅎ 그래서 입실론을 \sigma^2라고 한다면(=Var) y= f(x) - 입실론 이라고 할 수가 있다.그리고 입실론의 기댓값은 0 그래서 결국 E[y] = E(f(x) +입실론] = E[f(x)] + E[입실론] = f(x) $$ Var[y] = E[(y - E[y])^2] = E[(y-f(x))] 어쪄구저쩌구 $$ predict값과 실제값(y) 간의 MSE를 풀어서 구하면 아까 앞에서 봤던식 나올거임 단순한 모델일수록 분산이 낮고, bias는 큼 feature를 추가하거나해서 뭐 polynomial같은거 사용하면 bias는 줄겠지만 variance는 커진다는거지 **그리고 데이터의 수가 증가하면 variance를 감소시키지.** - bias가 클때는 모델을 단순하게 하거나 좀 더 복잡한 모델을 사용하거나! Bias -Variacne Trade off 검색하고 자료 찾아보기! # Odds (승률) Odds와 log라는 개념을 이용해서 regression model을 가지로 classification을 가능하게함 Odds = p / 1 - p NC의 우승 odds가 1/9라면 우승확률은 1/10 SK의 우승 odds는 1/250라면 우승확률은 1/251 log(Odds) = log(p/1-p) 그래프보면 semantic하네! 0.5보다 크면 positive 05보다 작으면 negative logistic regression equation 찾아보기;; sigmoid구하는것도 한번봅시다~ MLEM은 뭐야? 1이 나올확률이 0.8이라고하자 근데 앞에서 하던거처럼 기대값가지고하면 어떻게되냐면, 0이 나올확률 구하려다가 그냥 0곱해져서 0되버림. 이러면 안된다고 뭐라는건지 모르겠으니까 책을 보는게 좋겠다. Linear regression과 다른점은 closed form solution이 존재하지 않는다. [https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/](https://ratsgo.github.io/machine learning/2017/04/02/logistic/) activation function 찾아보기 expectation function Lkelihood and log-likelihood Geometric interpretation log loss Cross entropy (무조건 찾아보자) &amp;gt;8가지를 표현할때 균일할때는 3bit면 최선인데, 균일하지 않으면(빈도수가) 빈도가 높은거는 짧게, 빈도가 낮은거는 길게 만드는게 bit를 아끼는 최선의 방법? 일어날 확률이 적은 녀석들은 큰비트로 인코딩하고 일어날 확률이 큰 녀석들은 작은비트로 인코딩하면 효율적으로 데이터를 보낼 수 있다. (균일할때보다) 그래서 cross entropy란 평균적으로 필요한 비트의 양이다. 근데 내가 구한 Cross entropy에 대한 가정이 완벽하지 않다면(분포를 완벽하게 모른다면) 모르니까 효율적으로 데이터보내기를 할 수가 없다. (1.6bit이면 보내는데 3bit이나 쓰게된거임) &amp;gt; 이상적인 확률분포가 있다고했을때, 이거에 대한 예측값이 진짜 측정값하고 같을때 Cross entropy는 원래써야하는 정보량과 같게 나온다. 하지만 그렇지 않을경우에는 cross entropy가 크거나 같게 나온다. - 정보량은 1.6bit 인데 3bit을 썼다? -&amp;gt; KL divergence = 1.4 **예측량과 실제값이 다르면 다를수록 Cross entropy가 커지니까 cost function으로 딱이다.** 그리고 Cross entropy cost function에 K에 2가 들어가면 Logistic regression이 된다는거 logic은 뭐냐, sigmoid는 뭐고 softmax는 뭐냐">
+<meta property="og:locale" content="ko">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ko">
+<meta name="twitter:description" content="이 [블로그]([https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/](https://ratsgo.github.io/machine learning/2017/04/02/logistic/))와 김행근교수님의 강의 참고 블로그를 아주 적극참고한 자료입니다. # Logistic Regression Logistic Regression은 왜 나왔을까? ## 문제의식 &amp;gt; Multiple Linear Regression은 수치형 독립변수 X와 연속된 숫자(실수)값으로 이루어진 종속변수 Y간의 관계를 선형으로 **가정**하고 이를 가장 잘 표현할 수 있는 Parameter를 데이터 X로 부터 추정하는 Model이다. 이때 X와 Y를 가장 잘 표현할 수 있는 Parameter라는건 MSE를 최소로 하는 값들을 의미한다. 선형적인 문제는 미분을 통해서 Normal equation같은 방법으로 explicit한 해를 구할 수가 있다. 하지만 만약 Y가 연속적인 실수값이 아닌 Interval을 가진 nominal attribute라면 Multiple Linear Regression model을 사용할 수 없을 것이다. (사용한다고 하더라도 안하느니만 못한 모델이 될 것이다.) 이때문에 Logistic Regression Model이 제안되었다. ## Logistic Function and Odds ### Logistic Function &amp;gt; 실제로 많은 자연현상, 사회현상에서는 특정 변수에 대한 확률값이 선형이 아닌 S-Curve 형태를 따르는 경우가 많다고 한다. 이러한 S-Curve를 함수로 표현해낸 것이 바로 **Logistic Function**이다. (=Sigmoid Function) ![img](https://i.imgur.com/E0eI8OU.png) $$ y = {1 \over 1+e^{-x}} \\ 출처: imgur.com $$ - 위 그래프처럼 x값으로 +,- 어떤값이든 받을 수 있고, 출력값은 0에서 1 사이가 된다. ### Odds (승산) &amp;gt; Odds란 임의의 사건 A가 발생하지 않을 확률 대비 일어난 확률의 비율을 뜻하는 개념이다. $$ Odds = {P \over 1-P} $$ 식에서 알 수 있듯이 P(확률)이 커지면 Odds가 커지고, Odds가 커질수록 P가 커지는 걸 알 수있다. ## Logistic Regression 회귀식의 장점은 그대로 유지하되, 종속변수 Y를 Category가 아니라 P(확률)로 두고 식을 세우려면? 1. 우변은 그대로 두고 좌변을 P로 바꾼다 - 좌변의 범위는 0~1사이, 하지만 우변의 범위는 -무한대 ~ +무한대의 범위라서 식이 성립하지 않는다. 2. 좌변은 Odds로 설정해보자 - 좌변의 범위는 0~무한대, 하지만 우변은 그대로 -무한대 ~ +무한대 범위 3. 좌변에 Log를 취한다. - Log Odds 범위가 우변과 똑같이 -무한대 ~ +무한대로 변해서 일치하게 된다. $$ log{(P(Y=1|X= \vec x) \over 1-P(Y=1|X=\vec x)} = \vec \beta^T\vec x $$ 위의 식은 P에 대한 식으로 정리해주면 $$ {P(x) \over {1-P(x)}} = e^{\vec \beta^T\vec x}, \\ P(x) = {1 \over 1+e^{\vec \beta^T\vec x}} $$ 이제 이 식에서 e의 계수가 0일떄를 Hyperplane으로 해서 값을 분류한다. $$ y = {1 \over 1+exp^{\beta^T\vec x}} = \begin{cases} y \rightarrow 1 &amp; \mbox {if} \ \beta^Tx \rightarrow \infin &amp; \\ y={1\over2} &amp; \mbox {if} \ \beta^Tx=0 &amp; \\ y \rightarrow 0 &amp; \mbox {if} \ \beta^Tx \rightarrow -\infin \end{cases} $$ 여기서 잊으면 안되는건 &amp;\beta&amp;는 category 1과 0을 대표하는 대표 vector라는 것! 두 class의 데이터가 같은 방향으로 존재할 경우 분류하기 어려운데, bias term이 평행이동시키는 역할을 해서 괜찮다! ## Multiple Logistic Regression Category가 3개뿐이라고 가정하면 Logistic regression Model이 몇개가 필요할까? -&amp;gt; 2개 왜냐면 우선 1번째와 2번째 category를 구하면, 3번째 category에 속할 확률은 1 - 첫번째 - 두번쨰로 구할수가 있기 때문이다. ---- bias는 정답과 떨어져있는 정도를 의미하는 경우 variance는 training dataset의 바뀜에 의해 모델의 parameter가 바뀌는 정도 모델에서 bias를 낮춰주는 작업을 하면 variance가 커진다 반대로 variance를 낮춰주는 작업을 하면 bias가 커진다. -&amp;gt; 둘간의 적절한 조절이 필요하다. (Tradeoff 관계) ![image-20200522182614510](/home/ines/.config/Typora/typora-user-images/image-20200522182614510.png) y와 predict값 간의 오차를 generalization error라고 한다. 기대값이란 평균이란 비슷한 의미이다. $$ E[(y-\hat f(x))^2] = (Bias[\hat f(x)])^2 + Var[\hat f(x)] + \sigma^2 $$ Bias와 Var가 MSE(Generalization)의 구성원들이네! Bias는 원래 구해내고자했던 모델과의 차이! Variance는 훈련데이터간에 존재하는 작은 차이들에 대해 얼마나 민감하게 반응하는지에 대한 지표! - 복잡한 모델일수록 커질 수 밖에 없음 - 혹은 오버피팅이 심하게 되면될수록 variance가 큰것이라고 볼수도있지 - 사소한 패턴까지 외웠다는 뜻! -&amp;gt; Bias가 클 수록 underfit, Variance가 클수록 Overfit되기 쉬운거지 뒤에 \$sigma^2$는 y자체에 있는 noise를 의미하는데, 이럴때는 nosie를 줄이는 방법밖에 없음;; 위식에서 봤을때 결국 MSE가 고정되어있다고 하면, 하나가 올라가면 하나가 떨어지고, 하나가 떨어지면 하나가 올라가겠지. - 해적마크 칼처럼 크로스 Standard deviation공식처럼 전개하는거 외우면 될듯 ㅎ 그래서 입실론을 \sigma^2라고 한다면(=Var) y= f(x) - 입실론 이라고 할 수가 있다.그리고 입실론의 기댓값은 0 그래서 결국 E[y] = E(f(x) +입실론] = E[f(x)] + E[입실론] = f(x) $$ Var[y] = E[(y - E[y])^2] = E[(y-f(x))] 어쪄구저쩌구 $$ predict값과 실제값(y) 간의 MSE를 풀어서 구하면 아까 앞에서 봤던식 나올거임 단순한 모델일수록 분산이 낮고, bias는 큼 feature를 추가하거나해서 뭐 polynomial같은거 사용하면 bias는 줄겠지만 variance는 커진다는거지 **그리고 데이터의 수가 증가하면 variance를 감소시키지.** - bias가 클때는 모델을 단순하게 하거나 좀 더 복잡한 모델을 사용하거나! Bias -Variacne Trade off 검색하고 자료 찾아보기! # Odds (승률) Odds와 log라는 개념을 이용해서 regression model을 가지로 classification을 가능하게함 Odds = p / 1 - p NC의 우승 odds가 1/9라면 우승확률은 1/10 SK의 우승 odds는 1/250라면 우승확률은 1/251 log(Odds) = log(p/1-p) 그래프보면 semantic하네! 0.5보다 크면 positive 05보다 작으면 negative logistic regression equation 찾아보기;; sigmoid구하는것도 한번봅시다~ MLEM은 뭐야? 1이 나올확률이 0.8이라고하자 근데 앞에서 하던거처럼 기대값가지고하면 어떻게되냐면, 0이 나올확률 구하려다가 그냥 0곱해져서 0되버림. 이러면 안된다고 뭐라는건지 모르겠으니까 책을 보는게 좋겠다. Linear regression과 다른점은 closed form solution이 존재하지 않는다. [https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/](https://ratsgo.github.io/machine learning/2017/04/02/logistic/) activation function 찾아보기 expectation function Lkelihood and log-likelihood Geometric interpretation log loss Cross entropy (무조건 찾아보자) &amp;gt;8가지를 표현할때 균일할때는 3bit면 최선인데, 균일하지 않으면(빈도수가) 빈도가 높은거는 짧게, 빈도가 낮은거는 길게 만드는게 bit를 아끼는 최선의 방법? 일어날 확률이 적은 녀석들은 큰비트로 인코딩하고 일어날 확률이 큰 녀석들은 작은비트로 인코딩하면 효율적으로 데이터를 보낼 수 있다. (균일할때보다) 그래서 cross entropy란 평균적으로 필요한 비트의 양이다. 근데 내가 구한 Cross entropy에 대한 가정이 완벽하지 않다면(분포를 완벽하게 모른다면) 모르니까 효율적으로 데이터보내기를 할 수가 없다. (1.6bit이면 보내는데 3bit이나 쓰게된거임) &amp;gt; 이상적인 확률분포가 있다고했을때, 이거에 대한 예측값이 진짜 측정값하고 같을때 Cross entropy는 원래써야하는 정보량과 같게 나온다. 하지만 그렇지 않을경우에는 cross entropy가 크거나 같게 나온다. - 정보량은 1.6bit 인데 3bit을 썼다? -&amp;gt; KL divergence = 1.4 **예측량과 실제값이 다르면 다를수록 Cross entropy가 커지니까 cost function으로 딱이다.** 그리고 Cross entropy cost function에 K에 2가 들어가면 Logistic regression이 된다는거 logic은 뭐냐, sigmoid는 뭐고 softmax는 뭐냐">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>               | Ko      </title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ko</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<div id="posts" class="posts-expand">
+<header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">
+    
+      
+    
+  </h1>
+
+
+
+</header>
+
+  
+  
+    <p>이 <a href="[https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/](https://ratsgo.github.io/machine learning/2017/04/02/logistic/)">블로그</a>와 김행근교수님의 강의 참고</p>
+
+<p>블로그를 아주 적극참고한 자료입니다.</p>
+
+<h1 id="logistic-regression">Logistic Regression</h1>
+
+<p>Logistic Regression은 왜 나왔을까?</p>
+
+<h2 id="문제의식">문제의식</h2>
+
+<blockquote>
+  <p>Multiple Linear Regression은 수치형 독립변수 X와 연속된 숫자(실수)값으로 이루어진 종속변수 Y간의 관계를 선형으로 <strong>가정</strong>하고 이를 가장 잘 표현할 수 있는 Parameter를 데이터 X로 부터 추정하는 Model이다.</p>
+</blockquote>
+
+<p>이때 X와 Y를 가장 잘 표현할 수 있는 Parameter라는건 MSE를 최소로 하는 값들을 의미한다. 선형적인 문제는 미분을 통해서 Normal equation같은 방법으로 explicit한 해를 구할 수가 있다. 하지만 만약 Y가 연속적인 실수값이 아닌 Interval을 가진 nominal attribute라면 Multiple Linear Regression model을 사용할 수 없을 것이다. (사용한다고 하더라도 안하느니만 못한 모델이 될 것이다.) 이때문에 Logistic Regression Model이 제안되었다.</p>
+
+<h2 id="logistic-function-and-odds">Logistic Function and Odds</h2>
+
+<h3 id="logistic-function">Logistic Function</h3>
+
+<blockquote>
+  <p>실제로 많은 자연현상, 사회현상에서는 특정 변수에 대한 확률값이 선형이 아닌 S-Curve 형태를 따르는 경우가 많다고 한다. 이러한 S-Curve를 함수로 표현해낸 것이 바로 <strong>Logistic Function</strong>이다. (=Sigmoid Function)</p>
+</blockquote>
+
+<p><img src="https://i.imgur.com/E0eI8OU.png" alt="img" />
+<script type="math/tex">y = {1 \over 1+e^{-x}}
+\\ 출처: imgur.com</script></p>
+
+<ul>
+  <li>위 그래프처럼 x값으로 +,- 어떤값이든 받을 수 있고, 출력값은 0에서 1 사이가 된다.</li>
+</ul>
+
+<h3 id="odds-승산">Odds (승산)</h3>
+
+<blockquote>
+  <p>Odds란 임의의 사건 A가 발생하지 않을 확률 대비 일어난 확률의 비율을 뜻하는 개념이다.</p>
+</blockquote>
+
+<script type="math/tex; mode=display">Odds = {P \over 1-P}</script>
+
+<p>식에서 알 수 있듯이 P(확률)이 커지면 Odds가 커지고, Odds가 커질수록 P가 커지는 걸 알 수있다.</p>
+
+<h2 id="logistic-regression-1">Logistic Regression</h2>
+
+<p>회귀식의 장점은 그대로 유지하되, 종속변수 Y를 Category가 아니라 P(확률)로 두고 식을 세우려면?</p>
+
+<ol>
+  <li>우변은 그대로 두고 좌변을 P로 바꾼다
+    <ul>
+      <li>좌변의 범위는 0~1사이, 하지만 우변의 범위는 -무한대 ~ +무한대의 범위라서 식이 성립하지 않는다.</li>
+    </ul>
+  </li>
+  <li>좌변은 Odds로 설정해보자
+    <ul>
+      <li>좌변의 범위는 0~무한대, 하지만 우변은 그대로 -무한대 ~ +무한대 범위</li>
+    </ul>
+  </li>
+  <li>좌변에 Log를 취한다.
+    <ul>
+      <li>Log Odds 범위가 우변과 똑같이 -무한대 ~ +무한대로 변해서 일치하게 된다.</li>
+    </ul>
+  </li>
+</ol>
+
+<script type="math/tex; mode=display">log{(P(Y=1|X= \vec x) \over 1-P(Y=1|X=\vec x)} = \vec \beta^T\vec x</script>
+
+<p>위의 식은 P에 대한 식으로 정리해주면
+<script type="math/tex">{P(x) \over {1-P(x)}} = e^{\vec \beta^T\vec x}, \\
+P(x) = {1 \over 1+e^{\vec \beta^T\vec x}}</script>
+이제 이 식에서 e의 계수가 0일떄를 Hyperplane으로 해서 값을 분류한다.
+<script type="math/tex">% <![CDATA[
+y = {1 \over 1+exp^{\beta^T\vec x}} = \begin{cases} y \rightarrow 1 & \mbox {if} \ \beta^Tx  \rightarrow \infin & \\ y={1\over2} & \mbox {if} \ \beta^Tx=0 & \\ y \rightarrow 0 & \mbox {if} \ \beta^Tx \rightarrow -\infin    \end{cases} %]]></script>
+여기서 잊으면 안되는건 &amp;\beta&amp;는 category 1과 0을 대표하는 대표 vector라는 것! 두 class의 데이터가 같은 방향으로 존재할 경우 분류하기 어려운데, bias term이 평행이동시키는 역할을 해서 괜찮다!</p>
+
+<h2 id="multiple-logistic-regression">Multiple Logistic Regression</h2>
+
+<p>Category가 3개뿐이라고 가정하면 Logistic regression Model이 몇개가 필요할까?</p>
+
+<p>-&gt; 2개</p>
+
+<p>왜냐면 우선 1번째와 2번째 category를 구하면, 3번째 category에 속할 확률은 1 - 첫번째 - 두번쨰로 구할수가 있기 때문이다.</p>
+
+<hr />
+
+<p>bias는 정답과 떨어져있는 정도를 의미하는 경우</p>
+
+<p>variance는 training dataset의 바뀜에 의해 모델의 parameter가 바뀌는 정도</p>
+
+<p>모델에서 bias를 낮춰주는 작업을 하면 variance가 커진다</p>
+
+<p>반대로 variance를 낮춰주는 작업을 하면 bias가 커진다.</p>
+
+<p>-&gt; 둘간의 적절한 조절이 필요하다. (Tradeoff 관계)</p>
+
+<p><img src="/home/ines/.config/Typora/typora-user-images/image-20200522182614510.png" alt="image-20200522182614510" /></p>
+
+<p>y와 predict값 간의 오차를 generalization error라고 한다.</p>
+
+<p>기대값이란 평균이란 비슷한 의미이다.
+<script type="math/tex">E[(y-\hat f(x))^2] = (Bias[\hat f(x)])^2 + Var[\hat f(x)] + \sigma^2</script>
+Bias와 Var가 MSE(Generalization)의 구성원들이네!</p>
+
+<p>Bias는 원래 구해내고자했던 모델과의 차이!</p>
+
+<p>Variance는 훈련데이터간에 존재하는 작은 차이들에 대해 얼마나 민감하게 반응하는지에 대한 지표!</p>
+
+<ul>
+  <li>복잡한 모델일수록 커질 수 밖에 없음</li>
+  <li>혹은 오버피팅이 심하게 되면될수록 variance가 큰것이라고 볼수도있지
+    <ul>
+      <li>사소한 패턴까지 외웠다는 뜻!</li>
+    </ul>
+  </li>
+</ul>
+
+<p>-&gt; Bias가 클 수록 underfit, Variance가 클수록 Overfit되기 쉬운거지</p>
+
+<p>뒤에 $sigma^2$는 y자체에 있는 noise를 의미하는데, 이럴때는 nosie를 줄이는 방법밖에 없음;;</p>
+
+<p>위식에서 봤을때 결국 MSE가 고정되어있다고 하면, 하나가 올라가면 하나가 떨어지고, 하나가 떨어지면 하나가 올라가겠지.</p>
+
+<ul>
+  <li>해적마크 칼처럼 크로스</li>
+</ul>
+
+<p>Standard deviation공식처럼 전개하는거 외우면 될듯 ㅎ</p>
+
+<p>그래서 입실론을 \sigma^2라고 한다면(=Var) y= f(x) - 입실론 이라고 할 수가 있다.그리고 입실론의 기댓값은 0</p>
+
+<p>그래서 결국 E[y] = E(f(x) +입실론] = E[f(x)] + E[입실론] = f(x)
+<script type="math/tex">Var[y] = E[(y - E[y])^2] = E[(y-f(x))] 어쪄구저쩌구</script>
+predict값과 실제값(y) 간의 MSE를 풀어서 구하면 아까 앞에서 봤던식 나올거임</p>
+
+<p>단순한 모델일수록 분산이 낮고, bias는 큼</p>
+
+<p>feature를 추가하거나해서 뭐 polynomial같은거 사용하면 bias는 줄겠지만 variance는 커진다는거지</p>
+
+<p><strong>그리고 데이터의 수가 증가하면 variance를 감소시키지.</strong></p>
+
+<ul>
+  <li></li>
+</ul>
+
+<p>bias가 클때는 모델을 단순하게 하거나 좀 더 복잡한 모델을 사용하거나!</p>
+
+<p>Bias -Variacne Trade off 검색하고 자료 찾아보기!</p>
+
+<h1 id="odds-승률">Odds (승률)</h1>
+
+<p>Odds와 log라는 개념을 이용해서 regression model을 가지로 classification을 가능하게함</p>
+
+<p>Odds = p / 1 - p</p>
+
+<p>NC의 우승 odds가 1/9라면 우승확률은 1/10</p>
+
+<p>SK의 우승 odds는 1/250라면 우승확률은 1/251</p>
+
+<p>log(Odds) = log(p/1-p)</p>
+
+<p>그래프보면 semantic하네!</p>
+
+<p>0.5보다 크면 positive</p>
+
+<p>05보다 작으면 negative</p>
+
+<p>logistic regression equation 찾아보기;;</p>
+
+<p>sigmoid구하는것도 한번봅시다~</p>
+
+<p>MLEM은 뭐야?</p>
+
+<p>1이 나올확률이 0.8이라고하자</p>
+
+<p>근데 앞에서 하던거처럼 기대값가지고하면 어떻게되냐면, 0이 나올확률 구하려다가 그냥 0곱해져서 0되버림. 이러면 안된다고</p>
+
+<p>뭐라는건지 모르겠으니까 책을 보는게 좋겠다.</p>
+
+<p>Linear regression과 다른점은 closed form solution이 존재하지 않는다.</p>
+
+<p><a href="https://ratsgo.github.io/machine learning/2017/04/02/logistic/">https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/</a></p>
+
+<p>activation function 찾아보기</p>
+
+<p>expectation function</p>
+
+<p>Lkelihood and log-likelihood</p>
+
+<p>Geometric interpretation</p>
+
+<p>log loss</p>
+
+<p>Cross entropy (무조건 찾아보자)</p>
+
+<blockquote>
+  <p>8가지를 표현할때 균일할때는 3bit면 최선인데, 균일하지 않으면(빈도수가) 빈도가 높은거는 짧게, 빈도가 낮은거는 길게 만드는게 bit를 아끼는 최선의 방법? 일어날 확률이 적은 녀석들은 큰비트로 인코딩하고 일어날 확률이 큰 녀석들은 작은비트로 인코딩하면 효율적으로 데이터를 보낼 수 있다. (균일할때보다) 그래서 cross entropy란 평균적으로 필요한 비트의 양이다. 근데 내가 구한 Cross entropy에 대한 가정이 완벽하지 않다면(분포를 완벽하게 모른다면) 모르니까 효율적으로 데이터보내기를 할 수가 없다. (1.6bit이면 보내는데 3bit이나 쓰게된거임)</p>
+</blockquote>
+
+<blockquote>
+  <p>이상적인 확률분포가 있다고했을때, 이거에 대한 예측값이 진짜 측정값하고 같을때 Cross entropy는 원래써야하는 정보량과 같게 나온다. 하지만 그렇지 않을경우에는 cross entropy가 크거나 같게 나온다.</p>
+</blockquote>
+
+<ul>
+  <li>정보량은 1.6bit 인데 3bit을 썼다? -&gt; KL divergence = 1.4</li>
+</ul>
+
+<p><strong>예측량과 실제값이 다르면 다를수록 Cross entropy가 커지니까 cost function으로 딱이다.</strong></p>
+
+<p>그리고 Cross entropy cost function에 K에 2가 들어가면 Logistic regression이 된다는거</p>
+
+<p>logic은 뭐냐, sigmoid는 뭐고 softmax는 뭐냐</p>
+
+  
+</div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="고중범" />
+          <p class="site-author-name" itemprop="name">고중범</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">고중범</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

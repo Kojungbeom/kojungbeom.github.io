@@ -1,0 +1,1543 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Data Structure," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ko" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+<meta name="keywords" content="Data Structure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structure week4">
+<meta property="og:url" content="http://localhost:4000/data%20structure/2020/03/30/Data_Structure_week4-post/">
+<meta property="og:site_name" content="Ko">
+<meta property="og:description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="/images/About Stackframe/1.png">
+<meta property="og:image" content="/images/About Euclid's algorithm/1.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Structure week4">
+<meta name="twitter:description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+<meta name="twitter:image" content="/images/About Stackframe/1.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>Data Structure week4 | Ko</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ko</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/data%20structure/2020/03/30/Data_Structure_week4-post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="고중범">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="assets/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ko">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            Data Structure week4
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="" itemprop="dateCreated datePublished" datetime="2020-03-30T21:00:00+09:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Data%20Structure" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr />
+
+<h1 id="data-structure-week-4">Data Structure Week 4</h1>
+
+<p>KAIST 산업및시스템공학과 문일철 교수님의</p>
+
+<p><a href="https://www.edwith.org/datastructure-2019s/joinLectures/21992">데이터 구조 및 분석: Linear Structure and Dynamic Programming</a></p>
+
+<p><a href="https://www.edwith.org/">edwith</a> 강의를 보고 정리한 내용입니다.</p>
+
+<h2 id="weekly-objectives">Weekly Objectives</h2>
+
+<p>This week, we learn how to program recursive routines and dynamic programming concepts.</p>
+
+<ul>
+  <li><strong>Recursion</strong></li>
+  <li><strong>Dynamic programming</strong></li>
+</ul>
+
+<p>Objectives are</p>
+
+<ul>
+  <li>Understanding the <strong>concept of recursions</strong>
+    <ul>
+      <li>Repeating problems</li>
+      <li>Divide and conquer</li>
+      <li>Recursion function call</li>
+      <li>Recursion escape</li>
+      <li>Recursion depth</li>
+    </ul>
+  </li>
+  <li>Able to implement recursive programs</li>
+  <li>Understanding <strong>the concept of dynamic programming</strong>
+    <ul>
+      <li>Reusing previous function call result (재활용으로 실행시간을 빠르게)</li>
+      <li>Memorization for time saving</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="repeating-problems-and-divide-and-conquer">Repeating Problems and Divide and Conquer</h2>
+
+<p>​                                                                    회사체계 Diagram</p>
+
+<div class="mermaid">
+  graph TD
+  A["회사"] --&gt; |150| B["인사부"]
+  A --&gt; |300| C["영업부"]
+  A --&gt; |150| D["개발부"]
+  C --&gt; |100| E("서울점")
+  C --&gt; |100| F("인천점")
+  C --&gt; |100| H("부천점")
+</div>
+
+<p>ex) 내가 CEO이고, 각 부서에 필요한 돈을 내려주면,</p>
+
+<p>자연스럽게 계층적인 구조가 된다. 돈의 분배가 반복적으로 일어난다. (Repeating Problems)</p>
+
+<p>이때 돈의 양은 아래계층으로 내려가면서 줄어든다. (Divide)</p>
+
+<dl>
+  <dt><strong>Repeating Problem</strong>란?</dt>
+  <dd>
+    <p>Problem이 반복해서 일어난다. (이름그대로)</p>
+  </dd>
+  <dt><strong>Divide and Conquer</strong>란?</dt>
+  <dd>
+    <p>문제를 <strong>쪼개서</strong> 문제를 해결해나가는 과정</p>
+  </dd>
+</dl>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code><span class="c"># Pseudo code</span>
+<span class="k">class</span> <span class="nc">Department</span><span class="p">:</span>
+    <span class="n">dept</span> <span class="o">=</span> <span class="p">[</span><span class="s">"sales"</span><span class="p">,</span> <span class="s">"manu"</span><span class="p">,</span> <span class="s">"randd"</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">calculateBudget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">numDepartments</span><span class="p">):</span>
+            <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">dept</span><span class="p">[</span><span class="n">itr</span><span class="p">]</span><span class="o">.</span><span class="n">calculateBudget</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">sum</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>calculateBudget function 안을 보면,</p>
+
+<p><strong>동일한 calculateBudget function를 호출하고 있다.</strong></p>
+
+<p>무작정 함수안에서 그 함수를 또 call하는 형태로 만들었다고 해서 Recursion이라고 하지않는다.</p>
+
+<p><strong>포인트는 반복하는 과정에서 scale이 더 작아진 Parameter가 들어온다는 것이다.</strong></p>
+
+<p>이것을 바로 <strong>Recursion</strong>이라고 하고, (Divide된 작은 문제로 동일한 함수를 call)</p>
+
+<p>Recursion의 컨셉이 바로 <strong>Divide and Conquer</strong>이라고 한다.</p>
+
+<hr />
+
+<h3 id="more-examples">More examples</h3>
+
+<p>Repeating Problem의 예제를 더 알아보자.</p>
+
+<hr />
+
+<h4 id="factorial">Factorial</h4>
+
+<script type="math/tex; mode=display">% <![CDATA[
+Factorial(n) = \begin{cases}
+1, & \mbox{if }n\mbox{ = 0} \\
+n*(n-1)\ *...*\ 1, & \mbox{if }n\mbox{ > 0}
+\end{cases} %]]></script>
+
+<hr />
+
+<h4 id="great-common-divisor">Great Common Divisor</h4>
+
+<p>최대공약수를 구하는 방법중 하나가 <a href="#euclid's-algorithm">Euclid’s algorithm</a>이 있음.</p>
+
+<p>GCD(A, B) = GCD(B, A mod B)</p>
+
+<p>GCD(A, 0) = A</p>
+
+<p>예를 들어서</p>
+
+<p>GCD(32, 24)</p>
+
+<p>= GCD(24, 8)</p>
+
+<p>= GCD(8, 0) = 8 이 바로 GCD!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code><span class="k">def</span> <span class="nf">Euclidean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+        <span class="k">return</span> <span class="n">Euclidean</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">b</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h3 id="공통점">공통점</h3>
+
+<ul>
+  <li><strong>Function call이 반복된다.</strong></li>
+  <li>Parameter size는 <strong>줄어든다.</strong></li>
+  <li><a href="#mathematical-induction">Mathematical induction</a> (Reverse Mathmatical Indunction..?)과 유사하더라.</li>
+</ul>
+
+<p><strong>Self-Similar</strong> 한것이 반복적으로 일어난다.</p>
+
+<p><strong>다만 Size는 줄어든 상태로!</strong></p>
+
+<hr />
+
+<h2 id="definition-of-recursion">Definition of Recursion</h2>
+
+<p>: A <strong>programming method</strong> to <strong>handle</strong> the <strong>repeating items in a self-similar way</strong></p>
+
+<p>Function call 속에서 또 function을 반복적으로 call하는 형식.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code><span class="c"># Pseudo code</span>
+<span class="k">def</span> <span class="nf">functionA</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
+    <span class="o">---</span>
+    <span class="n">functionA</span><span class="p">(</span><span class="n">target</span> <span class="n">prime</span><span class="p">)</span> <span class="o">//</span> <span class="n">target</span><span class="err">의</span> <span class="n">size</span><span class="err">가</span> <span class="err">줄어듬</span>
+    <span class="o">---</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">escapeCondition</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">A</span><span class="p">;</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p><a href="#fibonacci-sequence">Fibonacci sequence</a>(피보나치 수열)을 표현한 실제 코드를 보면,</p>
+
+<p>위에서 말했던 것 처럼, Function안에서 Function call이 일어나고 있고,</p>
+
+<p>Parameter size는 n에서 n-1, n-2로 줄어들었다.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+Fibonacci(n) = \begin{cases}0, & \mbox{if }n\mbox{ = 0} \\ 1, & \mbox{if }n\mbox{ = 1} \\ Fibonacci(n-1)\ +\ Fibonacci(n-2), & \mbox{if }n\mbox{ >= 2} \end{cases} %]]></script>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13</pre></td><td class="code"><pre class="highlight"><code><span class="k">def</span> <span class="nf">Fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c"># escape routine</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    
+    <span class="c"># Recursion with smaller size parameter</span>
+    <span class="n">intRet</span> <span class="o">=</span> <span class="n">Fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">intRet</span>
+
+<span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">Fibonacci</span><span class="p">(</span><span class="n">itr</span><span class="p">))</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h2 id="recursions-and-stackframe">Recursions and Stackframe</h2>
+
+<p>Recursion 할 때 컴퓨터 내부에서는 어떻게 처리하고 있을지 살펴보자.</p>
+
+<dl>
+  <dt><strong>Recursion of function</strong>은 컴퓨터 내부에서 Increase the items in the <strong>Stackframe</strong></dt>
+  <dd>
+    <p>Stackframe은 Function call의 <strong>역사를 기록하고 있는 “Stack” (LIFO, Last In First Out)</strong></p>
+  </dd>
+</dl>
+
+<p>Stack의 Operation은 <strong>Push, Pop</strong> (Top에서만 이루어졌던거 기억하기!)</p>
+
+<p>Stackframe 에서도 마찬가지로,</p>
+
+<ul>
+  <li>Push : <strong>When a function is invoked</strong> (Function call이 일어나면 push)</li>
+  <li>Pop : <strong>When a function hits return or ends</strong> (Function이 return되면 pop)</li>
+</ul>
+
+<p><strong>What to store?</strong></p>
+
+<p>Local variables 과 Function call parameters를 저장함</p>
+
+<ul>
+  <li>Local variables : <strong>Function속에서만</strong> 접근이 가능한 변수.</li>
+  <li>Function call parameters : 특정 Function call <strong>instance</strong>에 할당된 <strong>Parameter</strong>.
+    <ul>
+      <li>ex) F(4)에서 4가 Function call parameter!</li>
+    </ul>
+  </li>
+</ul>
+
+<p>흘러가는 모양을 <strong>Stack으로 표현</strong>을 해보면..</p>
+
+<p><img src="/images/About Stackframe/1.png" width="800px" height="400px" align="center" /></p>
+
+<p>이런식으로 흘러가게 된다.</p>
+
+<p>(그림을 mermaid로 이쁘게 넣고 싶었는데 사이즈 조절을 못하겠네요 ㅠㅠ)</p>
+
+<hr />
+
+<h2 id="merge-sort">Merge Sort</h2>
+
+<p>: 다양한 Sorting 방법중에, <strong>Recursion을 이용한 Sorting Algorithm이다.</strong></p>
+
+<p>기본적인 원리는</p>
+
+<p>LIst를 더 작은 사이즈로 <strong>계속해서 쪼개고,</strong></p>
+
+<p><strong>더 쪼개질 수 없을 때 List안의 값을 비교하면서 순서에 맞게 다시 리스트를 합쳐나가는 것이다.</strong></p>
+
+<ul>
+  <li><strong>Decompose</strong> into two smaller lists</li>
+  <li><strong>Aggregate</strong> to one larger and sorted list</li>
+</ul>
+
+<p>긴 리스트를 Decompose 해가면서 쪼갠다.</p>
+
+<p>Aggregate는 두개의 리스트를 합쳐나가는데,  <strong>작은 것을 앞에쓰고, 큰것을 뒤에 쓰면서 sorting함</strong></p>
+
+<p>(행렬곱의 순서와 똑같이 비교한다.)</p>
+
+<p>결국 <strong>MergeSort</strong>는 <strong>재귀적</strong>으로 하위의 더 작아진 List에서</p>
+
+<p><strong>연속적으로 Function call</strong>이 이루어져서 나온 return들을 합친것을 최종 return으로 받게 됨</p>
+
+<hr />
+
+<h3 id="implementation-example-merge-sort">Implementation Example: Merge Sort</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45</pre></td><td class="code"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">performMergeSort</span><span class="p">(</span><span class="n">lstElementToSort</span><span class="p">):</span>
+    <span class="c"># Escape routine</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lstElementToSort</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lstElementToSort</span>
+    
+    <span class="c"># Decomposition</span>
+    <span class="n">lstSubElementToSort1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lstSubElementToSort2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lstElementToSort</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lstElementToSort</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="n">itr</span><span class="p">:</span>
+            <span class="n">lstSubElementToSort1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lstElementToSort</span><span class="p">[</span><span class="n">itr</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lstSubElementToSort2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lstElementToSort</span><span class="p">[</span><span class="n">itr</span><span class="p">])</span>
+    
+    <span class="c"># Recursion, 여기서 List가 전부 쪼개진 형태가 됨</span>
+    <span class="n">lstSubElementToSort1</span> <span class="o">=</span> <span class="n">performMergeSort</span><span class="p">(</span><span class="n">lstSubElementToSort1</span><span class="p">)</span>
+    <span class="n">lstSubElementToSort2</span> <span class="o">=</span> <span class="n">performMergeSort</span><span class="p">(</span><span class="n">lstSubElementToSort2</span><span class="p">)</span>
+    
+    <span class="n">idxCount1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">idxCount2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lstElementToSort</span><span class="p">)):</span>
+        <span class="c"># 한쪽에 있는 element가 다 lstElementToSort로 들어갔을때를 대비</span>
+        <span class="k">if</span> <span class="n">idxCount1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">lstSubElementToSort1</span><span class="p">):</span>
+            <span class="n">lstElementToSort</span><span class="p">[</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="n">lstSubElementToSort2</span><span class="p">[</span><span class="n">idxCount2</span><span class="p">]</span>
+            <span class="n">idxCount2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">idxCount2</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">lstSubElementToSort2</span><span class="p">):</span>
+            <span class="n">lstElementToSort</span><span class="p">[</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="n">lstSubElementToSort1</span><span class="p">[</span><span class="n">idxCount1</span><span class="p">]</span>
+            <span class="n">idxCount1</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c"># 본격 값 비교 if statement</span>
+        <span class="k">elif</span> <span class="n">lstSubElementToSort1</span><span class="p">[</span><span class="n">idxCount1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">lstSubElementToSort2</span><span class="p">[</span><span class="n">idxCount2</span><span class="p">]:</span>
+            <span class="n">lstElementToSort</span><span class="p">[</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="n">lstSubElementToSort2</span><span class="p">[</span><span class="n">idxCount2</span><span class="p">]</span>
+            <span class="n">idxCount2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lstElementToSort</span><span class="p">[</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="n">lstSubElementToSort1</span><span class="p">[</span><span class="n">idxCount1</span><span class="p">]</span>
+            <span class="n">idxCount1</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">lstElementToSort</span>
+    
+<span class="n">lstRandom</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">lstRandom</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lstRandom</span><span class="p">)</span>
+<span class="n">lstSorted</span> <span class="o">=</span> <span class="n">performMergeSort</span><span class="p">(</span><span class="n">lstRandom</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lstSorted</span><span class="p">)</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>이렇게 작성하면 된다.</p>
+
+<p>뒤에서 하게 될 <strong>Dynamic Programming</strong> 방식으로도  Merge Sort를 짤 수 있을까 싶어서 찾아봤는데,</p>
+
+<p>Merge Sort를 Dynamic Programming방식으로 짜는건 알맞지 않다.</p>
+
+<p><strong>그 이유는 Merge Sort에는 Overlapping되는 sub-instance가 없기 떄문이다!</strong></p>
+
+<p>-&gt; <strong>이전에 이미 계산했던 instance와 같은 값을 가진 instance를 Re-use할 일이 없다는 뜻!</strong></p>
+
+<p>​    (물론 Merge sort할 List안에 중복되는 값이 있을 수는 있지만, 그 값을 재사용 할 일은 없다.)</p>
+
+<p>자세한 설명은 <a href="https://stackoverflow.com/questions/15596363/why-mergesort-is-not-dynamic-programming">이곳을 확인 (영어주의)</a></p>
+
+<hr />
+
+<h2 id="problems-in-recursions-of-fibonacci-sequence">Problems in Recursions of Fibonacci Sequence</h2>
+
+<p>Recursion의 문제점은 <strong>Function call</strong>이 너무 많다는것</p>
+
+<p>심지어 동일한 Parameter를 가지고있는 function call이라서,</p>
+
+<p><strong>같은 값을 가지는 녀석들을 불필요하게 반복하게 됨</strong></p>
+
+<p><strong>Dynamic Programming</strong>은 이러한 문제점을 해결할 수 있는 방법이다.</p>
+
+<p>-&gt; Unnecessary한 function call을 줄일 수 있다.</p>
+
+<dl>
+  <dt>어떻게?</dt>
+  <dd>
+    <p>결과값을 <strong>기록</strong>해두면 된다.</p>
+  </dd>
+</dl>
+
+<hr />
+
+<h2 id="dynamic-programming">Dynamic Programming</h2>
+
+<p>: A <strong>general algorithm design technique</strong> for solving problems defined by or formulated as <strong>recurrences with overlapping sub-instances</strong> (overlapping sub-instance가 있는 형태의 recurrence을 푸는 방식)</p>
+
+<p>overlapping sub-instance (중복된 값이 여러번 나오는 걸 의미한다.)</p>
+
+<p>-&gt; 중복되는 하위 값들</p>
+
+<p>Main storyline (recurrence structure를 거꾸로 만드는 스토리라인)</p>
+
+<ul>
+  <li>Setting up a recurrence</li>
+  <li>Small Instance를 Solve한다.</li>
+  <li>Local variable로 받아서 그때그때 쓰는게 아니라, <strong>Instance의 return에 대한 값을 table에 record한다.</strong></li>
+  <li><strong>Extract a solution of a larger instance from the table</strong></li>
+</ul>
+
+<p>-&gt; F(4) 를 풀기위해 F(1), F(2), F(3)을 먼저 계산해서 기록해두는것</p>
+
+<h3 id="memoization-memorization-아님">Memoization (Memorization 아님)</h3>
+
+<p>Dynamic Programming의 <strong>핵심</strong>은 무엇일까? (Recursion과의 차이점은?)</p>
+
+<ul>
+  <li><strong>Storing</strong> the result of previous function calls (다시 사용하기 위해서)</li>
+</ul>
+
+<p><strong>이전 결과를 저장하는 공간을 Memoization이라고 한다.</strong></p>
+
+<p>Memoization와 이전에 나왔던 Stackframe에는 <strong>철학적인 차이</strong>가 있음</p>
+
+<ul>
+  <li>More philosophical sense
+    <ul>
+      <li><strong>Recursion : Top-down</strong> of divide and conquer (위에서 아래로 나누어서 계산하고)
+        <ul>
+          <li>풀려고하는 것을 먼저시도를 하다가 어쩔수없이 recursion 느낌?</li>
+          <li>stackframe을 이용한 top-down 방식</li>
+        </ul>
+      </li>
+      <li><strong>Dynamic programming</strong> : <strong>Bottom-up</strong> of storing and building (아래서부터 계산하여 올라가는 방식)
+        <ul>
+          <li>memoization table을 이용한 bottom-up 방식</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>sub-instance가 많다고 할 경우 Dynamic programming을 이용해서 푸는게 좋음</strong></p>
+
+<hr />
+
+<h2 id="implementation-example-fibonacci-sequence-in-dp">Implementation Example: Fibonacci Sequence in DP</h2>
+
+<p>Recursion과 다르게 Function속에 다시 같은 Function call하는 코드는 필요 없다.</p>
+
+<p>대신, <strong>결과를 쌓을(저장할) Table(memoization)은 있어야함</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10</pre></td><td class="code"><pre class="highlight"><code><span class="k">def</span> <span class="nf">FibonacciDP</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">dicFibonacci</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">dicFibonacci</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">dicFibonacci</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">dicFibonacci</span><span class="p">[</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="n">dicFibonacci</span><span class="p">[</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dicFibonacci</span><span class="p">[</span><span class="n">itr</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">dicFibonacci</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">FibonacciDP</span><span class="p">(</span><span class="n">itr</span><span class="p">))</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>(Memoization을 만들때는 Dictionary collection variable type을 쓰는게 좋다.)</p>
+
+<ul>
+  <li>Storing a Fibonacci number for a particular index</li>
+</ul>
+
+<p>시간복잡도(7주차에 배울 예정)을 비교해보면</p>
+
+<ul>
+  <li>
+    <p>We have a new space requirement, the dictionary or the table, of O(N)</p>
+
+    <p>(나중에 배울거임, 최대얼마만큼 커질수 있느냐? 라는 한계를 나타내는 Big-O notation이라는거)</p>
+  </li>
+  <li>
+    <p>We have reduced execution time from O(2^n) to O(N)</p>
+  </li>
+</ul>
+
+<p>Recursion을 활용했을때 시간복잡도가 O(2^n)이었던것이,</p>
+
+<p>Dynamic Programming일때  O(N)으로 줄어듬</p>
+
+<hr />
+
+<h3 id="assembly-line-scheduling">Assembly Line Scheduling</h3>
+
+<p>Dynamic Programming의 예시</p>
+
+<p>ex) 자동차 공장</p>
+
+<ul>
+  <li>여러가지 공정을 Station단위로 나눴다.</li>
+  <li><strong>Station들로 구성된 Line들</strong>이 여러개이다.</li>
+  <li>각각의 <strong>Station마다 소요시간이 다르다</strong>.</li>
+  <li><strong>기계가 고장나는것을 대비하여 옆라인으로 이동할 수도 있다고 한다.</strong>(이동하는것은 추가시간이 필요하다.)</li>
+</ul>
+
+<p>어느 Line으로 넣어주어야 <strong>생산품이 더 빨리 나올것이냐</strong>에 대해서 생각해보아야함</p>
+
+<p>어떤 방법이 생산품이 더 빠르게 나올지를 알기위해</p>
+
+<p>Dynamic Programming을 사용한다.</p>
+
+<p>Key point는 <strong>Bottom-up</strong> 이라는것  (Stackframe은 Top-down)</p>
+
+<h3 id="process-of-assembly-line-scheduling">Process of Assembly Line Scheduling</h3>
+
+<p>Table에 이전의 결과를 <strong>기록</strong>함으로써,</p>
+
+<p>적은수의 Function call으로도 <strong>Problem의 boundary를  확장해나갈수있다.</strong> (<strong>문제를 growth</strong>)</p>
+
+<p>Assembly Line Scheduling 예시에서는 Memoization table 두개를 사용</p>
+
+<ul>
+  <li>
+    <p><strong>Minimum Travel Time</strong> (어떤 Station에 도착하는 <strong>최단시간</strong>을 기록한다.)</p>
+
+    <ul>
+      <li>앞에서 기록해둔 Time들로 뒤에 것들을 쉽게 계산해낼수 있는것</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Retrace Table</strong> (바로 직전 어떤경로를 통해서 여기까지 오게되었는지 기록한다.)</p>
+
+    <ul>
+      <li>
+        <p>어디서 받는것이 최고로 좋은지 적어놓는 Table</p>
+
+        <p><strong>Retrace Table을 이용해서 역추적하여 최적의 경로를 알 수 있음.</strong></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="implementation-example-assembly-line-scheduling-in-recursion">Implementation Example: Assembly Line Scheduling in Recursion</h2>
+
+<p>먼저 Assembly Line Scheduling을 Recursion을 이용해서 짠다.</p>
+
+<p>Recursion을 code로 짤때 가장먼저 생각할거 : <strong>Escape routine</strong></p>
+
+<p><strong>Recursion 방식</strong>으로 짠 Assembly Line Scheduling code</p>
+
+<p>(교수님이 반드시 직접 타이핑해서 짜보라고 하셨음.)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46<br/>47<br/>48<br/>49<br/>50</pre></td><td class="code"><pre class="highlight"><code><span class="c"># Top-down</span>
+<span class="k">class</span> <span class="nc">AssemblyLines</span><span class="p">:</span>
+    <span class="n">timeStation</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
+    <span class="n">timeBelt</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="n">intCount</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">Scheduling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idxLine</span><span class="p">,</span> <span class="n">idxStation</span><span class="p">):</span>
+        <span class="s">'''
+        idxLine : This indicates which Line is it.
+        idxStation : This indicates the number of stations.
+        '''</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Line, Station :"</span><span class="p">,</span> <span class="n">idxLine</span><span class="p">,</span> <span class="n">idxStation</span><span class="p">,</span> <span class="s">"recursion calls :"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intCount</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intCount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intCount</span> <span class="o">+</span> <span class="mi">1</span>
+        
+        <span class="c"># Escape routine</span>
+        <span class="k">if</span> <span class="n">idxStation</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">idxLine</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">idxLine</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c"># Recursive call</span>
+        <span class="s">'''
+        costLine1 : When it doesn't go across Lines.
+        costLine2 : When it goes across Lines. 
+        '''</span>
+        <span class="k">if</span> <span class="n">idxLine</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">costLine1</span> <span class="o">=</span> 
+            	<span class="bp">self</span><span class="o">.</span><span class="n">Scheduling</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">idxStation</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idxStation</span><span class="p">]</span>
+            <span class="n">costLine2</span> <span class="o">=</span> 
+            	<span class="bp">self</span><span class="o">.</span><span class="n">Scheduling</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">idxStation</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idxStation</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">idxStation</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">idxLine</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">costLine1</span> <span class="o">=</span> 
+            	<span class="bp">self</span><span class="o">.</span><span class="n">Scheduling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">idxStation</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">idxStation</span><span class="p">]</span>
+            <span class="n">costLine2</span> <span class="o">=</span> 
+            	<span class="bp">self</span><span class="o">.</span><span class="n">Scheduling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">idxStation</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">idxStation</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idxStation</span><span class="p">]</span>
+        
+        <span class="c"># Compare which one takes less time.</span>
+        <span class="k">if</span> <span class="n">costLine1</span> <span class="o">&gt;</span> <span class="n">costLine2</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">costLine2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">costLine1</span>
+        
+    <span class="k">def</span> <span class="nf">startScheduling</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">numStation</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">costLine1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Scheduling</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">numStation</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">numStation</span><span class="p">]</span>
+        <span class="n">costLine2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Scheduling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">numStation</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">numStation</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">costLine1</span> <span class="o">&gt;</span> <span class="n">costLine2</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">costLine2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">costLine1</span>   
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h2 id="implementation-example-assembly-line-scheduling-in-dp">Implementation Example: Assembly Line Scheduling in DP</h2>
+
+<p>이번에는 Dynamic Programming 방식으로 짠 Assembly Line Scheduling code이다.</p>
+
+<p>언뜻 보면 Recursion보다 더 복잡해보이지만, 프로그램을 실행하는 입장에서는 더 간단함.</p>
+
+<p>(Recursion으로 짜면 보는 입장에서 직관적으로 볼 수 있다는 장점이 있다.)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46<br/>47<br/>48<br/>49<br/>50<br/>51<br/>52<br/>53<br/>54<br/>55<br/>56<br/>57</pre></td><td class="code"><pre class="highlight"><code><span class="c"># 프로그램을 실행하는 입장에서 더 간단함</span>
+<span class="c"># Bottom-up</span>
+<span class="k">class</span> <span class="nc">AssemblyLines</span><span class="p">:</span>
+    <span class="s">'''
+    timeScheduling : Travel time table
+    stationTracing : Retrace table
+    '''</span>
+    <span class="n">timeStation</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
+    <span class="n">timeBelt</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="c"># Assign memoization tables</span>
+    <span class="n">timeScheduling</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))]</span>
+    <span class="n">stationTracing</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))]</span>
+    <span class="k">def</span> <span class="nf">startSchedulingDP</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">numStation</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c"># Memoization tables의 초기값 설정</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">numStation</span><span class="p">):</span>
+            <span class="s">'''
+            어떤 Station에서 그 다음 Station으로 갈 때,
+            다른 Line에서 오는게 빠른지,
+            아니면 기존 Line에서 오는게 빠른지 비교 후, 더 빠른쪽을 더해줌.
+            '''</span>  
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> 
+                	<span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stationTracing</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> 
+                	<span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stationTracing</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> 
+                	<span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stationTracing</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> 
+                	<span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stationTracing</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        
+        <span class="n">costLine1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">numStation</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">numStation</span><span class="p">]</span>
+        <span class="n">costLine2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeScheduling</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">numStation</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeBelt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">numStation</span><span class="p">]</span>
+        
+        <span class="c"># 마지막 Retracing table element 출력을 위한 조건문</span>
+        <span class="k">if</span> <span class="n">costLine1</span> <span class="o">&gt;</span> <span class="n">costLine2</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">costLine2</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">costLine1</span><span class="p">,</span> <span class="mi">0</span>
+        
+    <span class="k">def</span> <span class="nf">printTracing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lineTracing</span><span class="p">):</span>
+        <span class="n">numStation</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeStation</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Line :"</span><span class="p">,</span> <span class="n">lineTracing</span><span class="p">,</span> <span class="s">"Station :"</span><span class="p">,</span> <span class="n">numStation</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">itr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numStation</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">lineTracing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stationTracing</span><span class="p">[</span><span class="n">lineTracing</span><span class="p">][</span><span class="n">itr</span><span class="p">]</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Line :"</span><span class="p">,</span> <span class="n">lineTracing</span><span class="p">,</span> <span class="s">"Station :"</span><span class="p">,</span> <span class="n">itr</span><span class="p">)</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h2 id="details">Details</h2>
+
+<h3 id="euclids-algorithm">Euclid’s algorithm</h3>
+
+<p><img src="/images/About Euclid's algorithm/1.png" alt="img" width="400" class="aligncenter" /></p>
+
+<hr />
+
+<h3 id="mathematical-induction">Mathematical induction</h3>
+
+<p><a href="https://jjycjnmath.tistory.com/99">jjycjn’s Math Storehouse 블로그 참고</a></p>
+
+<ol>
+  <li>
+    <p>P(2)가 참이다.</p>
+  </li>
+  <li>
+    <p>P(n)이 참이면 P(2n)도 참이다.</p>
+  </li>
+  <li>
+    <p>P(n)이 참이면 P(n−1)도 참이다.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="fibonacci-sequence">Fibonacci Sequence</h3>
+
+<p><a href="https://shoark7.github.io/programming/algorithm/피보나치-알고리즘을-해결하는-5가지-방법">SUNGHWAN PARK님 블로그 참고</a></p>
+
+<p>피보나치 수열의 0번째 항은 0, 1번째 항은 1, 그 외 항은 Fibo(n-1)과 Fibo(n-2)의 합으로 표현된다. 피보나치 수열을 구하는 데에는 다양한 알고리즘이 있다.</p>
+
+<ol>
+  <li>위에서 했던 재귀적 풀이</li>
+  <li>Loop문을 이용한 반복적 풀이</li>
+  <li>Dynamic 계획법을 이용한 풀이</li>
+</ol>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/Data%20Structure" rel="tag"># Data Structure</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/os/2020/03/30/OS3-post/" rel="next" title="OS Lecture 3">
+                <i class="fa fa-chevron-left"></i> OS Lecture 3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/os/2020/03/28/OS2-post/" rel="prev" title="OS Lecture 2">
+                OS Lecture 2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+<script src="https://utteranc.es/client.js"
+        repo="Kojungbeom/kojungbeom.github.io"
+        issue-term="title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="고중범" />
+          <p class="site-author-name" itemprop="name">고중범</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#data-structure-week-4"> <span class="nav-number">1</span> <span class="nav-text">Data Structure Week 4</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#weekly-objectives"> <span class="nav-number">1.1</span> <span class="nav-text">Weekly Objectives</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#repeating-problems-and-divide-and-conquer"> <span class="nav-number">1.2</span> <span class="nav-text">Repeating Problems and Divide and Conquer</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#more-examples"> <span class="nav-number">1.2.1</span> <span class="nav-text">More examples</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#factorial"> <span class="nav-number">1.2.1.1</span> <span class="nav-text">Factorial</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#great-common-divisor"> <span class="nav-number">1.2.1.2</span> <span class="nav-text">Great Common Divisor</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#공통점"> <span class="nav-number">1.2.2</span> <span class="nav-text">공통점</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#definition-of-recursion"> <span class="nav-number">1.3</span> <span class="nav-text">Definition of Recursion</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#recursions-and-stackframe"> <span class="nav-number">1.4</span> <span class="nav-text">Recursions and Stackframe</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#merge-sort"> <span class="nav-number">1.5</span> <span class="nav-text">Merge Sort</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#implementation-example-merge-sort"> <span class="nav-number">1.5.1</span> <span class="nav-text">Implementation Example: Merge Sort</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#problems-in-recursions-of-fibonacci-sequence"> <span class="nav-number">1.6</span> <span class="nav-text">Problems in Recursions of Fibonacci Sequence</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#dynamic-programming"> <span class="nav-number">1.7</span> <span class="nav-text">Dynamic Programming</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#memoization-memorization-아님"> <span class="nav-number">1.7.1</span> <span class="nav-text">Memoization (Memorization 아님)</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#implementation-example-fibonacci-sequence-in-dp"> <span class="nav-number">1.8</span> <span class="nav-text">Implementation Example: Fibonacci Sequence in DP</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#assembly-line-scheduling"> <span class="nav-number">1.8.1</span> <span class="nav-text">Assembly Line Scheduling</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#process-of-assembly-line-scheduling"> <span class="nav-number">1.8.2</span> <span class="nav-text">Process of Assembly Line Scheduling</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#implementation-example-assembly-line-scheduling-in-recursion"> <span class="nav-number">1.9</span> <span class="nav-text">Implementation Example: Assembly Line Scheduling in Recursion</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#implementation-example-assembly-line-scheduling-in-dp"> <span class="nav-number">1.10</span> <span class="nav-text">Implementation Example: Assembly Line Scheduling in DP</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#details"> <span class="nav-number">1.11</span> <span class="nav-text">Details</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#euclids-algorithm"> <span class="nav-number">1.11.1</span> <span class="nav-text">Euclid’s algorithm</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#mathematical-induction"> <span class="nav-number">1.11.2</span> <span class="nav-text">Mathematical induction</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#fibonacci-sequence"> <span class="nav-number">1.11.3</span> <span class="nav-text">Fibonacci Sequence</span> </a> </li> </ol> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">고중범</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

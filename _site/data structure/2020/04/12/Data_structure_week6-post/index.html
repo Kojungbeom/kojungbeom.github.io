@@ -1,0 +1,1788 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Data Structure,Tree,BST," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ko" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+<meta name="keywords" content="Data Structure, Tree, BST">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structure week6">
+<meta property="og:url" content="http://localhost:4000/data%20structure/2020/04/12/Data_structure_week6-post/">
+<meta property="og:site_name" content="Ko">
+<meta property="og:description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+<meta property="og:locale" content="ko">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Structure week6">
+<meta name="twitter:description" content="문일철 교수님의 데이터 구조 및 분석 Linear Structure and Dynamic Programming edwith 강의를 보고 정리한 내용입니다.">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>Data Structure week6 | Ko</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ko</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/data%20structure/2020/04/12/Data_structure_week6-post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="고중범">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="assets/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ko">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            Data Structure week6
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="" itemprop="dateCreated datePublished" datetime="2020-04-12T21:00:00+09:00">
+                2020-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Data%20Structure" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr />
+
+<h1 id="data-structure-week-6">Data Structure Week 6</h1>
+
+<p>KAIST 산업및시스템공학과 문일철 교수님의</p>
+
+<p><a href="https://www.edwith.org/datastructure-2019s/joinLectures/21992">데이터 구조 및 분석: Linear Structure and Dynamic Programming</a></p>
+
+<p><a href="https://www.edwith.org/">edwith</a> 강의를 보고 정리한 내용입니다.</p>
+
+<h2 id="weekly-objectives">Weekly Objectives</h2>
+
+<p>This week, we study the tree data structure. Particularly, we will focus on the structure and the operation of the binary search tree.</p>
+
+<p>Objectives are</p>
+
+<ul>
+  <li>Memorizing the definitions, the terminologies and the characteristics of trees</li>
+  <li>Understanding the structures of trees</li>
+  <li>Understanding the structure and the operations of a binary search tree
+    <ul>
+      <li>Insert, search, delete operations</li>
+      <li>Tree traversing operations
+        <ul>
+          <li>Depth first search
+            <ul>
+              <li>In-order, post-order, pre-order sequences</li>
+            </ul>
+          </li>
+          <li>Breadth first search</li>
+          <li>Level order search</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Understanding the performance of binary search tree</li>
+</ul>
+
+<p>Tree Structure 중에서 BST (Binary Search Tree)에 대해 배웁니다.</p>
+
+<hr />
+
+<h2 id="detour-abstract-data-types">Detour: Abstract Data Types</h2>
+
+<p>An ADT specifies:</p>
+
+<ul>
+  <li>Data stored</li>
+  <li>Operation</li>
+  <li>Error response</li>
+</ul>
+
+<p><em>(3주차에서 다뤘었습니다.)</em></p>
+
+<p>사실 Tree도 일종의 ADT이다.</p>
+
+<p>upside down 형태의 ADT (마치 나무가 거꾸로 된 형태)</p>
+
+<p>Tree</p>
+
+<ul>
+  <li>
+    <p>일종의 ADT다.</p>
+  </li>
+  <li>
+    <p>Data가 tree structure로 저장되어 있다</p>
+  </li>
+  <li>
+    <p>operations</p>
+
+    <ul>
+      <li>
+        <p>기본적인 Data structure라면 지원하는 OP들은 다 지원한다. (ex) LinkedList의 insert, delete, search</p>
+      </li>
+      <li>
+        <p>Special searching approaches for trees and networks</p>
+
+        <p>-&gt; 일직선의 구조가 아니기때문에 다양한 traverse가 정의된다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="why-do-we-use-trees">Why do we use trees</h2>
+
+<p>현실의 Tree Structure Example</p>
+
+<ul>
+  <li>조직도</li>
+  <li>Group bank accounts</li>
+  <li>Command</li>
+</ul>
+
+<p><strong>Tree structure는 왜 쓰는가?</strong></p>
+
+<ul>
+  <li>
+    <p><strong>A clear approach of Divide and Conquer</strong></p>
+  </li>
+  <li>
+    <p>Data의 특성을 반영하여 Divide하고, 저장하는 문제를 풀어나가는 방식이 쓰여진 Structure</p>
+  </li>
+  <li>
+    <p>LinkedList같은 Data structure보다 더 적은 retrieval 만으로도 필요한 data를 search할 수 있다.</p>
+
+    <p>(뒤에서 자세히 이야기 합니다.)</p>
+  </li>
+</ul>
+
+<p>Recursion도 마찬가지로 Divide and Conquer방식으로 Top-down으로 문제를 줄여나갔었다.</p>
+
+<p>Tree structure를 다룰때도 Recursion를 많이 활용하게 될 것이다.</p>
+
+<h2 id="structure-of-stored-data">Structure of stored data</h2>
+
+<p>Linked List같은 경우는 object + Next를 가진 하나의 Node로 표현해서 사용했었다.</p>
+
+<ul>
+  <li>
+    <p>object가 가진 value에 대한 reference</p>
+  </li>
+  <li>
+    <p>다음 노드를 가리키는 reference</p>
+  </li>
+</ul>
+
+<p>이런 LinkedList를 세로로 세웠다고 생각해보자.</p>
+
+<p>Tree구조와 유사하지만 다른점이 있다.</p>
+
+<p>Tree구조에서 네모하나를 Node(tree node)라고 할 때,</p>
+
+<p>LinkedList같은 경우, Next는 하나밖에 없었는데, <strong>Tree structure의 경우 Next가 여러개이다.</strong></p>
+
+<ul>
+  <li>Each node has multiple next nodes</li>
+  <li>Particularly, this structure maintains the next “nodes” as an array or variables</li>
+</ul>
+
+<p>Tree Structure는 점점 커지게 되고, 그에 따라서 데이터를 저장할 공간이 점점 커지게 되는 것</p>
+
+<p>문제는 Next가 여러개이기 때문에, 여러 Next중에 어떤 Next를 선택해야할지가 햇갈릴 수 있는데,</p>
+
+<p>그런것에 대한 룰을 잘 세우는것이 Tree를 관리하는 기법이 됨</p>
+
+<hr />
+
+<h2 id="terminologies-of-tress-structure">Terminologies of tress structure</h2>
+
+<ul>
+  <li>
+    <p><strong>Edge</strong></p>
+
+    <ul>
+      <li>하나의 Next reference를 Edge (화살표)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Node</strong></p>
+
+    <ul>
+      <li>하나의 Next reference가 가리키는 것, object하나와 4개의 reference를 가지고 있는 Instance</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Root</strong></p>
+
+    <ul>
+      <li>맨 위에 있는 Node (마치 LinkedList의 head)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Parent and Child</strong></p>
+
+    <ul>
+      <li>두개의 Node가 edge로 연결되어 있을 때, 상위 Level의 Node가 Parent</li>
+      <li><strong>하위 Level의 Node가 Child</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Siblings</strong></p>
+
+    <ul>
+      <li>같은 Level에 있는 (동일한 parent를 가진) Node</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Terminal Node and Internal Node</strong></p>
+
+    <ul>
+      <li>Terminal Node는 Child가 없는 노드</li>
+      <li>Internal Node는 Terminal Node의 반대</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Descendants and Ancestors</strong></p>
+
+    <ul>
+      <li>Node A의 Child, Child의 Child같이 Node A와 연결된 모든 하위 Level의 Node를 지칭한다.</li>
+      <li>parent를 따라가다보면 A를 만나게 된다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Ancestors는 Descendant의 반대, 조상님을 의미</p>
+  </li>
+  <li>
+    <p><strong>Path to E</strong></p>
+
+    <ul>
+      <li>매우 중요한 path개념</li>
+      <li>Root위치에서 특정 Node까지 edge를 통해 갈 수 있는 최단거리의 길을 path라고 한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Depth and Level of B</strong></p>
+
+    <ul>
+      <li>B라는 노드에 대한 path는 1이 된다. -&gt; B의 Depth는 1이다.</li>
+      <li>Depth = Path length</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Height of tree</strong></p>
+
+    <ul>
+      <li>Maximum path length = Height of tree</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Degree of B Node</strong></p>
+
+    <ul>
+      <li>특정노드의 Degree는 B가 가질 수 있는 Child의 수</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Size of tree</strong></p>
+
+    <ul>
+      <li>Tree에 있는 Node의 개수 (저장되어있는 데이터의 개수)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Full Tree</strong></p>
+
+    <ul>
+      <li>Leaf가 모두 동일레벨</li>
+      <li>Internal Node에는 모든 Next들이 fully하게 다음 Node를 가리키고 있음</li>
+      <li>삼각형 모양</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Complete Tree</strong></p>
+
+    <ul>
+      <li>바로 직전 Depth까지는 full tree structure인데, 맨 왼쪽부터 하나하나 채워나가는 과정 (순서대로)중이면 Complete tree (Filled from left)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="characteristics-of-trees">Characteristics of trees</h2>
+
+<ul>
+  <li><strong>Num of edges =  (Num of nodes) - 1</strong></li>
+  <li><strong>Depth of root = 0</strong></li>
+  <li><strong>Height of root = height of tree = Maximum path length</strong></li>
+  <li><strong>Maximum num of nodes at level i with degree d</strong>
+    <ul>
+      <li>$d^i$</li>
+    </ul>
+  </li>
+  <li><strong>Maximum num of leaves with height h and degree d</strong>
+    <ul>
+      <li>$d^h$</li>
+    </ul>
+  </li>
+  <li><strong>Maximum size of a tree with height h and degree d</strong>
+    <ul>
+      <li>$= d^0 + d^1 + d^2 + .. + d^h = d^(h+1) -1 / (d-1)$</li>
+    </ul>
+  </li>
+  <li><strong>Height of a complete tree with size s and degree d</strong>
+    <ul>
+      <li>위의 식을 LOG로 바꿔서 전개</li>
+      <li>log는 실수형, Height는 정수형이라서 올림을 해줌</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="binary-search-tree-bst">Binary Search Tree (BST)</h2>
+
+<p>Binary tree = Degree가 2인 Tree</p>
+
+<p>Binary “search” tree</p>
+
+<ul>
+  <li>Degree가 2인 tree</li>
+  <li>저장된 데이터에 대해서 빠르게 search가 가능하게 디자인되었다.</li>
+  <li>빠르게 search가 가능하도 데이터의 특성을 활용해서 구조를 만들어야한다.</li>
+</ul>
+
+<p>ex) 건물에서 화장실을 찾으려고 함</p>
+
+<p>화장실을 찾아가려면 어떻게해야할까?</p>
+
+<ul>
+  <li>직원에게 물어보기</li>
+  <li>무작정 걷기</li>
+  <li>Sign을 찾기</li>
+  <li>짐작해서 찾아보기 (Guess)</li>
+</ul>
+
+<p>보통 4번째으로도 화장실을 찾을 수 있는 이유는?</p>
+
+<p>-&gt; 건물의 설계에는 일정한 패턴을 가지고 있기 때문 (귀퉁이에 있다던지, 엘리베이터 옆에 있다던지)</p>
+
+<p>-그래서 1,2,3을 하지 않아도 짐작으로 화장실을 찾아갈 수 있는데</p>
+
+<p>이런식으로 데이터도 <strong>일정한 패턴을 가지도록 만든다면, 빠른 search가 가능하다.</strong></p>
+
+<h3 id="a-scenario-of-using-binary-search-tree">A scenario of using binary search tree</h3>
+
+<p>1001부터 시작되는 Account ID에서 1004를 찾는다고 할때</p>
+
+<p>LinkedList라면 1001부터 4번의 retrieval을 해서 1004를 찾아가야함</p>
+
+<p>binary search tree는 2개의 Next가 있는데</p>
+
+<p>왼쪽에는 더 작은값을 저장하고, 오른쪽에는 더 큰 값을 저장한다.</p>
+
+<p><strong>이런 방식으로 했을 때에 규칙이 있기때문에 더 적은 retrieval만으로도 원하는 데이터를 찾을 수가 있다.</strong></p>
+
+<h3 id="implementation-of-tree-node">Implementation of Tree Node</h3>
+
+<p>먼저 Tree의 Node를 만들어야 함</p>
+
+<p><strong>Member Variable</strong></p>
+
+<ul>
+  <li>Left hand side node
+    <ul>
+      <li>Lower than its own value</li>
+    </ul>
+  </li>
+  <li>Right hand side node
+    <ul>
+      <li>higher than its own value</li>
+    </ul>
+  </li>
+  <li>parent node</li>
+  <li>value</li>
+</ul>
+
+<p>-&gt; 4개의 reference를 가진다.</p>
+
+<p><strong>Member function</strong></p>
+
+<ul>
+  <li>simple get/set methods (encapsulation)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27</pre></td><td class="code"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TreeNode</span><span class="p">:</span>
+    <span class="c"># Member variable</span>
+    <span class="n">nodeLHS</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="n">nodeRHS</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="n">nodeParent</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">nodeParent</span><span class="p">):</span>
+    	<span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+    	<span class="bp">self</span><span class="o">.</span><span class="n">nodeParent</span> <span class="o">=</span> <span class="n">nodePraent</span>
+    <span class="c"># Simple get methods</span>
+    <span class="k">def</span> <span class="nf">getValue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">def</span> <span class="nf">getParent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeParent</span>
+    <span class="k">def</span> <span class="nf">getLHS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeLHS</span>
+    <span class="k">def</span> <span class="nf">getRHS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeRHS</span>
+    <span class="c"># Simple set methods</span>
+    <span class="k">def</span> <span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+    	<span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">def</span> <span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodeParent</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodeParent</span> <span class="o">=</span> <span class="n">nodeParent</span>
+    <span class="k">def</span> <span class="nf">setLHS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodeLHS</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodeLHS</span> <span class="o">=</span> <span class="n">nodeLHS</span>
+    <span class="k">def</span> <span class="nf">setRHS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodeRHS</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodeRHS</span> <span class="o">=</span> <span class="n">nodeRHS</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h3 id="implementation-of-bst">Implementation of BST</h3>
+
+<p><strong>Member Variable</strong></p>
+
+<ul>
+  <li>root에 대한 reference만 가지고 있다.</li>
+</ul>
+
+<p><strong>Member function</strong></p>
+
+<ul>
+  <li>insert</li>
+  <li>search</li>
+  <li>delete</li>
+  <li>findmax</li>
+  <li>findmin</li>
+  <li>traverselevelnorder</li>
+  <li>traverseInorder</li>
+  <li>traversepreOrder</li>
+  <li>traversePostOrder</li>
+</ul>
+
+<hr />
+
+<h4 id="insert-operation-of-binary-search-tree">Insert operation of binary search tree</h4>
+
+<p>어떻게 규칙을 지켜가며 LHS, RHS에 정확하게 data를 저장할 수 있을까?</p>
+
+<ul>
+  <li>기본적으로 Recursion을 사용한다.</li>
+</ul>
+
+<p>insert할 떄 특정한 Node or Root를 받아오게 됨</p>
+
+<p><strong>Case 1. root가 비어있다.</strong></p>
+
+<ul>
+  <li>root에 그 데이터를 저장한다.</li>
+</ul>
+
+<p><strong>Case 2. 이미 insert하려고하는값이 저장되있다.</strong></p>
+
+<ul>
+  <li>중복된 insert는 안하고 return</li>
+</ul>
+
+<p><strong>Case 3. 현재 Node의 value가 저장하려고하는 value보다 작을 경우</strong> (My value &lt; Node’s value)</p>
+
+<ul>
+  <li>현재 Node의 RHS에 저장
+    <ul>
+      <li>RHS에 이미 value가 있다면?
+        <ul>
+          <li>RHS와 또다시 비교 (반복)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>현재 Node의 value가 더 크다면?
+    <ul>
+      <li>LHS에 저장</li>
+      <li>LHS에 이미 value가 있다면?
+        <ul>
+          <li>LHS와 또다시 비교 (반복)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31</pre></td><td class="code"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+        
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="c"># 초기화 구문</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="c"># root가 비어있다면, root에 저장한다.    </span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="s">''</span><span class="p">:</span>
+            <span class="c"># TreeNode(value, nodeParent)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="c"># 같은 value가 있다면 insert하지 않고 return한다.</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="k">return</span>
+        <span class="c"># Value가 현 Node의 value보다 작을 경우</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">getvalue</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">setLHS</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># Recursion</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">node</span><span class="o">.</span><span class="n">getvalue</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">setRHS</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># Recursion</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">)</span>
+        <span class="k">return</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h4 id="search-operation-off-binary-search-tree">Search operation off binary search tree</h4>
+
+<p>Search하려는 value가 있으면 True를 return한다.</p>
+
+<p>찾으려는 value가 그 Node의 Value보다 작다면 (My value &lt; Node’s value)</p>
+
+<ul>
+  <li>if there is a node in the right hand side, then move to the RHS node (recursion)</li>
+  <li>
+    <p>더이상 RHS가 없다면 False를 Return</p>
+  </li>
+  <li>다음번에는 LHS로 찾아가야함 (RHS쪽은 생각도 안해도 됨)</li>
+</ul>
+
+<p>value가 Node보다 크다면 (My value &gt; Node’s value)</p>
+
+<ul>
+  <li>
+    <p>if there is a node in the left hand-side, then move to the LHS node (recursion)</p>
+  </li>
+  <li>RHS로 찾아가야함 (LHS쪽은 생각도 안해도 됨)</li>
+  <li>더이상 LHS가 없다면 False를 Return</li>
+</ul>
+
+<p>찾을 영역이 계속해서 줄어든다.</p>
+
+<p>-&gt; Recursion을 이용해서 서서히 찾아간다.</p>
+
+<p>LinkedList같은 경우는 Chain을 계속 따라가서 찾아야함 (n개가 있다면 n개를 다 봐야함)</p>
+
+<p>Tree구조는 그럴 필요없이 Height만큼 or Depth만큼만 찾아보면 된다.</p>
+
+<p>-&gt; LinkedList에 비해 상대적으로 Search 성능이 더 좋다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26</pre></td><td class="code"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+    
+    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="c"># 초기화 구문</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="c"># Value와 같다면 True를 return, escape routine</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="c"># Value가 현 Node의 value보다 작다면 LHS에서 search, LHS가 없다면 False를 return</span>
+        <span class="c"># Recursion</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            <span class="k">else</span><span class="p">:</span>
+            	<span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+        <span class="c"># Value가 현 Node의 value보다 크다면 RHS에서 search, RHS가 없다면 False를 return</span>
+        <span class="c"># Recursion</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            <span class="k">else</span><span class="p">:</span>
+            	<span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h4 id="delete-operation-of-binary-search-tree">Delete operation of binary search tree</h4>
+
+<p>Tree structure에서 Delete는 매우 복잡하다.</p>
+
+<ul>
+  <li>값을 삭제한 후에 트리에 생기는 여파가 크기 때문이다.</li>
+</ul>
+
+<p>Node를 하나 없애는 것인데,</p>
+
+<p>Node가 Child가 없는 Node라면 딱히 복잡하지 않다.</p>
+
+<p>그러나 Child가 하나라도 있다면 복잡해진다. (child는 그대로두고, parent node만 없애야하기 때문)</p>
+
+<p><strong>Three Deletion Case</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Deleting a node with no children</strong></p>
+
+    <ul>
+      <li>그다지 어렵지 않음. parent node로 가서 reference만 끊어주면 됨</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Deleting a node with one child</strong></p>
+
+    <ul>
+      <li>Replace the node with the child. Child가 parent node의 자리를 대체하면 됨</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Deleting a node with two children</strong></p>
+
+    <ul>
+      <li>
+        <p>해법들의 concept은 어떤 node를 그 자리에 올리는 것이다.</p>
+      </li>
+      <li>
+        <p>child Node를 올리면 규칙을 위반할 수도 있기 때문에,</p>
+
+        <p>지우려는 value에 가장 가까운 Node를 찾아야 한다.</p>
+      </li>
+      <li>
+        <p>Find either</p>
+
+        <ul>
+          <li>
+            <p>A maximum in the LHS or A minimum in the RHS (중간에 가까운걸 찾는 두가지 방식)</p>
+          </li>
+          <li>
+            <p>substitute the node to delete with the found value</p>
+          </li>
+          <li>
+            <p>Delete the found node in the LHS or the RHS</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Tree structure는 그대로 둔 상태에서 <strong>가장 가까운 Node</strong>를 그 자리에 copy한다.</p>
+
+<p><strong>이때 이 노드는 반복적으로 RHS면 RHS, LHS면 LHS을 지속적으로 추적하다가,</strong></p>
+
+<p><strong>더이상 LHS나 RHS가 없을 때의 Node를 가져온 것이기 때문에 Child가 많아봤자 1개이다.</strong></p>
+
+<p>앞에서 다룬 2가지의 케이스를 적용해서 그 값을 삭제</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46<br/>47<br/>48<br/>49<br/>50<br/>51<br/>52<br/>53<br/>54<br/>55<br/>56</pre></td><td class="code"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+    
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">!=</span> <span class="s">''</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="c"># findMin method는 뒤에서 findMax method와 함께 정의합니다.</span>
+                <span class="n">nodeMin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">findMin</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+                <span class="c"># 그 자리에 가장 가까운 node를 copy</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">nodeMin</span><span class="o">.</span><span class="n">getValue</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">nodeMin</span><span class="o">.</span><span class="n">getValue</span><span class="p">(),</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+            	<span class="k">return</span>
+            <span class="c"># 지금 이 Node가 Parent의 LHS인지 RHS인지 확인하기 위한 Instance</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">getParent</span><span class="p">()</span>
+            <span class="c"># 현 node가 RHS는 없고, LHS만 있을 때 </span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span>
+                <span class="c"># 현 node가 parent의 LHS에 있을 때</span>
+                <span class="k">elif</span> <span class="n">node</span> <span class="o">==</span> <span class="n">parent</span><span class="o">.</span><span class="n">getLHS</span><span class="p">():</span>
+                    <span class="n">parent</span><span class="o">.</span><span class="n">setLHS</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+                <span class="c"># 현 node가 parent의 RHS에 있을 때</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">parent</span><span class="o">.</span><span class="n">setLHS</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="c"># 현 node가 LHS는 없고, RHS만 있을 때 </span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span>
+                <span class="c"># 현 node가 parent의 LHS에 있을 때</span>
+                <span class="k">elif</span> <span class="n">node</span> <span class="o">==</span> <span class="n">parent</span><span class="o">.</span><span class="n">getLHS</span><span class="p">():</span>
+                    <span class="n">parent</span><span class="o">.</span><span class="n">setLHS</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+                <span class="c"># 현 node가 parent의 RHS에 있을 때</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">parent</span><span class="o">.</span><span class="n">setLHS</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="c"># 현 node가 LHS도 없고, RHS도 없는 경우</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="s">''</span>
+            <span class="k">elif</span> <span class="n">parent</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">==</span> <span class="n">node</span><span class="p">:</span>
+                <span class="n">parent</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">=</span> <span class="s">''</span>
+            <span class="k">else</span> <span class="n">parent</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">==</span> <span class="n">node</span><span class="p">:</span>
+                <span class="n">parent</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">=</span> <span class="s">''</span>
+            <span class="k">return</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h4 id="minimum-and-maximum-in-binary-search-tree">Minimum and maximum in Binary search tree</h4>
+
+<ol>
+  <li>Find Minimum
+    <ul>
+      <li>계속 LHS로만 찾아가면 Minimum을 찾을 수 있음</li>
+    </ul>
+  </li>
+  <li>Find Maximum
+    <ul>
+      <li>계속 RHS로만 찾아가면 Maximum을 찾을 수 있음</li>
+    </ul>
+  </li>
+</ol>
+
+<p>언제까지?</p>
+
+<p>Recursion을 이용해서 더이상 LHS 또는 RHS가 없을 때까지 찾는다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19</pre></td><td class="code"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+    <span class="c"># RHS로만 keep moving하면 최대값을 찾을 수 있다.</span>
+    <span class="k">def</span> <span class="nf">findMax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">=</span> <span class="s">''</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">findMax</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+    <span class="c"># LHS로만 keep moving하면 최소값을 찾을 수 있다.</span>
+    <span class="k">def</span> <span class="nf">findMin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">node</span><span class="o">.</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">findMin</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+    <span class="c"># 언제까지? 더이상 없을 때 까지</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h4 id="tree-traversing">Tree traversing</h4>
+
+<p>LinkedList, Stack, Queue같은 경우는 선형적인 Data structure</p>
+
+<p>이런 경우 그냥 순서에 따라 출력하면 되는데</p>
+
+<p>Tree같은 경우는 어떤 규칙에 따라서 출력을 해야할까?</p>
+
+<p>Tree</p>
+
+<ul>
+  <li>Complicated than a list</li>
+  <li>데이터 전체를 출력하는 여러가지 방법이 있다.
+    <ul>
+      <li>List라면
+        <ul>
+          <li>순서에 따라서 처음부터 끝까지 보여주면 된다.</li>
+        </ul>
+      </li>
+      <li>BST라면?
+        <ul>
+          <li>어떤식으로 보여줄지 정해야 한다.
+            <ul>
+              <li>LHS</li>
+              <li>RHS</li>
+              <li>The value that you have</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="depth-first-traverse">Depth First Traverse</h5>
+
+<p>value, LHS, RHS 이 세가지를 출력할 순서를 정해야 한다.</p>
+
+<p>Value를 언제 출력하냐에 따라 3가지로 나뉨</p>
+
+<ol>
+  <li>Pre-order traverse
+    <ul>
+      <li>Value를 먼저 출력</li>
+      <li>순서 : Current, LHS, RHS in <strong>Recursion</strong></li>
+    </ul>
+  </li>
+  <li>In-order traverse
+    <ul>
+      <li>LHS와 RHS 사이에</li>
+      <li>순서 : LHS, Current, RHS in <strong>Recursion</strong></li>
+      <li>Sorting되어있는 결과와 동일함</li>
+    </ul>
+  </li>
+  <li>Post-order traverse
+    <ul>
+      <li>LHS와 RHS 뒤에</li>
+      <li>순서 : LHS, RHS, Current in <strong>Recursion</strong></li>
+    </ul>
+  </li>
+</ol>
+
+<p>일반적으로 LHS를 RHS보다 먼저 출력함 (LHS가 더 작은 값이니까)</p>
+
+<p>Current의 LHS와 RHS에서도 그들의 LHS, RHS에 대해서 똑같은 방법으로 <strong>Recursion</strong></p>
+
+<p>(smaller scale에서 같은 algorithm으로 처리 -&gt; recursion)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43</pre></td><td class="code"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+	<span class="k">def</span> <span class="nf">traverseInOrder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+    	<span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+        	<span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c"># Append LHS first</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traverseInOrder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">)</span>
+        <span class="c"># Append current second</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">())</span>
+        <span class="c"># Append RHS third</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traverseInOrder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+    <span class="k">def</span> <span class="nf">traversePreOrder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c"># Append current first</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">())</span>
+        <span class="c"># Append LHS second</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traversePreOrder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+        <span class="c"># Append RHS third</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traversePreOrder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ret</span>
+     <span class="k">def</span> <span class="nf">traversePost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="c"># Append LHS first</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traversePreOrder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+        <span class="c"># Append RHS second</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span> <span class="o">==</span> <span class="s">''</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traversePreOrder</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+        <span class="c"># Append current third</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ret</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h5 id="breadth-first-traverse">Breadth First Traverse</h5>
+
+<p>Recursion는 Stackframe을 사용했었다. (Top-down, LIFO)</p>
+
+<p>하지만 Breadth First traverse는 Queue-based level-order traverse</p>
+
+<ul>
+  <li>Enqueue the root
+    <ul>
+      <li>while until queue is empty</li>
+      <li>Print current</li>
+      <li>current의 LHS가 존재한다
+        <ul>
+          <li>Enqueue current LHS</li>
+        </ul>
+      </li>
+      <li>current의 RHS가 존재한다
+        <ul>
+          <li>Enqueue current RHS</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24</pre></td><td class="code"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s">''</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+    <span class="c"># Queue를 이용한 traversing 방법</span>
+    <span class="k">def</span> <span class="nf">traverseLevelOrder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+        <span class="n">Q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+        <span class="c"># Queue가 비워질 때까지 반복</span>
+        <span class="c"># Dequeue되는 Node의 LHS,RHS를 거치면서 없을 때 까지 반복한다.</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">Q</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span> <span class="o">==</span> <span class="bp">False</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="o">=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c"># Append current first</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getValue</span><span class="p">())</span>
+            <span class="c"># LHS가 있으면 Append</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">()</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="n">Q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getLHS</span><span class="p">())</span>
+            <span class="c"># RHS가 있으면 Append</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">()</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+                <span class="n">Q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getRHS</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ret</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h3 id="performance-of-binary-search-tree">Performance of Binary Search Tree</h3>
+
+<p>장점</p>
+
+<ul>
+  <li>규칙에 따라 데이터를 저장함으로써 검사를 안해도 되는 영역이 넓어진다.</li>
+</ul>
+
+<p>하지만 Depth height만 높은 Tree는 이런 장점이 사라지게 된다.</p>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/Data%20Structure" rel="tag"># Data Structure</a>
+          
+            
+            <a href="/tag/#/Tree" rel="tag"># Tree</a>
+          
+            
+            <a href="/tag/#/BST" rel="tag"># BST</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/information/2020/04/23/Covariance-post/" rel="next" title="Covariance (공분산)">
+                <i class="fa fa-chevron-left"></i> Covariance (공분산)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/test/2020/04/10/test-post/" rel="prev" title="test">
+                test <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+<script src="https://utteranc.es/client.js"
+        repo="Kojungbeom/kojungbeom.github.io"
+        issue-term="title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="고중범" />
+          <p class="site-author-name" itemprop="name">고중범</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#data-structure-week-6"> <span class="nav-number">1</span> <span class="nav-text">Data Structure Week 6</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#weekly-objectives"> <span class="nav-number">1.1</span> <span class="nav-text">Weekly Objectives</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#detour-abstract-data-types"> <span class="nav-number">1.2</span> <span class="nav-text">Detour: Abstract Data Types</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#why-do-we-use-trees"> <span class="nav-number">1.3</span> <span class="nav-text">Why do we use trees</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#structure-of-stored-data"> <span class="nav-number">1.4</span> <span class="nav-text">Structure of stored data</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#terminologies-of-tress-structure"> <span class="nav-number">1.5</span> <span class="nav-text">Terminologies of tress structure</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#characteristics-of-trees"> <span class="nav-number">1.6</span> <span class="nav-text">Characteristics of trees</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#binary-search-tree-bst"> <span class="nav-number">1.7</span> <span class="nav-text">Binary Search Tree (BST)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#a-scenario-of-using-binary-search-tree"> <span class="nav-number">1.7.1</span> <span class="nav-text">A scenario of using binary search tree</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#implementation-of-tree-node"> <span class="nav-number">1.7.2</span> <span class="nav-text">Implementation of Tree Node</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#implementation-of-bst"> <span class="nav-number">1.7.3</span> <span class="nav-text">Implementation of BST</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#insert-operation-of-binary-search-tree"> <span class="nav-number">1.7.3.1</span> <span class="nav-text">Insert operation of binary search tree</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#search-operation-off-binary-search-tree"> <span class="nav-number">1.7.3.2</span> <span class="nav-text">Search operation off binary search tree</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#delete-operation-of-binary-search-tree"> <span class="nav-number">1.7.3.3</span> <span class="nav-text">Delete operation of binary search tree</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#minimum-and-maximum-in-binary-search-tree"> <span class="nav-number">1.7.3.4</span> <span class="nav-text">Minimum and maximum in Binary search tree</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#tree-traversing"> <span class="nav-number">1.7.3.5</span> <span class="nav-text">Tree traversing</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#depth-first-traverse"> <span class="nav-number">1.7.3.5.1</span> <span class="nav-text">Depth First Traverse</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#breadth-first-traverse"> <span class="nav-number">1.7.3.5.2</span> <span class="nav-text">Breadth First Traverse</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#performance-of-binary-search-tree"> <span class="nav-number">1.7.4</span> <span class="nav-text">Performance of Binary Search Tree</span> </a> </li> </ol> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">고중범</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

@@ -1,0 +1,742 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Jekyll, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ko" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="# 선형 모델 (Linear Model) 그래프로 출력했을때의 선으로써 표현되는게 Linear Model이 아니라, 계수(Weight)들이 선형결합관계에 있을때 Linear Model이라고 한다. 즉 아래의 함수들도 모두 선형이라는 것이다. - $ y = \beta_0 + \beta_1x + \beta_2x^2 + \beta_3x^3 $ - $ y = \beta_0x^{\beta_1} * - $ y = {e^{\beta_1x_1+\beta_2x_2}\over 1+{e^{\beta_1x_1+\beta_2x_2}}} $ Linear model은 간단하고, 모델을 해석하기가 쉽다. 또한 적은 개수의 Data를 가지고 Nonlinear model을 만드는 것 보다 여러면에서 유리하다. 하지만 복잡한 패턴을 가지고있는 데이터에 대해서는 Performance가 떨어지는데, 정교한 예측이 필요한 경우는 Neural Network와 같은 비선형모델이 사용되고 있다. --- ## Linear Regression Supervised Learning에 필요한 데이터를 가지고 있다고 할 때, **선형회귀는 완전히 새로운 X값이 주어졌을때 y값을 예측할 수가 있다.** 처음에는 Weight와 Bias에 임의의 값을 넣어주고, 반복적인 Operation을 통해 **W와 b를 Cost function가 최소화하는 방향으로 Update시킨다.** --- ### Hypothesis 가설(Hypothesis)을 세운다. - $ Hypothesis : $ H(W,b) = Wx +b $ 만약 x가 x면, y는 Wx +b일 것이다. 이때 이 가설을 주어진 Data에 최적화 시키기 위해서, **Cost function을 지표로 하여** Weight와 Bias를 Update시킨다. --- ### Cost Function **Cost Function이란 이 가설의 예측값이 얼마나 틀렸는지를 나타내는값!** - **Cost가 크다?** -&amp;gt; 많이 틀렸다. - **Cost가 작다?** -&amp;gt; 조금 틀렸다. - **Cost가 0이다?** -&amp;gt; W와 b가 최적화된 값이다. 보통 MSE를 사용한다. $ Cost(W,b) = {1\over M}\sum_{i=1}^M(Wx_i +b -y_i)^2 $ Cost function에서 **제곱의 효과** - Cost의 값은 항상 양수 - 작은 차이로도 Model에 큰 Panelty를 줄 수가 있다. **Cost function을 이용해서 어떻게 Weight와 Bias를 수정하는걸까?** Bias를 고정시킨 상태로 Weight만 수정한다고 했을때, cost function과 w의 관계를 좌표평면에 제곱에 양수이기 때문에, 아래로 볼록한 포물선이 나온다. 이때, 이 포물선의 최소값을 나타내는 Weight값이 **Global optimum**이다. **마찬가지로 Weight를 수정하고 Bias를 수정한다고 했을 때 똑같이 포물선이 나오게 된다.** 이 포물선의 최소값을 나타내는 Bias값이 **Global optimum**이다. **이 값을 찾아가기 위해서 Gradient Descent를 사용한다.** --- ### Gradient Descent 포물선위의 한 점에서 Cost function미분을 하면, 그 점에서의 기울기를 알 수 있다. - 기울기가 음수일때 오른쪽으로 이동하고 - 기울기가 양수일때 왼쪽으로 이동 위의 과정을 반복하면서 Global optimum을 찾아간다. 결국 최적의 Weight와 Bias를 찾는다. --- ### Diagram [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9) --- ## Regression의 종류 Depending on the number of dependent variables - Univariate regression model - Linear regression model - Polynomial regression model - Multivariate regression model">
+<meta name="keywords" content="Jekyll, NexT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="선형 모델 (Linear Model)">
+<meta property="og:url" content="http://localhost:4000/repo/machineLearning_linearRegression/">
+<meta property="og:site_name" content="Ko">
+<meta property="og:description" content="# 선형 모델 (Linear Model) 그래프로 출력했을때의 선으로써 표현되는게 Linear Model이 아니라, 계수(Weight)들이 선형결합관계에 있을때 Linear Model이라고 한다. 즉 아래의 함수들도 모두 선형이라는 것이다. - $ y = \beta_0 + \beta_1x + \beta_2x^2 + \beta_3x^3 $ - $ y = \beta_0x^{\beta_1} * - $ y = {e^{\beta_1x_1+\beta_2x_2}\over 1+{e^{\beta_1x_1+\beta_2x_2}}} $ Linear model은 간단하고, 모델을 해석하기가 쉽다. 또한 적은 개수의 Data를 가지고 Nonlinear model을 만드는 것 보다 여러면에서 유리하다. 하지만 복잡한 패턴을 가지고있는 데이터에 대해서는 Performance가 떨어지는데, 정교한 예측이 필요한 경우는 Neural Network와 같은 비선형모델이 사용되고 있다. --- ## Linear Regression Supervised Learning에 필요한 데이터를 가지고 있다고 할 때, **선형회귀는 완전히 새로운 X값이 주어졌을때 y값을 예측할 수가 있다.** 처음에는 Weight와 Bias에 임의의 값을 넣어주고, 반복적인 Operation을 통해 **W와 b를 Cost function가 최소화하는 방향으로 Update시킨다.** --- ### Hypothesis 가설(Hypothesis)을 세운다. - $ Hypothesis : $ H(W,b) = Wx +b $ 만약 x가 x면, y는 Wx +b일 것이다. 이때 이 가설을 주어진 Data에 최적화 시키기 위해서, **Cost function을 지표로 하여** Weight와 Bias를 Update시킨다. --- ### Cost Function **Cost Function이란 이 가설의 예측값이 얼마나 틀렸는지를 나타내는값!** - **Cost가 크다?** -&amp;gt; 많이 틀렸다. - **Cost가 작다?** -&amp;gt; 조금 틀렸다. - **Cost가 0이다?** -&amp;gt; W와 b가 최적화된 값이다. 보통 MSE를 사용한다. $ Cost(W,b) = {1\over M}\sum_{i=1}^M(Wx_i +b -y_i)^2 $ Cost function에서 **제곱의 효과** - Cost의 값은 항상 양수 - 작은 차이로도 Model에 큰 Panelty를 줄 수가 있다. **Cost function을 이용해서 어떻게 Weight와 Bias를 수정하는걸까?** Bias를 고정시킨 상태로 Weight만 수정한다고 했을때, cost function과 w의 관계를 좌표평면에 제곱에 양수이기 때문에, 아래로 볼록한 포물선이 나온다. 이때, 이 포물선의 최소값을 나타내는 Weight값이 **Global optimum**이다. **마찬가지로 Weight를 수정하고 Bias를 수정한다고 했을 때 똑같이 포물선이 나오게 된다.** 이 포물선의 최소값을 나타내는 Bias값이 **Global optimum**이다. **이 값을 찾아가기 위해서 Gradient Descent를 사용한다.** --- ### Gradient Descent 포물선위의 한 점에서 Cost function미분을 하면, 그 점에서의 기울기를 알 수 있다. - 기울기가 음수일때 오른쪽으로 이동하고 - 기울기가 양수일때 왼쪽으로 이동 위의 과정을 반복하면서 Global optimum을 찾아간다. 결국 최적의 Weight와 Bias를 찾는다. --- ### Diagram [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9) --- ## Regression의 종류 Depending on the number of dependent variables - Univariate regression model - Linear regression model - Polynomial regression model - Multivariate regression model">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="/home/ines/.config/Typora/typora-user-images/image-20200421193001321.png">
+<meta property="og:image" content="/home/ines/.config/Typora/typora-user-images/image-20200421183654515.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="선형 모델 (Linear Model)">
+<meta name="twitter:description" content="# 선형 모델 (Linear Model) 그래프로 출력했을때의 선으로써 표현되는게 Linear Model이 아니라, 계수(Weight)들이 선형결합관계에 있을때 Linear Model이라고 한다. 즉 아래의 함수들도 모두 선형이라는 것이다. - $ y = \beta_0 + \beta_1x + \beta_2x^2 + \beta_3x^3 $ - $ y = \beta_0x^{\beta_1} * - $ y = {e^{\beta_1x_1+\beta_2x_2}\over 1+{e^{\beta_1x_1+\beta_2x_2}}} $ Linear model은 간단하고, 모델을 해석하기가 쉽다. 또한 적은 개수의 Data를 가지고 Nonlinear model을 만드는 것 보다 여러면에서 유리하다. 하지만 복잡한 패턴을 가지고있는 데이터에 대해서는 Performance가 떨어지는데, 정교한 예측이 필요한 경우는 Neural Network와 같은 비선형모델이 사용되고 있다. --- ## Linear Regression Supervised Learning에 필요한 데이터를 가지고 있다고 할 때, **선형회귀는 완전히 새로운 X값이 주어졌을때 y값을 예측할 수가 있다.** 처음에는 Weight와 Bias에 임의의 값을 넣어주고, 반복적인 Operation을 통해 **W와 b를 Cost function가 최소화하는 방향으로 Update시킨다.** --- ### Hypothesis 가설(Hypothesis)을 세운다. - $ Hypothesis : $ H(W,b) = Wx +b $ 만약 x가 x면, y는 Wx +b일 것이다. 이때 이 가설을 주어진 Data에 최적화 시키기 위해서, **Cost function을 지표로 하여** Weight와 Bias를 Update시킨다. --- ### Cost Function **Cost Function이란 이 가설의 예측값이 얼마나 틀렸는지를 나타내는값!** - **Cost가 크다?** -&amp;gt; 많이 틀렸다. - **Cost가 작다?** -&amp;gt; 조금 틀렸다. - **Cost가 0이다?** -&amp;gt; W와 b가 최적화된 값이다. 보통 MSE를 사용한다. $ Cost(W,b) = {1\over M}\sum_{i=1}^M(Wx_i +b -y_i)^2 $ Cost function에서 **제곱의 효과** - Cost의 값은 항상 양수 - 작은 차이로도 Model에 큰 Panelty를 줄 수가 있다. **Cost function을 이용해서 어떻게 Weight와 Bias를 수정하는걸까?** Bias를 고정시킨 상태로 Weight만 수정한다고 했을때, cost function과 w의 관계를 좌표평면에 제곱에 양수이기 때문에, 아래로 볼록한 포물선이 나온다. 이때, 이 포물선의 최소값을 나타내는 Weight값이 **Global optimum**이다. **마찬가지로 Weight를 수정하고 Bias를 수정한다고 했을 때 똑같이 포물선이 나오게 된다.** 이 포물선의 최소값을 나타내는 Bias값이 **Global optimum**이다. **이 값을 찾아가기 위해서 Gradient Descent를 사용한다.** --- ### Gradient Descent 포물선위의 한 점에서 Cost function미분을 하면, 그 점에서의 기울기를 알 수 있다. - 기울기가 음수일때 오른쪽으로 이동하고 - 기울기가 양수일때 왼쪽으로 이동 위의 과정을 반복하면서 Global optimum을 찾아간다. 결국 최적의 Weight와 Bias를 찾는다. --- ### Diagram [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9) --- ## Regression의 종류 Depending on the number of dependent variables - Univariate regression model - Linear regression model - Polynomial regression model - Multivariate regression model">
+<meta name="twitter:image" content="/home/ines/.config/Typora/typora-user-images/image-20200421193001321.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>              선형 모델 (Linear Model) | Ko      </title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ko</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<div id="posts" class="posts-expand">
+<header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">
+    
+      선형 모델 (Linear Model)
+    
+  </h1>
+
+
+
+</header>
+
+  
+  
+    <h1 id="선형-모델-linear-model">선형 모델 (Linear Model)</h1>
+
+<p>그래프로 출력했을때의 선으로써 표현되는게 Linear Model이 아니라,</p>
+
+<p>계수(Weight)들이 선형결합관계에 있을때 Linear Model이라고 한다.</p>
+
+<p>즉 아래의 함수들도 모두 선형이라는 것이다.</p>
+
+<ul>
+  <li>$ y = \beta_0 + \beta_1x + \beta_2x^2 + \beta_3x^3 $</li>
+  <li>$ y = \beta_0x^{\beta_1} *</li>
+  <li>$ y = {e^{\beta_1x_1+\beta_2x_2}\over 1+{e^{\beta_1x_1+\beta_2x_2}}} $</li>
+</ul>
+
+<p>Linear model은 간단하고, 모델을 해석하기가 쉽다.</p>
+
+<p>또한 적은 개수의 Data를 가지고 Nonlinear model을 만드는 것 보다 여러면에서 유리하다.</p>
+
+<p>하지만 복잡한 패턴을 가지고있는 데이터에 대해서는 Performance가 떨어지는데,</p>
+
+<p>정교한 예측이 필요한 경우는 Neural Network와 같은 비선형모델이 사용되고 있다.</p>
+
+<hr />
+
+<h2 id="linear-regression">Linear Regression</h2>
+
+<p>Supervised Learning에 필요한 데이터를 가지고 있다고 할 때,</p>
+
+<p><strong>선형회귀는 완전히 새로운 X값이 주어졌을때 y값을 예측할 수가 있다.</strong></p>
+
+<p>처음에는 Weight와 Bias에 임의의 값을 넣어주고, 반복적인 Operation을 통해</p>
+
+<p><strong>W와 b를 Cost function가 최소화하는 방향으로 Update시킨다.</strong></p>
+
+<hr />
+
+<h3 id="hypothesis">Hypothesis</h3>
+
+<p>가설(Hypothesis)을 세운다.</p>
+
+<ul>
+  <li>$ Hypothesis : $ H(W,b) = Wx +b $</li>
+</ul>
+
+<p>만약 x가 x면, y는 Wx +b일 것이다.</p>
+
+<p>이때 이 가설을 주어진 Data에 최적화 시키기 위해서, <strong>Cost function을 지표로 하여</strong> Weight와 Bias를 Update시킨다.</p>
+
+<hr />
+
+<h3 id="cost-function">Cost Function</h3>
+
+<p><strong>Cost Function이란 이 가설의 예측값이 얼마나 틀렸는지를 나타내는값!</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Cost가 크다?</strong></p>
+
+    <p>-&gt; 많이 틀렸다.</p>
+  </li>
+  <li>
+    <p><strong>Cost가 작다?</strong></p>
+
+    <p>-&gt; 조금 틀렸다.</p>
+  </li>
+  <li>
+    <p><strong>Cost가 0이다?</strong></p>
+
+    <p>-&gt; W와 b가 최적화된 값이다.</p>
+  </li>
+</ul>
+
+<p>보통 MSE를 사용한다.</p>
+
+<p>$ Cost(W,b) = {1\over M}\sum_{i=1}^M(Wx_i +b -y_i)^2 $</p>
+
+<p>Cost function에서 <strong>제곱의 효과</strong></p>
+
+<ul>
+  <li>Cost의 값은 항상 양수</li>
+  <li>작은 차이로도 Model에 큰 Panelty를 줄 수가 있다.</li>
+</ul>
+
+<p><strong>Cost function을 이용해서 어떻게 Weight와 Bias를 수정하는걸까?</strong></p>
+
+<p>Bias를 고정시킨 상태로 Weight만 수정한다고 했을때,</p>
+
+<p>cost function과 w의 관계를 좌표평면에 제곱에 양수이기 때문에, 아래로 볼록한 포물선이 나온다.</p>
+
+<p><img src="/home/ines/.config/Typora/typora-user-images/image-20200421193001321.png" alt="image-20200421193001321" width="600px" height="300px" align="center" /></p>
+
+<p>이때, 이 포물선의 최소값을 나타내는 Weight값이 <strong>Global optimum</strong>이다.</p>
+
+<p><strong>마찬가지로 Weight를 수정하고 Bias를 수정한다고 했을 때 똑같이 포물선이 나오게 된다.</strong></p>
+
+<p>이 포물선의 최소값을 나타내는 Bias값이 <strong>Global optimum</strong>이다.</p>
+
+<p><strong>이 값을 찾아가기 위해서 Gradient Descent를 사용한다.</strong></p>
+
+<hr />
+
+<h3 id="gradient-descent">Gradient Descent</h3>
+
+<p>포물선위의 한 점에서 Cost function미분을 하면, 그 점에서의 기울기를 알 수 있다.</p>
+
+<ul>
+  <li>기울기가 음수일때 오른쪽으로 이동하고</li>
+  <li>기울기가 양수일때 왼쪽으로 이동</li>
+</ul>
+
+<p>위의 과정을 반복하면서 Global optimum을 찾아간다.</p>
+
+<p>결국 최적의 Weight와 Bias를 찾는다.</p>
+
+<p><img src="/home/ines/.config/Typora/typora-user-images/image-20200421183654515.png" alt="image-20200421193001321" width="600px" height="300px" align="center" /></p>
+
+<hr />
+
+<h3 id="diagram">Diagram</h3>
+
+<p><a href="https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtEYXRhXSAtLT58aW5wdXR8IEIoSHlwb3RoZXNpcylcblx0QiAtLT4gQ1tDb3N0IEZ1bmN0aW9uXVxuICBDIC0tPiBEWzDsnbjqsIA_XVxuICBEIC0tPiB8Tm98IENcbiAgRCAtLT4gfFllc3wgRVtHbG9iYWwgT3B0aW11bV1cblxuXHRcdFx0XHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9" alt="" /></a></p>
+
+<hr />
+
+<h2 id="regression의-종류">Regression의 종류</h2>
+
+<p>Depending on the number of dependent variables</p>
+
+<ul>
+  <li>Univariate regression model
+    <ul>
+      <li>Linear regression model</li>
+      <li>Polynomial regression model</li>
+    </ul>
+  </li>
+  <li>Multivariate regression model</li>
+</ul>
+
+
+  
+</div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="고중범" />
+          <p class="site-author-name" itemprop="name">고중범</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">고중범</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
