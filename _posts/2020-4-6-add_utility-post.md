@@ -51,8 +51,8 @@ priority : 1.0
 
 ```html
 <script src="https://utteranc.es/client.js"
-        repo="Kojungbeom/-wareHouse"
-        issue-term="pathname"
+        repo="Kojungbeom/kojungbeom.github.io"
+        issue-term="title"
         theme="github-light"
         crossorigin="anonymous"
         async>
