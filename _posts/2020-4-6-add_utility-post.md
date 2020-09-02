@@ -7,10 +7,6 @@ categories:
 tags:
   - Information
   - Jekyll
-lastmod : 2020-4-6 12:00:00
-sitemap :
-changefreq : daily
-priority : 1.0
 ---
 
 
@@ -48,16 +44,6 @@ priority : 1.0
 1. **/_includes 에 아래와 같은 코드를 가진 comments.html 파일을 만든다.**
 
    -comments.html-
-
-```html
-<script src="https://utteranc.es/client.js"
-        repo="Kojungbeom/-wareHouse"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-```
 
 
 
