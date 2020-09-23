@@ -2,53 +2,53 @@
 
 
 
-Linear regression, Logistic regression에 대해 알아야함
+Linear regression, Logistic regression에 대해 알아야한다. 가장 말단에서 이루어지는 기본적인 Two calculation principle
 
-- 가장 말단에서 이루어지는 기본적인 두가지 계산원리
+- Linear regression은 단순하게 이야기해서 데이터를 잘 반영하고있는 Continuous Function를 얻어내는 것 이다.
 
-
-
-Linear regression은 단순하게 이야기해서 데이터를 잘 반영하고있는연속함수를 얻어내는 것 이다.
-
-Logistic regression은 보통 Binary Classification, 출력단에서 자주 사용된다.
+- Logistic regression은 보통 Binary Classification, Output단에서 자주 사용된다.
 
 
 
 #### Linear regression
 
-독립변수 x를 이용해 종속변수 y의 움직임을 예측하고 설명하는 작업
+독립변수 x를 이용해 종속변수 y의 움직임을 예측하고 설명하는 작업이다. Independent variable의 수에 따라서 Simple Linear regression과 Multiple Linear regression으로 나뉜다.
 
-- 독립변수 x가 하나?
-  - 단순 선형회귀
-- 여러개
-  - 다중 선형회귀
+Simple Linear regression의 경우 `y = ax + b`와 같은 형태를 띄는데, a와 b가 parameter가 되고, 주어진 Input data를 가장 잘 반영하는 최적의 a와 b를 찾아내는 것이 목표다. 여기서 어떤게 최적의 `a,b`인지에 대한 정답은 없지만 보통은 Loss function을 정의하여 가장 작게 나오게 하는 `a,b`를 정답으로 하는 경우가 많다.)
 
-단순 선형회귀의 경우 y = ax + b라고 할 수 있는데, 여기서 데이터를 가장 잘 반영하는 최적의 기울기와 b를 찾아내는 것이 목표가 되겠다. (정답은 없다. 하지만 보통은 loss가 가장 작게 나오게 되는 선을 정답으로 하는 경우가 많다.)
+- error = (Label) - (Hypothesis)
 
-- error = (예측값) - (측정값)
-
-이걸 그냥안쓰고 보통 최소제곱법을 사용한다. (부호를 맞춰주기 위해서)
+위 식을 보면 측정값과 예측값에 따라서 음수가 나올수도 있는데, 보통 Error를 이대로 쓰지않고 부호를 맞춰주기 위해 최소제곱법을 사용한다.
 
 
 
-#### Least Mean Squares Method
+#### Least Mean Squares Method [Reference](https://web.williams.edu/Mathematics/sjmiller/public_html/BrownClasses/54/handouts/MethodLeastSquares.pdf)
 
-![image-20200910091957459](C:\Users\jungse\AppData\Roaming\Typora\typora-user-images\image-20200910091957459.png)
-
-보면 2차방정식 형태가 만들어지는데, 이건 아래로 볼록한 포물선 형태로 그래프가 그려질 것이고, 이때 한 점에서의 기울기가 0이라면 그때가 바로 error가 가장 작은 경우가 된다. 기울기를 구할때는 a에 대해서 편미분, 그리고 b에 대해서 편미분한 뒤, a와 b로 정리해서 각각의 값을 구할 수 있다.
+Error를 구할때는 한점에서의 Error만 구하진 않는다. Input 전체에서 Error를 구하고 모두 합한것이 최종 Error가 되는데, 이를 식으로 표현하면 다음과 같다.
+$$
+{1 \over N}\sum^N_i((Label) - (Hypothesis)) = {1 \over N}\sum^N_i(y_i - f(a,b))
+$$
+여기서 위에서 이야기한것처럼 부호를 맞춰주기위해 Error에 제곱을 시켜주면 아래의 형태가 나온다.
+$$
+\begin{align}
+&{1 \over N}\sum^N_i(y_i - f(a,b))^2 = {1 \over N}\sum^N_i(y_i - (ax_i+b))^2\\
+&{\partial E \over \partial a}=  {\sum^N_i2(y_i - (ax_i+b))} \cdot (-x_i) \\
+&{\partial E \over \partial b}=  {\sum^N_i2(y_i - (ax_i+b))} \cdot 1 \\
+&(\sum^N_ix_i^2)a + (\sum^N_ix_i)b = \sum^N_ix_iy_i \\
+&(\sum^N_ix_i)a + (\sum^N_i1)b = \sum^N_iy_i \\
+&\begin{pmatrix} \sum^N_ix_i^2 & \sum^N_ix_i \\ \sum^N_ix_i & \sum^N_i1 \end{pmatrix} {a \choose b}
+= {\sum^N_ix_iy_i  \choose \sum^N_iy_i }
+ \end{align}
+$$
+2차방정식 형태이기 때문에 아래로 볼록한 포물선 형태로 그래프가 그려질 것이고, 이때 한 점에서의 기울기가 0이라면 그때가 바로 error가 가장 작은 경우가 된다. 기울기를 구할때는 a에 대해서 편미분, 그리고 b에 대해서 편미분한 뒤, a와 b로 정리해서 각각의 값을 구할 수 있다.
 
 - 편미분 = Partial derivative
 - 포물선 = Parabola
-
 - 기울기 = Gradient
 - E = Expectation (평균)
 - 2차방정식 = Quadratic equation
 
-우측 하단에 a의 마지막식은 위아래 n을 나눠줘서 식을 저렇게 변형시켜줄 수 있다.
-
-
-
-최소제곱법 python 숙제
+매우 간단한 식이기 때문에 파이썬으로 구현하기도 쉽다. 
 
 ```python
 import numpy as np
