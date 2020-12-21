@@ -1,6 +1,6 @@
 ---
-title:  "Graphic Card를 교체해보자!"
-excerpt: "Graphic card 교체하는 방법"
+title:  Graphic Card를 교체해보자!
+excerpt: Graphic card 교체하는 방법
 date: 2020-12-21 12:00:00
 categories:
   - Information
@@ -48,7 +48,7 @@ $ sudo apt autoclean
 
 교체된 그래픽카드에 맞는 그래픽 드라이버들이 인식되어 있는것을 확인할 수 있다. 
 
-<img src="../images/how_to_change_graphic_card/software_and_updates.png" width="800px" height="400px" align="center">
+<img src="/images/how_to_change_graphic_card/software_and_updates.png" width="800px" height="400px" align="center">
 
 원하는 드라이버를 선택한 후 `Apply Changes`를 눌러준다음 다시 reboot 해주면 정상적으로 그래픽 드라이버가 깔리고 정상적으로 모든것이 실행되는 것을 볼 수 있다.
 

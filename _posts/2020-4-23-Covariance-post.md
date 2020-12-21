@@ -1,6 +1,6 @@
 ---
-title:  "Covariance (공분산)"
-excerpt: "공분산이란?"
+title:  Covariance (공분산)
+excerpt: 공분산이란?
 date: 2020-4-23 12:00:00
 categories:
   - Information
@@ -29,7 +29,7 @@ The *Covariance* is a measure of how much the values of each of two **correlated
 
 먼저 $ E(X-m_x) $에 대해 생각해보자. (X에 대해서만 1차원적으로 생각해보자.)
 
-<img src="../images/About Covariance/1.png" width="800px" height="200px" align="center"> 
+<img src="/images/About Covariance/1.png" width="800px" height="200px" align="center"> 
 
 이렇게 X축 위에 3개의 숫자가 있다. 각각 A=1, B=2, C=3이다.
 
@@ -37,7 +37,7 @@ The *Covariance* is a measure of how much the values of each of two **correlated
 
 
 
-<img src="../images/About Covariance/2.png" width="800px" height="200px" align="center"> 
+<img src="/images/About Covariance/2.png" width="800px" height="200px" align="center"> 
 
 그렇다면 $ X - m_x = [A-2, B-2, C-2]$가 된다. 
 
@@ -55,7 +55,7 @@ Y = [0,\ 0.5,\ 1,\ 1.5,\ 2]
 $$
 두가지 확률변수 값들을 2차원 좌표평면에 나타내보면
 
-<img src="../images/About Covariance/3-4.png" width="800px" height="400px" align="center"> 
+<img src="/images/About Covariance/3-4.png" width="800px" height="400px" align="center"> 
 
 위의 왼쪽 그래프와 같은 산점도가 그려진다. 여기서 X와 Y의 평균(기대값)을 축으로 표현하면 오른쪽 그래프와 같다.
 
@@ -115,7 +115,7 @@ $$
 
 ### 첫번째 약점
 
-<img src="../images/About Covariance/5-6.png" width="800px" height="400px" align="center"> 
+<img src="/images/About Covariance/5-6.png" width="800px" height="400px" align="center"> 
 
 예를들어, 위 그래프와 같이 2차함수의 모양으로 분포되어 있다고 할 때, 이런식으로 표현이 되는데, X와 Y는 2차함수의 관계를 가지지만,
 
