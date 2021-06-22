@@ -1,0 +1,9 @@
+title: Challenges
+email: rhwndqja@icloud.com
+description: >
+  This is the kjb Jekyll Theme.
+baseurl: "https://kojungbeom.com"
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+background-image: url('spacex-693229.jpg')

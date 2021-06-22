@@ -1,0 +1,35 @@
+.current { background-color: green; }
+
+.button1 { width: 160px; height: 160px; background-image: url("/img/button1.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+
+.button2 { width: 160px; height: 160px; background-image: url("/img/button2.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+
+.button3 { width: 160px; height: 160px; background-image: url("/img/button3.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+
+.button4 { width: 160px; height: 160px; background-image: url("/img/button4.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+
+#container { width: 1280px; margin: 0px auto; padding: 20px; border: 1px solid #bcbcbc; }
+
+#header { padding: 20px; margin-bottom: 20px; border: 1px solid #bcbcbc; }
+
+#sidebar-left { width: 160px; padding: 20px; margin-right: 20px; margin-bottom: 20px; float: left; border: 1px solid #bcbcbc; }
+
+#content { width: 860px; height: 500px; padding: 20px; margin-right: 20px; margin-bottom: 20px; float: left; border: 1px solid #bcbcbc; }
+
+#post-content { width: 860px; padding: 20px; margin: 0px auto; border: 1px solid #bcbcbc; }
+
+#post-title { width: 860px; padding: 20px; margin: 10px auto; border: 1px solid #bcbcbc; }
+
+#post-iconbar { clear: both; margin: 0px auto; width: 700px; height: 200px; padding: 10px; text-align: center; position: fixed; left: 33.5%; top: 80%; }
+
+#sidebar-right { width: 280px; height: 500px; padding: 20px; margin-bottom: 20px; float: right; border: 1px solid #bcbcbc; }
+
+#footer { clear: both; padding: 20px; border: 1px solid #bcbcbc; }
+
+#iconbar { clear: both; margin: 0px auto; width: 700px; height: 200px; padding: 10px; text-align: center; }
+
+#img { width: 160px; height: 160px; padding: 5px; margin-left: auto; margin-right: auto; float: left; border: none; text-align: center; }
+
+.vl { border-left: 6px solid green; height: 1000px; position: absolute; left: 50%; margin-left: -3px; top: 0; }
+
+/*# sourceMappingURL=styles.css.map */
