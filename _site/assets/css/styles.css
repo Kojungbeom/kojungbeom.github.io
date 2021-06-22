@@ -1,28 +1,32 @@
 .current { background-color: green; }
 
-.button1 { width: 160px; height: 160px; background-image: url("/img/button1.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+.button1 { width: 160px; height: 160px; background-image: url("/img/button1.png"); background-repeat: no-repeat; background-size: contain; background-color: rgba(211, 211, 211, 0.5); border: none; cursor: pointer; text-align: center; }
 
-.button2 { width: 160px; height: 160px; background-image: url("/img/button2.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+.button2 { width: 160px; height: 160px; background-image: url("/img/button2.png"); background-repeat: no-repeat; background-size: contain; background-color: rgba(211, 211, 211, 0.5); border: none; cursor: pointer; text-align: center; }
 
-.button3 { width: 160px; height: 160px; background-image: url("/img/button3.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+.button3 { width: 160px; height: 160px; background-image: url("/img/button3.png"); background-repeat: no-repeat; background-size: contain; background-color: rgba(211, 211, 211, 0.5); border: none; cursor: pointer; text-align: center; }
 
-.button4 { width: 160px; height: 160px; background-image: url("/img/button4.png"); background-repeat: no-repeat; background-size: contain; border: none; cursor: pointer; text-align: center; }
+.button4 { width: 160px; height: 160px; background-image: url("/img/button4.png"); background-repeat: no-repeat; background-size: contain; background-color: rgba(211, 211, 211, 0.5); border: none; cursor: pointer; text-align: center; }
 
-#container { width: 1280px; margin: 0px auto; padding: 20px; border: 1px solid #bcbcbc; }
+#container { width: 90%; margin: 0px auto; padding: 20px; }
 
-#header { padding: 20px; margin-bottom: 20px; border: 1px solid #bcbcbc; }
+#header { padding: 20px; margin-bottom: 20px; text-align: center; }
 
 #sidebar-left { width: 160px; padding: 20px; margin-right: 20px; margin-bottom: 20px; float: left; border: 1px solid #bcbcbc; }
 
-#content { width: 860px; height: 500px; padding: 20px; margin-right: 20px; margin-bottom: 20px; float: left; border: 1px solid #bcbcbc; }
+#content { width: 65%; height: 500px; padding: 10px; margin-right: 20px; margin-bottom: 20px; float: left; border: 2px solid #000000; }
+
+#tt1 { width: 102.2%; height: 30px; margin-top: -28.5px; margin-right: 0px; margin-left: -10px; background-color: plum; text-align: left; }
+
+#tt2 { width: 111.1%; height: 30px; margin-top: -40px; margin-right: 0px; margin-left: -20px; background-color: plum; text-align: left; }
 
 #post-content { width: 860px; padding: 20px; margin: 0px auto; border: 1px solid #bcbcbc; }
 
 #post-title { width: 860px; padding: 20px; margin: 10px auto; border: 1px solid #bcbcbc; }
 
-#post-iconbar { clear: both; margin: 0px auto; width: 700px; height: 200px; padding: 10px; text-align: center; position: fixed; left: 33.5%; top: 80%; }
+#post-iconbar { clear: both; margin: 0px auto; width: auto; height: auto; padding: 10px; background-color: rgba(211, 211, 211, 0.5); text-align: center; position: fixed; left: 38.6%; top: 85%; }
 
-#sidebar-right { width: 280px; height: 500px; padding: 20px; margin-bottom: 20px; float: right; border: 1px solid #bcbcbc; }
+#sidebar-right { width: 25%; height: 500px; padding: 20px; margin-bottom: 20px; float: right; border: 2px solid #000000; }
 
 #footer { clear: both; padding: 20px; border: 1px solid #bcbcbc; }
 

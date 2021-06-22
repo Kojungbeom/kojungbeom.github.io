@@ -1,40 +1,4 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <style>
-    </style>
-  </head>
-  <body>
-  <style>
-.button1{
-    width: 80px;
-    height:80px;
-}
-.button2{
-    width: 80px;
-    height:80px;
-}
-.button3{
-    width: 80px;
-    height:80px;
-}
-.button4{
-    width: 80px;
-    height:80px;
-}
-#img{
-    width: 80px;
-    height:80px;
-}
-</style>
-<div id="post-title">
-<h1>Data_structure_week1 Post</h1>
-<p>21 Mar 2020 - Jungbeom</p>
-</div>
-<div id="post-content">
-    <p>KAIST 산업및시스템공학과 문일철 교수님의</p>
+I""<p>KAIST 산업및시스템공학과 문일철 교수님의</p>
 
 <p>데이터 구조 및 분석: Linear Structure and Dynamic Programming</p>
 
@@ -212,22 +176,4 @@ KAIST 산업및시스템공학과 문일철 교수님의</p>
 <p>실제로 실무에 나가게 되면, Analyzed 된 데이터를 다루는게 아니라 직접 Analyze해야하기 때문에 Analyzing method는 매우 중요함 (할 줄 알아야 함)</p>
 
 <p>파이썬은 Analizing의 key가 되</p>
-
-</div>   
-<div id="post-iconbar">
-    <div id="img">
-        <input type="button" class="button1" onClick="location.href='/about.html'">
-    </div>
-    <div id="img"> 
-        <input type="button" class="button2" onClick="location.href='/blog.html'">
-    </div>
-
-    <div id="img">
-        <input type="button" class="button3" onClick="location.href='/index.html'">
-    </div>
-    <div id="img">
-        <input type="button" class="button4" onClick="location.href='/index.html'">
-    </div>
-</div>
-  </body>
-</html>
+:ET
