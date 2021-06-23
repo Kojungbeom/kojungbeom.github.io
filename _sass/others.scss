@@ -1,0 +1,197 @@
+.current {
+  background-color: green;
+}
+
+.button1 {
+    width: 160px;
+    height: 160px;
+    background-image: url("/img/button1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba( 211, 211, 211, 0.5 );
+    opacity: 0.1;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.button1:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+.button1:hover{
+  opacity: 0.9;
+}
+
+.button2 {
+    width: 160px;
+    height: 160px;
+    background-image: url("/img/button2.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba( 211, 211, 211, 0.5 );
+    opacity: 0.1;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.button2:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+.button2:hover{
+  opacity: 0.9;
+}
+
+.button3 {
+    width: 160px;
+    height: 160px;
+    background-image: url("/img/button3.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba( 211, 211, 211, 0.5 );
+    opacity: 0.1;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.button3:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+.button3:hover{
+  opacity: 0.9;
+}
+
+.button4 {
+    width: 160px;
+    height: 160px;
+    background-image: url("/img/button4.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba( 211, 211, 211, 0.5 );
+    opacity: 0.1;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.button4:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+.button4:hover{
+  opacity: 0.9;
+}
+
+#container {
+  width: 90%;
+  margin: 0px auto;
+  padding: 20px;
+}
+#header {
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#sidebar-left {
+  width: 160px;
+  padding: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float: left;
+  border: 1px solid #bcbcbc;
+}
+#content {
+  width: 65%;
+  height: 500px;
+  padding: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float: left;
+  border: 2px solid #000000;
+}
+#tt1 {
+  width: 102.2%;
+  height: 30px;
+  margin-top: -28.5px;
+  margin-right: 0px;
+  margin-left: -10px;
+  background-color: rgb( 221, 160, 221);
+  text-align: left;
+}
+#tt2 {
+  width: 111.1%;
+  height: 30px;
+  margin-top: -40px;
+  margin-right: 0px;
+  margin-left: -20px;
+  background-color: rgb( 221, 160, 221);
+  text-align: left;
+}
+#post-content {
+  width: 860px;
+  padding: 20px;
+  margin: 0px auto;
+  border: 1px solid #bcbcbc;
+}
+#post-title {
+  width: 860px;
+  padding: 20px;
+  margin: 10px auto;
+  border: 1px solid #bcbcbc;
+}
+#post-iconbar {
+  clear: both;
+  margin: 0px auto;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  background-color: rgba( 211, 211, 211, 0.5 );
+  text-align: center;
+  position: fixed;
+  left: 38.6%;
+  top: 85%;
+}
+
+#sidebar-right {
+  width: 25%;
+  height: 500px;
+  padding: 20px;
+  margin-bottom: 20px;
+  float: right;
+  border: 2px solid #000000;
+}
+#footer {
+  clear: both;
+  padding: 20px;
+  border: 1px solid #bcbcbc;
+}
+#iconbar {
+  clear: both;
+  margin: 0px auto;
+  width: 700px;
+  height: 200px;
+  padding: 10px;
+  text-align: center;
+}
+#img {
+  width: 160px;
+  height: 160px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  float: left;
+  border: none;
+  text-align: center;
+}
+.vl {
+  border-left: 6px solid green;
+  height: 1000px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+}
