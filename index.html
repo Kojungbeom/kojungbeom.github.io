@@ -15,16 +15,34 @@ title: Home
 .button4{
     background-color: white;
 }
+dataauthor{
+  text-align: right;
+}
+p { font-family: sans-serif; }
+.w { text-align: left; }
+.x { text-align: right; }
+.y { text-align: center; }
+.z { text-align: justify; }
 </style>
 <div id="container">
       <div id="header">
-        <h1>This is Title</h1>
+        <h1>INES LAB AI TEAM</h1>
       <div class="vl"></vl>
       </div>
       <div id="content">
         <div id="tt1">
-          <h3>Content</h3>
+          <h2>Recent Posts</h2>
         </div>
+        <ul>
+          {% for post in site.posts %}
+            <li>
+              <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+              {{ post.excerpt }}
+              <p class="x">{{ post.date | date_to_string }} - {{ post.author }}</p>
+              <hr>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
       <div id="sidebar-right">
         <div id="tt2">

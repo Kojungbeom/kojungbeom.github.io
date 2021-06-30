@@ -22,7 +22,7 @@
 
 #sidebar-left { width: 160px; padding: 20px; margin-right: 20px; margin-bottom: 20px; float: left; border: 1px solid #bcbcbc; }
 
-#content { width: 65%; height: 500px; padding: 10px; margin-right: 20px; margin-bottom: 20px; float: left; border: 2px solid #000000; }
+#content { width: 65%; height: auto; padding: 10px; margin-right: 20px; margin-bottom: 20px; float: left; text-align: left; }
 
 #post-content { width: 860px; padding: 20px; margin: 0px auto; border: 1px solid #bcbcbc; }
 
@@ -30,7 +30,7 @@
 
 #post-iconbar { clear: both; margin: 0px auto; width: auto; height: auto; padding: 10px; background-color: rgba(211, 211, 211, 0.2); text-align: center; position: fixed; left: 41%; top: 85%; }
 
-#sidebar-right { width: 25%; height: 500px; padding: 20px; margin-bottom: 20px; float: right; border: 2px solid #000000; }
+#sidebar-right { width: 25%; height: 700px; padding: 20px; margin-bottom: 20px; float: right; border: 2px solid #000000; }
 
 #footer { clear: both; padding: 20px; border: 1px solid #bcbcbc; }
 
@@ -40,7 +40,9 @@
 
 .vl { border-left: 6px solid green; height: 1000px; position: absolute; left: 50%; margin-left: -3px; top: 0; }
 
-#tt1 { width: 102.2%; height: 30px; margin-top: -28.5px; margin-right: 0px; margin-left: -10px; background-color: plum; text-align: left; }
+.hl { border-left: 6px solid green; width: 450px; position: absolute; margin-left: -3px; }
+
+#tt1 { width: auto; height: 50px; margin-top: -28.5px; margin-right: 0px; margin-left: -10px; text-align: left; }
 
 #tt2 { width: 111.1%; height: 30px; margin-top: -40px; margin-right: 0px; margin-left: -20px; background-color: plum; text-align: left; }
 
