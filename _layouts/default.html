@@ -3,16 +3,13 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{site.baseurl}}/assets/css/styles.css">
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
     <style>
     </style>
   </head>
   <body>
   {{content}}
   </body>
+  {% if page.use_math %}
+    {% include mathjax_support.html %}
+  {% endif %}
 </html>
