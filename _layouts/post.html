@@ -1,51 +1,65 @@
----
-layout: default
----
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        {%- include head.html -%}
 
-<style>
-.button1{
-    width: 80px;
-    height:80px;
-}
-.button2{
-    width: 80px;
-    height:80px;
-}
-.button3{
-    width: 80px;
-    height:80px;
-}
-.button4{
-    width: 80px;
-    height:80px;
-}
-#img{
-    width: 80px;
-    height:80px;
-}
-</style>
+        {% if page.previous %}
+            <link rel="prev" href="{{site.baseurl}}{{page.previous.url}}" />
+        {% else %}
+            <link rel="prev" href="{{site.baseurl}}/" />
+        {% endif %}
 
-<div id="post-title">
-<h1>{{ page.title }}</h1>
+        {% if page.next %}
+            <link rel="next" href="{{site.baseurl}}{{page.next.url}}" />
+        {% endif %}
+    </head>
+    <body>
+        <div class="book">
 
-<p>{{ page.date | date_to_string }} - {{ page.author }}</p>
-<div class="vl"></vl>
-</div>
-<div id="post-content">
-    {{ content }}
-</div>   
-<div id="post-iconbar">
-    <div id="img">
-        <input type="btn" class="btn btn--b1 btn--bp" onClick="location.href='/about.html'">
-    </div>
-    <div id="img"> 
-        <input type="btn" class="btn btn--b2 btn--bp" onClick="location.href='/blog.html'">
-    </div>
+            {%- include toc-date.html -%}
 
-    <div id="img">
-        <input type="button" class="btn btn--b3 btn--bp" onClick="location.href='/index.html'">
-    </div>
-    <div id="img">
-        <input type="button" class="btn btn--b4 btn--bp" onClick="location.href='/index.html'">
-    </div>
-</div>
+            <div class="book-body">
+                <div class="book-header" role="navigation">
+                    <!-- Title -->
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        {% if page.title %}
+                            <a href="." >{{ page.title | escape }}</a>
+                        {% else %}
+                            <a href="." >{{ site.title | escape }}</a>
+                        {% endif %}
+                    </h1>
+                </div>
+
+                <div class="body-inner">
+                    {%- include body.html -%}
+
+                    {% if page.previous %}
+                        <a href="{{site.baseurl}}{{page.previous.url}}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{page.previous.title}}">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    {% else %}
+                        <a href="{{site.baseurl}}/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{site.title}}">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    {% endif %}
+
+                    {% if page.next %}
+                        <a href="{{site.baseurl}}{{page.next.url}}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{page.next.title}}">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({%- include metadata-post.json.tpl -%});
+            });
+            </script>
+        </div>
+
+        {%- include footer.html -%}
+    </body>
+</html>

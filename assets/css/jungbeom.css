@@ -1,0 +1,115 @@
+.btn1 {
+    width: 80px;
+    height: 80px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+    border-radius: 20px;
+    background: url( "/img/button1.png" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.1;
+}
+.btn1:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+
+.btn1:hover{
+  opacity: 0.8;
+}
+
+.btn2 {
+    width: 80px;
+    height: 80px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+    border-radius: 20px;
+    background: url( "/img/button2.png" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.1;
+}
+.btn2:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+
+.btn2:hover{
+  opacity: 0.8;
+}
+
+
+.btn3 {
+    width: 80px;
+    height: 80px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+    border-radius: 20px;
+    background: url( "/img/button3.png" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.1;
+}
+.btn3:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+
+.btn3:hover{
+  opacity: 0.8;
+}
+
+.btn4 {
+    width: 80px;
+    height: 80px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+    border-radius: 20px;
+    background: url( "/img/button4.png" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.1;
+}
+.btn4:active{
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+
+.btn4:hover{
+  opacity: 0.8;
+}
+#post-iconbar {
+  clear: both;
+  margin: 0px auto;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  background-color: rgba( 211, 211, 211, 0.2 );
+  text-align: center;
+  position: fixed;
+  left: 48%;
+  top: 85%;
+}
+
+#img {
+  width: 90px;
+  height: 90px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  float: left;
+  border: none;
+  text-align: center;
+}
