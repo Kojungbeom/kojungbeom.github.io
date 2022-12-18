@@ -14,9 +14,21 @@
 
 - Markdown 파일 최상단에 아래와 같이 YAML Front Matter 작성
 
+  - title에 [] 쓰지 말기
+  
   ```
   ---
+  title: LeetCode - 2. Add Two Number
+  author: JUNGBEOM KO
+  date: 2022-12-17
+  category: Jekyll
   layout: post
-  author: Name ex)JUNGBEOM
   ---
   ```
+
+
+
+
+
+
+

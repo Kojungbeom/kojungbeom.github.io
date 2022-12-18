@@ -1,230 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jekyll Gitbook</title><subtitle>Build Jekyll site with the GitBook style.
-</subtitle><author><name>HE Tao</name></author><entry><title type="html"></title><link href="http://localhost:4000/2022-12-17-2022-12-17-LeetCode-3.-Longest-Substring-Without-Repeating-Characters-JB.html" rel="alternate" type="text/html" title="" /><published>2022-12-17T15:29:59+09:00</published><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/2022-12-17-%5BLeetCode%5D-3.-Longest-Substring-Without-Repeating-Characters-JB</id><content type="html" xml:base="http://localhost:4000/2022-12-17-2022-12-17-LeetCode-3.-Longest-Substring-Without-Repeating-Characters-JB.html"><![CDATA[<h1 id="leetcode-3-longest-substring-without-repeating-characters">[LeetCode] 3. Longest Substring Without Repeating Characters</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-12-18T13:44:28+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jekyll Gitbook</title><subtitle>Build Jekyll site with the GitBook style.
+</subtitle><author><name>HE Tao</name></author><entry><title type="html"></title><link href="http://localhost:4000/2022-12-18-2022-10-15-EJ1.html" rel="alternate" type="text/html" title="" /><published>2022-12-18T13:44:28+09:00</published><updated>2022-12-18T13:44:28+09:00</updated><id>http://localhost:4000/2022-10-15-EJ1</id><content type="html" xml:base="http://localhost:4000/2022-12-18-2022-10-15-EJ1.html"><![CDATA[<h1 id="백준no10844_쉬운계단수_python">[백준no.10844]_쉬운계단수_python</h1>
 
-<p><code class="language-plaintext highlighter-rouge">LeetCode</code> 3번 문제를 풀어보았다.. <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/">Link</a></p>
+<h2 id="문제">문제</h2>
 
-<h1 id="problem">Problem</h1>
+<p>45656이란 수를 보자.</p>
 
-<p>Given a string <code class="language-plaintext highlighter-rouge">s</code>, find the length of the <strong>longest</strong> <strong>substring</strong> without repeating characters.</p>
+<p>이 수는 인접한 모든 자리수의 차이가 1이 난다. 이런 수를 계단 수라고 한다.</p>
 
-<h1 id="intuition">Intuition</h1>
+<p>세준이는 수의 길이가 N인 계단 수가 몇 개 있는지 궁금해졌다.</p>
 
-<p>Substring이 시작하는 곳을 <code class="language-plaintext highlighter-rouge">start</code>, 끝나는 곳을 <code class="language-plaintext highlighter-rouge">end</code>라고 할 때, <code class="language-plaintext highlighter-rouge">start</code>와 <code class="language-plaintext highlighter-rouge">end</code> 를 움직여가며 조건(without repeating characters)에 충족하는 모든 Substring의 길이를 비교하여 그 중 가장 긴 길이를 출력하면 될거라고 생각했다.</p>
+<p>N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구하는 프로그램을 작성하시오. (0으로 시작하는 수는 없다.)</p>
 
-<p>놀랍게도 처음에 풀 때는 그냥 수월하게 풀었는데 다시 풀 때 더 시간이 오래 걸렸다. 체계적인 복습이 중요하다..</p>
+<h3 id="입력">입력</h3>
 
-<h1 id="approach">Approach</h1>
+<p>첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은 자연수이다.</p>
 
-<p>모든 케이스를 전부 비교하는 Brute Force 알고리즘으로 풀었다.</p>
+<p>[예제 입력]</p>
 
-<ol>
-  <li>s[start:end] 안에 s[end]가 있는지 확인한다.
-    <ol>
-      <li>없으면 그때의 s[start:end]의 길이를 측정하고, max_length와 비교한다.
-        <ol>
-          <li>max_length보다 작으면 end point를 한칸 옮긴다.</li>
-          <li>max_length보다 크면 max_length를 end - start + 1로 update한다.</li>
-        </ol>
-      </li>
-      <li>있으면 max_length를 비교한다.
-        <ol>
-          <li>max_length보다 크면 max_length를 end - start로 update한다.</li>
-          <li>start point를 한칸 옮긴다.</li>
-        </ol>
-      </li>
-    </ol>
-  </li>
-  <li>start point가 len(s)-1에 도달할 때 까지 반복한다.</li>
-</ol>
-
-<h1 id="complexity">Complexity</h1>
-<ul>
-  <li>
-    <p>Time complexity:</p>
-
-    <p>이중 for loop로, \(O(n^2)\)라고 착각할 수 있지만, 문자열 Slice와의 비교가 있기 때문에 \(O(n^3)\)이다.</p>
-
-    <p>(이건 정확하지 않음..)</p>
-  </li>
-  <li>
-    <p>Space complexity:
-문자열에 중복 문자가 없는지 확인하는데는 \(O(n)\)이 필요하다.</p>
-  </li>
-</ul>
-
-<h1 id="my-code">My Code</h1>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="s">"""
-        Input: A string "s"
-        Output: The length or the longest substring without repeating characters.
-        """</span>
-        <span class="n">max_length</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-
-        <span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]:</span>
-                    <span class="k">if</span> <span class="n">max_length</span> <span class="o">&lt;</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span>
-                        <span class="n">max_length</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">max_length</span> <span class="o">&lt;</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="p">:</span>
-                        <span class="n">max_length</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span>
-                    <span class="k">break</span>
-
-        <span class="k">return</span> <span class="n">max_length</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span>
 </code></pre></div></div>
 
-<h1 id="others">Others</h1>
+<h3 id="출력">출력</h3>
 
-<p>Brute force을 사용한 내 풀이보다 더 효율적인 방법으로 최적화한 코드이다.</p>
+<p>첫째 줄에 정답을 1,000,000,000으로 나눈 나머지를 출력한다</p>
 
-<p>아이디어는 다음과 같다.</p>
+<p>[예제 출력]</p>
 
-<ul>
-  <li>예를들어 “abcade”가 있다고 했을 때, 기존의 Brute force 알고리즘으로 처리한다면 “abc”, “a”에서 멈추게 된다.</li>
-  <li>이때 굳이 나머지 “de”를 다 본 다음 새로운 start와 end point를 “b”, “c”로 옮기는 것이 아니라 중복이 없는 선까지 start point만 옮기는 방법을 사용한다. (코드와 함께보면 이해할 수 있을까?)</li>
-  <li>또한 여기서 필요없는 search algorithm을 피하기 위해 Hash map (python에서는 Dictionary)를 활용한다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
-        <span class="n">len_s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-        <span class="n">Mlength</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">end</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_s</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span>
-                <span class="n">start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">dict</span><span class="p">[</span><span class="n">end</span><span class="p">],</span> <span class="n">start</span><span class="p">)</span>
-            <span class="n">Mlength</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Mlength</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="nb">dict</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">end</span><span class="p">]]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">Mlength</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">9</span>
 </code></pre></div></div>
 
+<h2 id="풀이">풀이</h2>
+
+<p>[핵심 아이디어]</p>
+
 <ul>
-  <li>이 Approach의 Time complexity는 한 반복(end) 안에 끝나기 때문에 \(O(n)\)이다.</li>
-  <li>Space complexity도 Dictionary에 저장하는 공간을 생각하면 \(O(max(n, m))\)이다.</li>
-</ul>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-17-2022-12-17-LeetCode-2.-Add-Two-Number-JB.html" rel="alternate" type="text/html" title="" /><published>2022-12-17T15:29:59+09:00</published><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/2022-12-17-%5BLeetCode%5D-2.-Add-Two-Number-JB</id><content type="html" xml:base="http://localhost:4000/2022-12-17-2022-12-17-LeetCode-2.-Add-Two-Number-JB.html"><![CDATA[<h1 id="leetcode-2-add-two-number">[LeetCode] 2. Add Two Number</h1>
-
-<p><code class="language-plaintext highlighter-rouge">LeetCode</code> 2번 문제를 풀어보았다.. <a href="https://leetcode.com/problems/add-two-numbers/description/">Link</a></p>
-
-<h1 id="problem">Problem</h1>
-
-<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
-
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-
-<p>양수로 채워진 두개의 Linked list가 주어진다. 숫자들은 역순으로 저장되고, 각 노드에는 단일 숫자가 포함된다. 두 숫자의 합계를 Linked list으로 Return하라.</p>
-
-<h1 id="intuition">Intuition</h1>
-
-<p>어떤 특수한 알고리즘 사용이 필요하다기 보다는 Linked list Class의 특성을 이해하고 이를 코드로 옮기는 것이 중요하다고 생각했다.</p>
-
-<h1 id="approach">Approach</h1>
-<ol>
-  <li>
-    <p>각 Linked list <code class="language-plaintext highlighter-rouge">l1</code>, <code class="language-plaintext highlighter-rouge">l2</code>의 각 노드의 단일 숫자들에 접근하여 숫자로 만든다.</p>
-
+  <li>0~9까지의 숫자 중에서 각 숫자 앞 혹은 뒤에 올 수 있는 수의 개수는 각각 몇 개인지 따져봐야 함
     <ul>
-      <li>Example) <code class="language-plaintext highlighter-rouge">l1</code> = [2,4,3]이면 342로 만든다.</li>
+      <li>옆에 올 수 있는 숫자의 수를 따져볼때, 0은 무조건 앞에 1 하나만 올 수 있고, 9 또한 앞에 8밖에 올 수 없음</li>
+      <li>2~8까지 숫자는 앞 뒤로 +1, -1 숫자가 올 수 있음</li>
     </ul>
   </li>
-  <li>
-    <p>두 숫자를 더한다음 <code class="language-plaintext highlighter-rouge">String</code> 타입으로 바꾸고 역순으로 변환한다.</p>
-  </li>
-  <li>
-    <p>첫번째 노드를 만든다.</p>
-  </li>
-  <li>
-    <p>반복문으로 다음 노드를 만들고 이전 노드의 <code class="language-plaintext highlighter-rouge">next</code>에 연결한다.</p>
-  </li>
-  <li>
-    <p>Linked list를 Return한다.</p>
-  </li>
-</ol>
-
-<h1 id="complexity">Complexity</h1>
-<ul>
-  <li>
-    <p>Time complexity:</p>
-
-    <p><code class="language-plaintext highlighter-rouge">l1</code> 과 <code class="language-plaintext highlighter-rouge">l2</code>의 길이를 각각 <code class="language-plaintext highlighter-rouge">n</code>, <code class="language-plaintext highlighter-rouge">m</code>이라고 하면, <code class="language-plaintext highlighter-rouge">sum_l1</code>을 구하는데 \(O(n)\), <code class="language-plaintext highlighter-rouge">sum_l2</code>를 구하는데 \(O(m)\), 그리고 새로운 Linked list를 만드는데 \(O(max(n, m)) or O(max(n, m)) +1\)으로, 정리하면 \(O(max(n, m))\) 이다.</p>
-  </li>
-  <li>
-    <p>Space complexity:
-새 Linked list의 길이는 최대 max(n, m) + 1로, \(O(max(n, m))\)이다</p>
-  </li>
 </ul>
 
-<h1 id="my-code">My Code</h1>
+<p>[풀이코드]</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-</span>
-<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
-        <span class="s">"""
-        Input: two non-empty linked lists
-        Output: the sum of the two numbers as a linked list
-        Caution: The digits are stored in reverse order
-        """</span>
-        <span class="n">sum_l1</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">digit</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">while</span> <span class="n">l1</span><span class="p">:</span>
-            <span class="n">sum_l1</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">*</span> <span class="n">l1</span><span class="p">.</span><span class="n">val</span>
-            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">.</span><span class="nb">next</span>
-            <span class="n">digit</span> <span class="o">*=</span> <span class="mi">10</span>
-
-        <span class="n">sum_l2</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">digit</span><span class="o">=</span><span class="mi">1</span>
-        <span class="k">while</span> <span class="n">l2</span><span class="p">:</span>
-            <span class="n">sum_l2</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">*</span> <span class="n">l2</span><span class="p">.</span><span class="n">val</span>
-            <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">.</span><span class="nb">next</span>
-            <span class="n">digit</span> <span class="o">*=</span> <span class="mi">10</span>
-        
-        <span class="n">result</span> <span class="o">=</span> <span class="n">sum_l1</span> <span class="o">+</span> <span class="n">sum_l2</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-        <span class="n">base</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">base</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)):</span>
-            <span class="n">temp</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-            <span class="k">while</span> <span class="n">t</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
-                <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="nb">next</span>
-            <span class="n">t</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">temp</span>
-        
-        <span class="k">return</span> <span class="n">base</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>  <span class="c1">#행: 계단 길이(자릿수)
+</span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>  <span class="c1">#열: 각 자릿수에서 올 수 있는 수
+</span>        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#0일때는 1만
+</span>        <span class="k">elif</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">8</span><span class="p">]</span> <span class="c1">#9일때는 8만
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> 
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="p">])</span> <span class="o">%</span> <span class="mi">1000000000</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h1 id="others">Others</h1>
+<ul>
+  <li>행렬을 활용하여 각 자릿 수에서의 경우의 수를 모두 합함</li>
+</ul>
 
-<p>내 풀이와 다르게 하나의 반복문에서 모든 처리를 하는 코드이다. <code class="language-plaintext highlighter-rouge">l1</code>과 <code class="language-plaintext highlighter-rouge">l2</code>의 길이 차이를 <code class="language-plaintext highlighter-rouge">if .. else..</code>문으로 해결하였다.</p>
+<h2 id="things-that-you-can-get-from-this-problem"><strong>📌things that you can get from this problem</strong></h2>
 
-<p>또한 특정 자리의 숫자를 계산함과 동시에 Single digit으로 치환 후 새로운 Node로 만들어 바로 Linked list에 붙인다.</p>
+<p><strong>동적 계획법(Dynamic programming)</strong>: 큰 문제를 작은 문제로 쪼개서 그 답을 저장해두고 재활용하는 방법</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
-        <span class="n">dummyHead</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">curr</span> <span class="o">=</span> <span class="n">dummyHead</span>
-        <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="n">l1</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">l2</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">carry</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">l1Val</span> <span class="o">=</span> <span class="n">l1</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="mi">0</span>
-            <span class="n">l2Val</span> <span class="o">=</span> <span class="n">l2</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="n">l2</span> <span class="k">else</span> <span class="mi">0</span>
-            <span class="n">columnSum</span> <span class="o">=</span> <span class="n">l1Val</span> <span class="o">+</span> <span class="n">l2Val</span> <span class="o">+</span> <span class="n">carry</span>
-            <span class="n">carry</span> <span class="o">=</span> <span class="n">columnSum</span> <span class="o">//</span> <span class="mi">10</span>
-            <span class="n">newNode</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">columnSum</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
-            <span class="n">curr</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">newNode</span>
-            <span class="n">curr</span> <span class="o">=</span> <span class="n">newNode</span>
-            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">.</span><span class="nb">next</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="bp">None</span>
-            <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">.</span><span class="nb">next</span> <span class="k">if</span> <span class="n">l2</span> <span class="k">else</span> <span class="bp">None</span>
-        <span class="k">return</span> <span class="n">dummyHead</span><span class="p">.</span><span class="nb">next</span>
-</code></pre></div></div>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-17-2022-12-09-JB9.html" rel="alternate" type="text/html" title="" /><published>2022-12-17T15:29:59+09:00</published><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/2022-12-09-JB9</id><content type="html" xml:base="http://localhost:4000/2022-12-17-2022-12-09-JB9.html"><![CDATA[<h1 id="백준-빗물-14719번">[백준] 빗물 #14719번</h1>
+<ul>
+  <li>어떤 문제를 풀 때 작은 문제로 나누어서, 각각의 경우의 수를 구함</li>
+  <li>해당 방법으로 풀 경우, 재사용(즉, 저장하고 재사용)이 가능하기 때문에 시간 복잡도 개선됨</li>
+  <li>풀 수 있는 문제 유형:
+    <ul>
+      <li>부분 문제의 최적 결과 값을 사용해 전체 문제의 최적 결과를 도출 ex)최적 경로</li>
+      <li>동일한 작은 문제들이 반복 ex) 피보나치</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-18-2022-12-09-JB9.html" rel="alternate" type="text/html" title="" /><published>2022-12-18T13:44:28+09:00</published><updated>2022-12-18T13:44:28+09:00</updated><id>http://localhost:4000/2022-12-09-JB9</id><content type="html" xml:base="http://localhost:4000/2022-12-18-2022-12-09-JB9.html"><![CDATA[<h1 id="백준-빗물-14719번">[백준] 빗물 #14719번</h1>
 
 <p><a href="https://www.acmicpc.net/problem/14719">Link</a></p>
 
@@ -329,7 +181,7 @@
         <span class="n">water</span> <span class="o">+=</span> <span class="n">low</span> <span class="o">-</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         
 <span class="k">print</span><span class="p">(</span><span class="n">water</span><span class="p">)</span>
-</code></pre></div></div>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-17-2022-11-13-JB6.html" rel="alternate" type="text/html" title="" /><published>2022-12-17T15:29:59+09:00</published><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/2022-11-13-JB6</id><content type="html" xml:base="http://localhost:4000/2022-12-17-2022-11-13-JB6.html"><![CDATA[<h1 id="백준-1로-만들기-1463번">[백준] 1로 만들기 #1463번</h1>
+</code></pre></div></div>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-18-2022-11-13-JB6.html" rel="alternate" type="text/html" title="" /><published>2022-12-18T13:44:28+09:00</published><updated>2022-12-18T13:44:28+09:00</updated><id>http://localhost:4000/2022-11-13-JB6</id><content type="html" xml:base="http://localhost:4000/2022-12-18-2022-11-13-JB6.html"><![CDATA[<h1 id="백준-1로-만들기-1463번">[백준] 1로 만들기 #1463번</h1>
 
 <p><a href="https://www.acmicpc.net/problem/1463">Link</a></p>
 
@@ -453,7 +305,7 @@
         <span class="n">dp</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">idx</span><span class="o">//</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
         
 <span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">a</span><span class="p">])</span>
-</code></pre></div></div>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-17-2022-10-22-EJ3.html" rel="alternate" type="text/html" title="" /><published>2022-12-17T15:29:59+09:00</published><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/2022-10-22-EJ3</id><content type="html" xml:base="http://localhost:4000/2022-12-17-2022-10-22-EJ3.html"><![CDATA[<h1 id="2022-10-22-백준-돌게임1-9655md">2022-10-22-[백준]-돌게임1-#9655.md</h1>
+</code></pre></div></div>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-18-2022-10-22-EJ3.html" rel="alternate" type="text/html" title="" /><published>2022-12-18T13:44:28+09:00</published><updated>2022-12-18T13:44:28+09:00</updated><id>http://localhost:4000/2022-10-22-EJ3</id><content type="html" xml:base="http://localhost:4000/2022-12-18-2022-10-22-EJ3.html"><![CDATA[<h1 id="2022-10-22-백준-돌게임1-9655md">2022-10-22-[백준]-돌게임1-#9655.md</h1>
 
 <p>author. 곽은지</p>
 
@@ -550,7 +402,7 @@
 <ul>
   <li>동적 계획법에서 가장 중요한 개념은 ‘답을 저장’하는 것임</li>
   <li>답을 저장해서 새로운 case와 비교</li>
-</ul>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-17-2022-10-15-JB1.html" rel="alternate" type="text/html" title="" /><published>2022-12-17T15:29:59+09:00</published><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/2022-10-15-JB1</id><content type="html" xml:base="http://localhost:4000/2022-12-17-2022-10-15-JB1.html"><![CDATA[<h1 id="백준-쉬운-계단-수-10844번">[백준] 쉬운 계단 수 #10844번</h1>
+</ul>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-18-2022-10-15-JB1.html" rel="alternate" type="text/html" title="" /><published>2022-12-18T13:44:28+09:00</published><updated>2022-12-18T13:44:28+09:00</updated><id>http://localhost:4000/2022-10-15-JB1</id><content type="html" xml:base="http://localhost:4000/2022-12-18-2022-10-15-JB1.html"><![CDATA[<h1 id="백준-쉬운-계단-수-10844번">[백준] 쉬운 계단 수 #10844번</h1>
 
 <p><a href="https://www.acmicpc.net/problem/10844">Link</a></p>
 
@@ -734,84 +586,313 @@ Cases[N][9] = Cases[N-1][8]\]
         <span class="n">table</span><span class="p">[</span><span class="n">jary</span><span class="p">][</span><span class="n">namuji</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">jary</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">namuji</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">table</span><span class="p">[</span><span class="n">jary</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">namuji</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span> <span class="mi">1000000000</span><span class="p">)</span>
-</code></pre></div></div>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html"></title><link href="http://localhost:4000/2022-12-17-2022-10-15-EJ1.html" rel="alternate" type="text/html" title="" /><published>2022-12-17T15:29:59+09:00</published><updated>2022-12-17T15:29:59+09:00</updated><id>http://localhost:4000/2022-10-15-EJ1</id><content type="html" xml:base="http://localhost:4000/2022-12-17-2022-10-15-EJ1.html"><![CDATA[<h1 id="백준no10844_쉬운계단수_python">[백준no.10844]_쉬운계단수_python</h1>
+</code></pre></div></div>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html">\[LeetCode\] 739. Daily Temperatures</title><link href="http://localhost:4000/jekyll/2022-12-18-LeetCode-739.-Daily-Temperatures.html" rel="alternate" type="text/html" title="\[LeetCode\] 739. Daily Temperatures" /><published>2022-12-18T00:00:00+09:00</published><updated>2022-12-18T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/%5BLeetCode%5D-739.-Daily-Temperatures</id><content type="html" xml:base="http://localhost:4000/jekyll/2022-12-18-LeetCode-739.-Daily-Temperatures.html"><![CDATA[<h1 id="leetcode-739-daily-temperatures">[LeetCode] 739. Daily Temperatures</h1>
 
-<h2 id="문제">문제</h2>
+<p><code class="language-plaintext highlighter-rouge">LeetCode</code> 739번 문제를 풀어보았다.. <a href="https://leetcode.com/problems/daily-temperatures/description/">Link</a></p>
 
-<p>45656이란 수를 보자.</p>
+<h1 id="problem">Problem</h1>
 
-<p>이 수는 인접한 모든 자리수의 차이가 1이 난다. 이런 수를 계단 수라고 한다.</p>
+<p>Given an array of integers <code class="language-plaintext highlighter-rouge">temperatures</code> represents the daily temperatures, return <em>an array</em> <code class="language-plaintext highlighter-rouge">answer</code> <em>such that</em> <code class="language-plaintext highlighter-rouge">answer[i]</code> <em>is the number of days you have to wait after the</em> <code class="language-plaintext highlighter-rouge">ith</code> <em>day to get a warmer temperature</em>. If there is no future day for which this is possible, keep <code class="language-plaintext highlighter-rouge">answer[i] == 0</code> instead.</p>
 
-<p>세준이는 수의 길이가 N인 계단 수가 몇 개 있는지 궁금해졌다.</p>
+<h1 id="intuition">Intuition</h1>
 
-<p>N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구하는 프로그램을 작성하시오. (0으로 시작하는 수는 없다.)</p>
+<p>Check all the temperature one by one to see how many days it wait to get a warmer temperature.</p>
 
-<h3 id="입력">입력</h3>
+<h1 id="approach">Approach</h1>
 
-<p>첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은 자연수이다.</p>
+<p>처음에는 모든 케이스를 전부 비교하는 Brute Force 알고리즘으로 풀고자 했다. 손쉽게 중첩 <code class="language-plaintext highlighter-rouge">for loop</code>을 사용하여 구현할 수 있었지만,</p>
 
-<p>[예제 입력]</p>
+<p>제출하니까 <code class="language-plaintext highlighter-rouge">Time limit exceeded</code>..</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span>
-</code></pre></div></div>
+<p>결국 더 최적화된 알고리즘을 사용해야했다.</p>
 
-<h3 id="출력">출력</h3>
+<p>이에 고민하다가 이전 최대 온도값의 위치를 기억하여 다음 반복 시 그 시작 위치를 조절해주는 방법을 사용했지만,</p>
 
-<p>첫째 줄에 정답을 1,000,000,000으로 나눈 나머지를 출력한다</p>
+<p>이것 역시도 불필요한 반복이 많이 발생했고 그로인해 <code class="language-plaintext highlighter-rouge">Time limit exceeded</code> 되었다.</p>
 
-<p>[예제 출력]</p>
+<p>고민하던 중 Stack을 사용한다면 위와 같은 접근법을 사용하면서도 불필요한 반복 (최대 온도값과 현재 온도값을 주기적으로 비교하는)을 줄일 수 있을 거라고</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">9</span>
-</code></pre></div></div>
+<p>생각하였고, 코드로 옮겨 실행한 결과 정답이었다.</p>
 
-<h2 id="풀이">풀이</h2>
-
-<p>[핵심 아이디어]</p>
-
+<h1 id="complexity">Complexity</h1>
 <ul>
-  <li>0~9까지의 숫자 중에서 각 숫자 앞 혹은 뒤에 올 수 있는 수의 개수는 각각 몇 개인지 따져봐야 함
-    <ul>
-      <li>옆에 올 수 있는 숫자의 수를 따져볼때, 0은 무조건 앞에 1 하나만 올 수 있고, 9 또한 앞에 8밖에 올 수 없음</li>
-      <li>2~8까지 숫자는 앞 뒤로 +1, -1 숫자가 올 수 있음</li>
-    </ul>
+  <li>
+    <p>Time complexity:</p>
+
+    <p>정확한 Time complexity를 알 수 없으나 대략 \(O(n^2)\)인 것으로 생각된다.</p>
+  </li>
+  <li>
+    <p>Space complexity:
+\(O(n)\)</p>
   </li>
 </ul>
 
-<p>[풀이코드]</p>
+<h1 id="my-code">My Code</h1>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-<span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>  <span class="c1">#행: 계단 길이(자릿수)
-</span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>  <span class="c1">#열: 각 자릿수에서 올 수 있는 수
-</span>        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#0일때는 1만
-</span>        <span class="k">elif</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
-            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">8</span><span class="p">]</span> <span class="c1">#9일때는 8만
-</span>        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> 
-<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="p">])</span> <span class="o">%</span> <span class="mi">1000000000</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">dailyTemperatures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperatures</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="s">"""
+        Input: array of "temperatures" which represents the daily temperatures
+        Output: An array "answer" such that answer[i] is the number of days
+        i have to waith after the 1th day to get a warmer temperature
+        """</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">temperatures</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">cur_t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">temperatures</span><span class="p">):</span>
+            <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">cur_t</span> <span class="o">&gt;</span> <span class="n">temperatures</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
+                <span class="n">last</span> <span class="o">=</span> <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">answer</span><span class="p">[</span><span class="n">last</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">-</span> <span class="n">last</span>
+            <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<h1 id="others-brute-force">Others (Brute force)</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">dailyTemperatures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperatures</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="s">"""
+        Input: array of "temperatures" which represents the daily temperatures
+        Output: An array "answer" such that answer[i] is the number of days
+        i have to waith after the 1th day to get a warmer temperature
+        """</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">t_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">temperatures</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t_len</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">t_len</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">temperatures</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">temperatures</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                    <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+                    <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">t_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>]]></content><author><name>JUNGBEOM KO</name></author><category term="Jekyll" /><summary type="html"><![CDATA[[LeetCode] 739. Daily Temperatures]]></summary></entry><entry><title type="html">\[LeetCode\] 3. Longest Substring Without Repeating Characters</title><link href="http://localhost:4000/jekyll/2022-12-17-LeetCode-3.-Longest-Substring-Without-Repeating-Characters-JB.html" rel="alternate" type="text/html" title="\[LeetCode\] 3. Longest Substring Without Repeating Characters" /><published>2022-12-17T00:00:00+09:00</published><updated>2022-12-17T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/%5BLeetCode%5D-3.-Longest-Substring-Without-Repeating-Characters-JB</id><content type="html" xml:base="http://localhost:4000/jekyll/2022-12-17-LeetCode-3.-Longest-Substring-Without-Repeating-Characters-JB.html"><![CDATA[<h1 id="leetcode-3-longest-substring-without-repeating-characters">[LeetCode] 3. Longest Substring Without Repeating Characters</h1>
+
+<p><code class="language-plaintext highlighter-rouge">LeetCode</code> 3번 문제를 풀어보았다.. <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/">Link</a></p>
+
+<h1 id="problem">Problem</h1>
+
+<p>Given a string <code class="language-plaintext highlighter-rouge">s</code>, find the length of the <strong>longest</strong> <strong>substring</strong> without repeating characters.</p>
+
+<h1 id="intuition">Intuition</h1>
+
+<p>Substring이 시작하는 곳을 <code class="language-plaintext highlighter-rouge">start</code>, 끝나는 곳을 <code class="language-plaintext highlighter-rouge">end</code>라고 할 때, <code class="language-plaintext highlighter-rouge">start</code>와 <code class="language-plaintext highlighter-rouge">end</code> 를 움직여가며 조건(without repeating characters)에 충족하는 모든 Substring의 길이를 비교하여 그 중 가장 긴 길이를 출력하면 될거라고 생각했다.</p>
+
+<p>놀랍게도 처음에 풀 때는 그냥 수월하게 풀었는데 다시 풀 때 더 시간이 오래 걸렸다. 체계적인 복습이 중요하다..</p>
+
+<h1 id="approach">Approach</h1>
+
+<p>모든 케이스를 전부 비교하는 Brute Force 알고리즘으로 풀었다.</p>
+
+<ol>
+  <li>s[start:end] 안에 s[end]가 있는지 확인한다.
+    <ol>
+      <li>없으면 그때의 s[start:end]의 길이를 측정하고, max_length와 비교한다.
+        <ol>
+          <li>max_length보다 작으면 end point를 한칸 옮긴다.</li>
+          <li>max_length보다 크면 max_length를 end - start + 1로 update한다.</li>
+        </ol>
+      </li>
+      <li>있으면 max_length를 비교한다.
+        <ol>
+          <li>max_length보다 크면 max_length를 end - start로 update한다.</li>
+          <li>start point를 한칸 옮긴다.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>start point가 len(s)-1에 도달할 때 까지 반복한다.</li>
+</ol>
+
+<h1 id="complexity">Complexity</h1>
+<ul>
+  <li>
+    <p>Time complexity:</p>
+
+    <p>이중 for loop로, \(O(n^2)\)라고 착각할 수 있지만, 문자열 Slice와의 비교가 있기 때문에 \(O(n^3)\)이다.</p>
+
+    <p>(이건 정확하지 않음..)</p>
+  </li>
+  <li>
+    <p>Space complexity:
+문자열에 중복 문자가 없는지 확인하는데는 \(O(n)\)이 필요하다.</p>
+  </li>
+</ul>
+
+<h1 id="my-code">My Code</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="s">"""
+        Input: A string "s"
+        Output: The length or the longest substring without repeating characters.
+        """</span>
+        <span class="n">max_length</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">max_length</span> <span class="o">&lt;</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span>
+                        <span class="n">max_length</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">max_length</span> <span class="o">&lt;</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="p">:</span>
+                        <span class="n">max_length</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="n">i</span>
+                    <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">max_length</span>
+</code></pre></div></div>
+
+<h1 id="others">Others</h1>
+
+<p>Brute force을 사용한 내 풀이보다 더 효율적인 방법으로 최적화한 코드이다.</p>
+
+<p>아이디어는 다음과 같다.</p>
+
+<ul>
+  <li>예를들어 “abcade”가 있다고 했을 때, 기존의 Brute force 알고리즘으로 처리한다면 “abc”, “a”에서 멈추게 된다.</li>
+  <li>이때 굳이 나머지 “de”를 다 본 다음 새로운 start와 end point를 “b”, “c”로 옮기는 것이 아니라 중복이 없는 선까지 start point만 옮기는 방법을 사용한다. (코드와 함께보면 이해할 수 있을까?)</li>
+  <li>또한 여기서 필요없는 search algorithm을 피하기 위해 Hash map (python에서는 Dictionary)를 활용한다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="n">len_s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">Mlength</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">end</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_s</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">dict</span><span class="p">[</span><span class="n">end</span><span class="p">],</span> <span class="n">start</span><span class="p">)</span>
+            <span class="n">Mlength</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Mlength</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">end</span><span class="p">]]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">Mlength</span>
 </code></pre></div></div>
 
 <ul>
-  <li>행렬을 활용하여 각 자릿 수에서의 경우의 수를 모두 합함</li>
-</ul>
+  <li>이 Approach의 Time complexity는 한 반복(end) 안에 끝나기 때문에 \(O(n)\)이다.</li>
+  <li>Space complexity도 Dictionary에 저장하는 공간을 생각하면 \(O(max(n, m))\)이다.</li>
+</ul>]]></content><author><name>JUNGBEOM KO</name></author><category term="Jekyll" /><summary type="html"><![CDATA[[LeetCode] 3. Longest Substring Without Repeating Characters]]></summary></entry><entry><title type="html">\[LeetCode\] 2. Add Two Number</title><link href="http://localhost:4000/jekyll/2022-12-17-LeetCode-2.-Add-Two-Number-JB.html" rel="alternate" type="text/html" title="\[LeetCode\] 2. Add Two Number" /><published>2022-12-17T00:00:00+09:00</published><updated>2022-12-17T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/%5BLeetCode%5D-2.-Add-Two-Number-JB</id><content type="html" xml:base="http://localhost:4000/jekyll/2022-12-17-LeetCode-2.-Add-Two-Number-JB.html"><![CDATA[<h1 id="leetcode-2-add-two-number">[LeetCode] 2. Add Two Number</h1>
 
-<h2 id="things-that-you-can-get-from-this-problem"><strong>📌things that you can get from this problem</strong></h2>
+<p><code class="language-plaintext highlighter-rouge">LeetCode</code> 2번 문제를 풀어보았다.. <a href="https://leetcode.com/problems/add-two-numbers/description/">Link</a></p>
 
-<p><strong>동적 계획법(Dynamic programming)</strong>: 큰 문제를 작은 문제로 쪼개서 그 답을 저장해두고 재활용하는 방법</p>
+<h1 id="problem">Problem</h1>
 
-<ul>
-  <li>어떤 문제를 풀 때 작은 문제로 나누어서, 각각의 경우의 수를 구함</li>
-  <li>해당 방법으로 풀 경우, 재사용(즉, 저장하고 재사용)이 가능하기 때문에 시간 복잡도 개선됨</li>
-  <li>풀 수 있는 문제 유형:
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
+
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+
+<p>양수로 채워진 두개의 Linked list가 주어진다. 숫자들은 역순으로 저장되고, 각 노드에는 단일 숫자가 포함된다. 두 숫자의 합계를 Linked list으로 Return하라.</p>
+
+<h1 id="intuition">Intuition</h1>
+
+<p>어떤 특수한 알고리즘 사용이 필요하다기 보다는 Linked list Class의 특성을 이해하고 이를 코드로 옮기는 것이 중요하다고 생각했다.</p>
+
+<h1 id="approach">Approach</h1>
+<ol>
+  <li>
+    <p>각 Linked list <code class="language-plaintext highlighter-rouge">l1</code>, <code class="language-plaintext highlighter-rouge">l2</code>의 각 노드의 단일 숫자들에 접근하여 숫자로 만든다.</p>
+
     <ul>
-      <li>부분 문제의 최적 결과 값을 사용해 전체 문제의 최적 결과를 도출 ex)최적 경로</li>
-      <li>동일한 작은 문제들이 반복 ex) 피보나치</li>
+      <li>Example) <code class="language-plaintext highlighter-rouge">l1</code> = [2,4,3]이면 342로 만든다.</li>
     </ul>
   </li>
-</ul>]]></content><author><name>HE Tao</name></author></entry><entry><title type="html">2023-신기한-소수</title><link href="http://localhost:4000/jekyll/2022-12-16-EJ9.html" rel="alternate" type="text/html" title="2023-신기한-소수" /><published>2022-12-16T00:00:00+09:00</published><updated>2022-12-16T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/EJ9</id><content type="html" xml:base="http://localhost:4000/jekyll/2022-12-16-EJ9.html"><![CDATA[<h1 id="2022-12-16-2023-신기한-소수">2022-12-16-#2023-신기한-소수</h1>
+  <li>
+    <p>두 숫자를 더한다음 <code class="language-plaintext highlighter-rouge">String</code> 타입으로 바꾸고 역순으로 변환한다.</p>
+  </li>
+  <li>
+    <p>첫번째 노드를 만든다.</p>
+  </li>
+  <li>
+    <p>반복문으로 다음 노드를 만들고 이전 노드의 <code class="language-plaintext highlighter-rouge">next</code>에 연결한다.</p>
+  </li>
+  <li>
+    <p>Linked list를 Return한다.</p>
+  </li>
+</ol>
+
+<h1 id="complexity">Complexity</h1>
+<ul>
+  <li>
+    <p>Time complexity:</p>
+
+    <p><code class="language-plaintext highlighter-rouge">l1</code> 과 <code class="language-plaintext highlighter-rouge">l2</code>의 길이를 각각 <code class="language-plaintext highlighter-rouge">n</code>, <code class="language-plaintext highlighter-rouge">m</code>이라고 하면, <code class="language-plaintext highlighter-rouge">sum_l1</code>을 구하는데 \(O(n)\), <code class="language-plaintext highlighter-rouge">sum_l2</code>를 구하는데 \(O(m)\), 그리고 새로운 Linked list를 만드는데 \(O(max(n, m)) or O(max(n, m)) +1\)으로, 정리하면 \(O(max(n, m))\) 이다.</p>
+  </li>
+  <li>
+    <p>Space complexity:
+새 Linked list의 길이는 최대 max(n, m) + 1로, \(O(max(n, m))\)이다</p>
+  </li>
+</ul>
+
+<h1 id="my-code">My Code</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="s">"""
+        Input: two non-empty linked lists
+        Output: the sum of the two numbers as a linked list
+        Caution: The digits are stored in reverse order
+        """</span>
+        <span class="n">sum_l1</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">l1</span><span class="p">:</span>
+            <span class="n">sum_l1</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">*</span> <span class="n">l1</span><span class="p">.</span><span class="n">val</span>
+            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">digit</span> <span class="o">*=</span> <span class="mi">10</span>
+
+        <span class="n">sum_l2</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">digit</span><span class="o">=</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">l2</span><span class="p">:</span>
+            <span class="n">sum_l2</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">*</span> <span class="n">l2</span><span class="p">.</span><span class="n">val</span>
+            <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">digit</span> <span class="o">*=</span> <span class="mi">10</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="n">sum_l1</span> <span class="o">+</span> <span class="n">sum_l2</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)):</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+            <span class="k">while</span> <span class="n">t</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">t</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">temp</span>
+        
+        <span class="k">return</span> <span class="n">base</span>
+</code></pre></div></div>
+
+<h1 id="others">Others</h1>
+
+<p>내 풀이와 다르게 하나의 반복문에서 모든 처리를 하는 코드이다. <code class="language-plaintext highlighter-rouge">l1</code>과 <code class="language-plaintext highlighter-rouge">l2</code>의 길이 차이를 <code class="language-plaintext highlighter-rouge">if .. else..</code>문으로 해결하였다.</p>
+
+<p>또한 특정 자리의 숫자를 계산함과 동시에 Single digit으로 치환 후 새로운 Node로 만들어 바로 Linked list에 붙인다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="n">dummyHead</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">curr</span> <span class="o">=</span> <span class="n">dummyHead</span>
+        <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">l1</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">l2</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">carry</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">l1Val</span> <span class="o">=</span> <span class="n">l1</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">l2Val</span> <span class="o">=</span> <span class="n">l2</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="n">l2</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">columnSum</span> <span class="o">=</span> <span class="n">l1Val</span> <span class="o">+</span> <span class="n">l2Val</span> <span class="o">+</span> <span class="n">carry</span>
+            <span class="n">carry</span> <span class="o">=</span> <span class="n">columnSum</span> <span class="o">//</span> <span class="mi">10</span>
+            <span class="n">newNode</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">columnSum</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="n">curr</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">newNode</span>
+            <span class="n">curr</span> <span class="o">=</span> <span class="n">newNode</span>
+            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">.</span><span class="nb">next</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">.</span><span class="nb">next</span> <span class="k">if</span> <span class="n">l2</span> <span class="k">else</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">dummyHead</span><span class="p">.</span><span class="nb">next</span>
+</code></pre></div></div>]]></content><author><name>JUNGBEOM KO</name></author><category term="Jekyll" /><summary type="html"><![CDATA[[LeetCode] 2. Add Two Number]]></summary></entry><entry><title type="html">2023-신기한-소수</title><link href="http://localhost:4000/jekyll/2022-12-16-EJ9.html" rel="alternate" type="text/html" title="2023-신기한-소수" /><published>2022-12-16T00:00:00+09:00</published><updated>2022-12-16T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/EJ9</id><content type="html" xml:base="http://localhost:4000/jekyll/2022-12-16-EJ9.html"><![CDATA[<h1 id="2022-12-16-2023-신기한-소수">2022-12-16-#2023-신기한-소수</h1>
 
 <p>challenge no.2</p>
 
@@ -1010,281 +1091,4 @@ Cases[N][9] = Cases[N-1][8]\]
 
 <ul>
   <li>좀 돌아갔지만, , 트리구조를 직접 구현할 수 있었음</li>
-</ul>]]></content><author><name>EUNJI KWAK</name></author><category term="Jekyll" /><summary type="html"><![CDATA[2022-12-13-#3584-가장 가까운 공통 조상]]></summary></entry><entry><title type="html">14719. 빗물</title><link href="http://localhost:4000/jekyll/2022-12-09-MJ9.html" rel="alternate" type="text/html" title="14719. 빗물" /><published>2022-12-09T00:00:00+09:00</published><updated>2022-12-09T00:00:00+09:00</updated><id>http://localhost:4000/jekyll/MJ9</id><content type="html" xml:base="http://localhost:4000/jekyll/2022-12-09-MJ9.html"><![CDATA[<h1 id="14719-빗물">#14719. 빗물</h1>
-
-<h2 id="use_math-true">use_math: true</h2>
-
-<h3 id="링크-httpswwwacmicpcnetproblem14719">링크: https://www.acmicpc.net/problem/14719</h3>
-<h3 id="유형-시뮬레이션">유형: 시뮬레이션</h3>
-<h3 id="작성일시-2022년-12월-9일-오전-1147">작성일시: 2022년 12월 9일 오전 11:47</h3>
-
-<h1 id="문제">📖문제</h1>
-
-<p>2차원 세계에 블록이 쌓여있다. 비가 오면 블록 사이에 빗물이 고인다.</p>
-
-<p><img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/14719/1.png" alt="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/14719/1.png" /></p>
-
-<p><img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/14719/2.png" alt="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/14719/2.png" /></p>
-
-<p>비는 충분히 많이 온다. 고이는 빗물의 총량은 얼마일까?</p>
-
-<p><strong>입력</strong></p>
-
-<p>첫 번째 줄에는 2차원 세계의 세로 길이 H과 2차원 세계의 가로 길이 W가 주어진다. (1 ≤ H, W ≤ 500)</p>
-
-<p>두 번째 줄에는 블록이 쌓인 높이를 의미하는 0이상 H이하의 정수가 2차원 세계의 맨 왼쪽 위치부터 차례대로 W개 주어진다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>2차원 세계에서는 한 칸의 용량은 1이다. 고이는 빗물의 총량을 출력하여라.</p>
-
-<p>빗물이 전혀 고이지 않을 경우 0을 출력하여라.</p>
-
-<p><strong>예제 입력1  /출력 1</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="mi">4</span>
-<span class="mi">3</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">4</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span>
-</code></pre></div></div>
-
-<p><img src="#14719%20%E1%84%87%E1%85%B5%E1%86%BA%E1%84%86%E1%85%AE%E1%86%AF%205c2a6ec0d85f485882405cd2d69b867a/Untitled.png" alt="Untitled" /></p>
-
-<p><strong>예제입력 2 / 출력 2</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="mi">8</span>
-<span class="mi">3</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span>
-</code></pre></div></div>
-
-<p><img src="#14719%20%E1%84%87%E1%85%B5%E1%86%BA%E1%84%86%E1%85%AE%E1%86%AF%205c2a6ec0d85f485882405cd2d69b867a/Untitled%201.png" alt="Untitled" /></p>
-
-<p>**예제 입력 3 / 출력 3 **</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="mi">5</span>
-<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span>
-</code></pre></div></div>
-
-<p><img src="#14719%20%E1%84%87%E1%85%B5%E1%86%BA%E1%84%86%E1%85%AE%E1%86%AF%205c2a6ec0d85f485882405cd2d69b867a/Untitled%202.png" alt="Untitled" /></p>
-
-<h1 id="분석">🧐분석</h1>
-
-<h2 id="유형-파악">👀유형 파악</h2>
-
-<p>이러한 문제 유형을 <strong>‘구현’문제</strong>라고 한다.</p>
-
-<aside>
-📢  ‘구현(Implementation)’이란, **머리 속에 있는 알고리즘을 소스코드로 바꾸는 과정’**을 의미한다.
-
-</aside>
-
-<h3 id="구현문제">구현문제</h3>
-
-<ul>
-  <li><strong>풀이를 떠올리는 것은 쉽지만, 소스코드로 옮기기 어려운 문제</strong>
-    <ul>
-      <li>코딩 테스트에서는 <strong>구현이 중심이 되는 문제가 자주 출제</strong>된다</li>
-      <li>ex) 완전탐색, 시뮬레이션 유형
-        <ul>
-          <li><strong>완전탐색</strong> : 모든 경우의 수를 주저 없이 다 계산하는 해결방법</li>
-          <li><strong>시뮬레이션</strong> : 문제에서 제시한 알고리즘을 <strong>한 단계씩 차례대로 직접 수행</strong>해야 하는 문제</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>구현하기 어려운 문제란?</strong></p>
-
-<ul>
-  <li><strong>알고리즘은 간단한데 코드가 지나칠 만큼 길어지는 문제</strong></li>
-  <li>특정 소수점 자리까지 출력해야 하는 문제</li>
-  <li>문자열이 입력으로 주어졌을 때 한 문자 단위로 끊어서 리스트에 파싱해야 하는 문제</li>
-</ul>
-
-<p>⇒ 대체로 사소한 조건 설정이 많은 문제일수록 코드로 구현하기 까다롭다.</p>
-
-<p><strong>구현 문제를 풀기 위한 선행 조건</strong></p>
-
-<ol>
-  <li>프로그래밍 문법의 정확한 숙지</li>
-  <li>라이브러리 사용경험</li>
-</ol>
-
-<p><strong>구현 문제에 접근하는 방법</strong></p>
-
-<ul>
-  <li>보통 구현 유형의 문제는 사소한 입력 조건 등을 문제에서 명시하여 <strong>문제의 길이가 꽤 긴 편</strong>이다.
-    <ul>
-      <li>하지만, 고차원적 사료적을 요구하는 문제는 나오지 않는 편이라 <strong>문법에 익숙하면 오히려 쉽게 풀 수 있다.</strong></li>
-    </ul>
-  </li>
-  <li><strong>C/C++/Java에서 구현 유형 문제</strong>가 더 어렵게 다가온다.
-    <ul>
-      <li>문자열을 처리하거나 큰 정수를 처리하는 문제가 출제되는 경우가 많은데 C/C++/JAVA에서는 문자열 처리가 파이썬에 비하여 까다롭고, 큰 정수를 처리하는 라이브러리를 별도로 사용하기 때문이다.</li>
-      <li>자신만의 코드 노트를 잘 활용하여 이를 보완할 수 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>출처 : <a href="https://scshim.tistory.com/431">[Algorithm] 구현 문제란?</a></p>
-
-<h2 id="문제-분석">🔍문제 분석!</h2>
-
-<ol>
-  <li><strong>물이 고이는 조건을 찾자</strong>
-    <ul>
-      <li>양 옆이 모두 벽이 있어야 한다.</li>
-      <li>어느 한 구간이 아니라 현재 위치에서 왼쪽, 오른쪽을 다 봐야 한다!</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>모듈화를 해보자</strong></p>
-
-    <p><img src="https://user-images.githubusercontent.com/101111603/206859803-79febde6-02b1-4e0a-999c-8545897f7340.jpg" alt="%EB%AA%A8%EB%93%88" /></p>
-  </li>
-  <li><strong>정답</strong></li>
-</ol>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 입력
-</span><span class="n">height</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">ground</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="n">rain</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="c1"># for문을 통해서 양 옆 비교하기
-</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
-    <span class="n">std</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">std</span><span class="p">:</span>
-        <span class="n">rain</span> <span class="o">+=</span> <span class="n">std</span> <span class="o">-</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-<span class="c1"># 값 출력
-</span><span class="k">print</span><span class="p">(</span><span class="n">rain</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h1 id="풀이과정">🎯풀이과정</h1>
-
-<p>최종 답안은 맨 아래에 있습니다.</p>
-
-<h3 id="1번째-시도">1번째 시도</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1">#세로 : height 가로 :weight
-# 입력받기
-</span><span class="n">weight</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">ground</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="c1">#양옆 비교
-</span>	<span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span> <span class="p">[:</span><span class="n">i</span><span class="p">])</span>
-	<span class="n">right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
-
-	<span class="k">if</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">left</span><span class="p">:</span>
-		<span class="n">rain</span><span class="o">+=</span> <span class="n">left</span> <span class="o">-</span> <span class="n">ground</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<span class="k">if</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
-		<span class="n">rain</span><span class="o">+=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">ground</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<span class="c1">#값 출력
-</span><span class="k">print</span><span class="p">(</span><span class="n">rain</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>🚨이 코드의 문제점 : 이중으로 더해진다!</p>
-
-<h3 id="3번째-시도">3번째 시도</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#세로 : height 가로 :weight
-# 입력받기
-</span><span class="n">weight</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">ground</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="n">rain</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="p">:</span>
-<span class="c1">#양옆 비교
-</span>	<span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span> <span class="p">[:</span><span class="n">i</span><span class="p">])</span>
-	<span class="n">right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
-	<span class="n">std</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
-
-	<span class="k">if</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">std</span><span class="p">:</span>
-		<span class="n">rain</span><span class="o">+=</span> <span class="n">std</span><span class="o">-</span> <span class="n">ground</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">NameError: name 'rain' is not defined</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">ValueError: max() arg is an empty sequence</code></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Name error</code> → rain을 0으로 초기화해줌</li>
-  <li><code class="language-plaintext highlighter-rouge">Value error</code> → 수치를 비교할 수 있는 데이터가 존재하지 않는 빈 리스트를 제공할 때 발생하는 에러이다. 리스트가 빈 리스트인지 확인하거나 len() 명령어를 통해 리스트 요소의 개수를 확인한 다음 작업을 수행하게 하면 코드가 아무 문제없이 정상 작동하는 것을 확인할 수 있다.</li>
-</ul>
-
-<p>⇒ <strong>해결 : for문의 범위 설정이 잘못 되었음!
-왜냐하면, 맨 왼쪽과 맨 오른쪽은 물이 고일 수 없기 때문에 그 부분은 제외하고 탐색해야 함</strong></p>
-
-<p>따라서 <code class="language-plaintext highlighter-rouge">**for i in range(1, weight-1)**</code>로 변경!</p>
-
-<h3 id="3번째-시도--for문의-범위-수정">3번째 시도 : for문의 범위 수정</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">weight</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">ground</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="n">rain</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="c1"># for문을 통해서 양 옆 비교하기
-</span> 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
-    <span class="n">std</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
- 
-    <span class="k">if</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">std</span><span class="p">:</span>
-        <span class="n">rain</span> <span class="o">+=</span> <span class="n">std</span> <span class="o">-</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
- 
-<span class="c1"># 값 출력
-</span><span class="k">print</span><span class="p">(</span><span class="n">rain</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><strong>🚨값이 제대로 안 나오고, 백준에서도 틀렸다고 나옴</strong></p>
-
-<p>⇒ 왜지?!</p>
-
-<p>⇒ for범위에서 weight-1은 맞다.근데 입력 받을 때 weight, height 순으로 받았기 때문에 4, 8 에서 4가 들어가기 때문이다</p>
-
-<h3 id="최종--입력값-위치-수정">최종 : 입력값 위치 수정</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 입력
-</span><span class="n">height</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">ground</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="n">rain</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="c1"># for문을 통해서 양 옆 비교하기
-</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
-    <span class="n">std</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">std</span><span class="p">:</span>
-        <span class="n">rain</span> <span class="o">+=</span> <span class="n">std</span> <span class="o">-</span> <span class="n">ground</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-<span class="c1"># 값 출력
-</span><span class="k">print</span><span class="p">(</span><span class="n">rain</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h3 id="결과"><strong>결과</strong></h3>
-<p><img src="https://user-images.githubusercontent.com/101111603/206859812-5b6728f6-2a76-4b02-88e0-90b40cd20382.JPG" alt="python" /></p>
-
-<h1 id="회고">✒회고</h1>
-
-<ul>
-  <li>매번 ‘이걸 어떻게 코드로 구현하지?’ 하고 얘기하는데, 시뮬레이션 문제가 있다는 것을 오늘을 계기로 알게 되었다.
-    <ul>
-      <li>실제로 삼성, 카카오 등에서 코딩테스트 문제로 시뮬레이션 문제를 많이 낸다고 한다!</li>
-      <li>시뮬레이션 문제란, 풀이를 떠올리는 건 쉽지만, 구현하는 것은 어려운 문제를 말한다!! 이번에 이렇게 배워간다~~</li>
-    </ul>
-  </li>
-  <li>빗물 문제도 그냥 보기에는 어떻게 풀어야 할지 알겠는데 코드로 구현하자니 조건을 어떻게 설정해야 할지 막막했다.</li>
-  <li>이럴 때는 역시나 다른 문제들을 푸는 것처럼 하나하나 식으로 풀거나 그림을 그린 후 규칙성이나 점화식을 만들어낸 뒤!
-컴퓨터의 입장에서 조건이 무엇일지 생각해보는 방식으로 하면 좋을 것 같다!</li>
-  <li>매번 스터디에서 다들 2시간~3시간 사이의 시간이 걸렸는데 오늘은 딱 1시간만에 끝났다! 그간 다들 실력이 는 것 같다</li>
-</ul>]]></content><author><name>MINJUNG KIM</name></author><category term="Jekyll" /><summary type="html"><![CDATA[#14719. 빗물]]></summary></entry></feed>
+</ul>]]></content><author><name>EUNJI KWAK</name></author><category term="Jekyll" /><summary type="html"><![CDATA[2022-12-13-#3584-가장 가까운 공통 조상]]></summary></entry></feed>
