@@ -91,6 +91,7 @@ Temp를 한번만 쓸 수 있는 방법이 있다. 바로 역방향으로 집어
 - 이후, left와 right의 범위를 줄여가야 하기 때문에, `left = left+1`, `right = right-1`을 해준다. 
 (top과 bottom은 for문 안에서 left와 right의 값을 받기 때문에 따로 추가 설정해주지 않아도 된다.)
 
+
 ```python
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
@@ -129,6 +130,7 @@ class Solution:
 
 ![KakaoTalk_20221230_163933075](https://user-images.githubusercontent.com/101111603/210125489-48653ab0-d323-464c-a7f3-1781c59e2e60.jpg)
 
+아래는 최종 코드이다.
 ```python
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
