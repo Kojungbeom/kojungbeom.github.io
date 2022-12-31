@@ -1,14 +1,15 @@
-# #1. Two sum
+---
+title: LeetCode - 1. Two Sum
+author: MINJEONG KIM
+date: 2022-12-26
+category: Jekyll
+layout: post
+---
 
-progress: In progress
-review: 🥜
-site: LeetCode
-등급: Easy
-링크: https://leetcode.com/problems/two-sum/
-복습: No
-유형: 브루트 포스(완전탐색)
-작성일시: 2022년 12월 26일 오후 12:40
-체크박스2: No
+# [#1. Two sum](https://leetcode.com/problems/two-sum/)
+`LeetCode`의 `Easy`단계 문제이다. 
+들어가기 앞서, 선배님께서 아량을 배풀어주셔서 이 문제는 안 올려도 되지만 그래도 올린다!!
+**(그래서 스터디에서 한 것 만큼 꼼꼼하지 않을 수 있다)**
 
 # 📖Description
 
@@ -72,7 +73,7 @@ class Solution(object):
 ```
 
 **>> Runtime Error**
-
+```
 TypeError: range() integer end argument expected, got list.
 for i in range(nums):
 Line 9 in twoSum ([Solution.py](http://solution.py/))
@@ -80,6 +81,7 @@ ret = Solution().twoSum(param_1, param_2)
 Line 38 in _driver ([Solution.py](http://solution.py/))
 _driver()
 Line 48 in <module> ([Solution.py](http://solution.py/))
+```
 
 ## 🚩 Try : 2
 
@@ -126,10 +128,9 @@ class Solution(object):
 ```
 
 **결과 >> Accepted** 
+![results1](https://user-images.githubusercontent.com/101111603/210126140-e0ef26eb-b003-4527-a9d1-7391a2ecd91f.jpg)
+![results2](https://user-images.githubusercontent.com/101111603/210126143-750830e5-b722-48d3-aa1e-f68912b5af55.jpg)
 
-![results1.JPG](#1%20Two%20sum%207b564c638b52449393f3bd76f9bc38d0/results1.jpg)
-
-![results2.JPG](#1%20Two%20sum%207b564c638b52449393f3bd76f9bc38d0/results2.jpg)
 
 - 내가 푼 방식은 부르트포스 알고리즘이기 때문에 간단하지만 시간복잡도는 $O(n^2)$이다.
 
