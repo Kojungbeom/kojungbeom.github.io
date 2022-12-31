@@ -18,10 +18,10 @@ You have to rotate the image **[in-place](https://en.wikipedia.org/wiki/In-place
 **[문제해석]**
 
 주어진 nxn 행렬을 시계방향으로 90도 회전시킨 행렬을 return하시오. **(단, 새로운 행렬 사용 불가, 주어진 행렬 안에서 값 이동해야 함)**
+![example1](https://user-images.githubusercontent.com/101111603/210125448-5522d2e3-3b9f-4652-bb2a-8df11233628e.jpg)
+![example2](https://user-images.githubusercontent.com/101111603/210125453-42b3aa96-7070-4ae9-808e-4257927c5d80.jpg)
 
-![example1.JPG](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/example1.jpg)
 
-![example2.JPG](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/example2.jpg)
 
 # 🔍Approach
 
@@ -51,31 +51,28 @@ for i in range(0,matrix_len):
 
 혼자서는 도저히 방법이 생각나지 않아 reference 영상을 참고해 다시 재코딩해보았다.
 
-**Reference video :** 
+[**Reference video :** ](https://youtu.be/fMSJSS7eO1w)
 
-[https://youtu.be/fMSJSS7eO1w](https://youtu.be/fMSJSS7eO1w)
+![KakaoTalk_20221230_163141137](https://user-images.githubusercontent.com/101111603/210125457-e4371d37-2280-44b7-99f3-0ac77594455b.jpg)
 
-![KakaoTalk_20221230_163141137.jpg](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/KakaoTalk_20221230_163141137.jpg)
 
 example1을 통해서 nxn을 회전시키면 n-1 rotation이 발생한다는 것을 알 수 있다.
 
 example2의 경우도 살펴보자.
+![KakaoTalk_20221230_163141137_01](https://user-images.githubusercontent.com/101111603/210125464-07380213-4515-4da6-8b47-cb91d15538d5.jpg)
+![KakaoTalk_20221230_163141137_02](https://user-images.githubusercontent.com/101111603/210125466-a21d298d-3f64-4d89-a32a-9959e2408847.jpg)
 
-![KakaoTalk_20221230_163141137_01.jpg](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/KakaoTalk_20221230_163141137_01.jpg)
-
-![KakaoTalk_20221230_163141137_02.jpg](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/KakaoTalk_20221230_163141137_02.jpg)
 
 하지만 이렇게 하면 Temp를 3번씩이나 바꿔야 한다. 
 
 Temp를 한번만 쓸 수 있는 방법이 있다. 바로 역방향으로 집어넣는 것이다. 이 방법을 이용하면 temp에는 한번만 저장해도 된다. (그러나, 앞서 방법과 시간복잡도와 공간복잡도는 같다.)
 
-![KakaoTalk_20221230_163933075.jpg](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/KakaoTalk_20221230_163933075.jpg)
+![KakaoTalk_20221230_163933075](https://user-images.githubusercontent.com/101111603/210125475-33aca35f-9b63-4a24-a674-a1cef8372dba.jpg)
+![KakaoTalk_20221230_163933075_01](https://user-images.githubusercontent.com/101111603/210125478-da394edf-5203-452d-bb53-05fd13b68f9d.jpg)
 
-![KakaoTalk_20221230_163933075_01.jpg](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/KakaoTalk_20221230_163933075_01.jpg)
 
 1번방법과 2번 방법을 이용하면 둘 다 아래와 같이 시계방향으로 90도 회전된 것을 확인할 수 있다.
-
-![KakaoTalk_20221230_163141137_05.jpg](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/KakaoTalk_20221230_163141137_05.jpg)
+![KakaoTalk_20221230_163141137_05](https://user-images.githubusercontent.com/101111603/210125480-16c0771e-edb4-450e-90dd-8f4cb4df3993.jpg)
 
 이를 통해서 코드를 구현한다.
 
@@ -126,11 +123,11 @@ class Solution:
 
 1. LeftTop에 값을 저장한다. 이동할 경우 `matrix[top][left+i]`을 저장
 2. LeftBottom→ LeftTop으로 이동 : 이동할 경우, `matrix[top][left+i]`에  `matrix[bottom-i][left]`을 저장
-3. RightBottom → LeftBottom으로 이동 : 이동할 경우, matrix[bottom-i][left] = matrix[bottom][right-i]
-4. RigjhtTop → RightTop으로 이동 : 이동할 경우, matrix[bottom][right-i] = matrix[top+i][right]
-5. LeftTop → RightTop으로 이동 : 이동할 경우, matrix[top+i][right] = LeftTop
+3. RightBottom → LeftBottom으로 이동 : 이동할 경우, `matrix[bottom-i][left] = matrix[bottom][right-i]`을 저장
+4. RigjhtTop → RightTop으로 이동 : 이동할 경우, `matrix[bottom][right-i] = matrix[top+i][right]`을 저장
+5. LeftTop → RightTop으로 이동 : 이동할 경우, `matrix[top+i][right] = LeftTop`을 
 
-![KakaoTalk_20221230_163933075.jpg](#48%20Rotate%20image%20e229df008f9a48a0b391ae277d37581d/KakaoTalk_20221230_163933075%201.jpg)
+![KakaoTalk_20221230_163933075](https://user-images.githubusercontent.com/101111603/210125489-48653ab0-d323-464c-a7f3-1781c59e2e60.jpg)
 
 ```python
 class Solution:
