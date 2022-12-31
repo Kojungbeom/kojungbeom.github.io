@@ -1,20 +1,15 @@
-# #48. Rotate image
+---
+title: LeetCode - 48. Rotate image
+author: MINJEONG KIM
+date: 2022-12-26
+category: Jekyll
+layout: post
+---
 
-progress: Done
-review: 🥜
-site: LeetCode
-등급: Medium
-링크: https://leetcode.com/problems/rotate-image/
-복습: No
-유형: 구현
-작성일시: 2022년 12월 26일 오후 12:24
-체크박스2: Yes
-
-**Date: 22.12.26**
+# [#48. Rotate image](https://leetcode.com/problems/rotate-image/)
+`LeetCode`의 `Medium`등급의 문제이다.
 
 # 📖Description
-
----
 
 You are given an n x n 2D matrix representing an image, rotate the image by **90** degrees (clockwise).
 
@@ -30,14 +25,12 @@ You have to rotate the image **[in-place](https://en.wikipedia.org/wiki/In-place
 
 # 🔍Approach
 
----
 
 - **인덱스 사용 :** 새로운 리스트를 선언할 수 없기 때문에 내부의 index를 호출해 내부적으로 input 행렬 내에서 해당 인덱스 값을 통해 값을 할당하도록 해결한다.
 - **규칙 찾아보기** : 90도로 회전하는 것이기 때문에 그림을 통해서 어떻게 변화하는지 하나하나 찾아본 후 코드로 구현한다.
 
 # 🔍Process
 
----
 
 ## Try 1.
 
@@ -232,8 +225,6 @@ class Solution(object):
 
 # 💡Remembrance
 
----
 
 - 문제를 풀 때는 전혀 코드 이해도 되지 않고 어려웠는데, 복습하면서 완벽히 이해해서 뿌듯함
 - 이런 문제의 경우는 직접 그림을 그려가며 규칙을 발견하고 그대로 구현하는 방법이 가장 적합하다는 생각이 든다. 앞으로 이런 식으로 **행렬로 주어진 문제**는 **그 안의 규칙을 찾아보고 그림을 그린 후 코드로 옮기는 방식**으로 해야겠다.
--
