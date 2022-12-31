@@ -1,18 +1,15 @@
-# #739. Daily Temperatures
+---
+title: LeetCode - 739. Daily Temperatures
+author: MINJEONG KIM
+date: 2022-12-28
+category: Jekyll
+layout: post
+---
 
-progress: Done
-review: 🥜
-site: LeetCode
-등급: Medium
-링크: https://leetcode.com/problems/daily-temperatures/description/
-복습: No
-유형: 스택/큐, 자료구조
-작성일시: 2022년 12월 28일 오전 10:59
-체크박스2: Yes
+# [#739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/
+`LeetCode`의 `Medium`난이도의 문제이다.
 
 # 📖Description
-
----
 
 Given an array of integers `temperatures` represents the daily temperatures, return *an array* `answer` *such that* `answer[i]` *is the number of days you have to wait after the* `ith` *day to get a warmer temperature*. If there is no future day for which this is possible, keep `answer[i] == 0` instead.
 
@@ -41,8 +38,6 @@ Output: [1,1,0]
 
 # 🔍Approach
 
----
-
 각각의 날에 대해서 따뜻한 날까지 걸리는 시간을 구하는 것!!
 
 시간은 좀 어려울 수 있으니,  index라고 생각하면 됨
@@ -57,30 +52,21 @@ Output: [1,1,0]
 </aside>
 
 과정은 아래 그림과 같다.
+![KakaoTalk_20221231_102028167](https://user-images.githubusercontent.com/101111603/210125585-f7a027fc-11ab-4bd8-b7eb-786cc0a069fe.jpg)
+![KakaoTalk_20221231_102028167_01](https://user-images.githubusercontent.com/101111603/210125589-4dff2c7d-f0f0-487e-80b9-fdf7dac26f90.jpg)
+![KakaoTalk_20221231_102028167_02](https://user-images.githubusercontent.com/101111603/210125591-14f9dbe3-ec73-40f5-b16b-6f2fdd2d5e37.jpg)
+![KakaoTalk_20221231_102028167_03](https://user-images.githubusercontent.com/101111603/210125593-82cc5dca-2a47-403f-9fff-c0d11d398832.jpg)
+![KakaoTalk_20221231_102028167_04](https://user-images.githubusercontent.com/101111603/210125597-af04288f-a46d-44c9-9616-d9cb787e0231.jpg)
+![KakaoTalk_20221231_102028167_05](https://user-images.githubusercontent.com/101111603/210125601-a3c657b2-0bc3-4856-942d-76989df054f2.jpg)
+![KakaoTalk_20221231_102028167_06](https://user-images.githubusercontent.com/101111603/210125613-5dc324da-2416-426e-9e66-8b3af0483673.jpg)
+![KakaoTalk_20221231_102028167_07](https://user-images.githubusercontent.com/101111603/210125614-6dc7ccbf-1d64-4536-a237-24c811d0444b.jpg)
+![KakaoTalk_20221231_102028167_08](https://user-images.githubusercontent.com/101111603/210125616-37ef3e0c-ab51-4fc5-8c8e-387dd8b1ca07.jpg)
+![KakaoTalk_20221231_102028167_09](https://user-images.githubusercontent.com/101111603/210125620-b901494a-ebdd-4e75-aee2-a3368adad0ca.jpg)
+![KakaoTalk_20221231_102028167_10](https://user-images.githubusercontent.com/101111603/210125623-b8ec0493-1930-4099-8c20-c00e496002d0.jpg)
+![KakaoTalk_20221231_102028167_11](https://user-images.githubusercontent.com/101111603/210125627-d4ed323d-7914-48af-8fc1-c430e5179815.jpg)
 
-![KakaoTalk_20221231_102028167.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167.jpg)
 
-![KakaoTalk_20221231_102028167_02.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_02.jpg)
 
-![KakaoTalk_20221231_102028167_04.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_04.jpg)
-
-![KakaoTalk_20221231_102028167_06.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_06.jpg)
-
-![KakaoTalk_20221231_102028167_08.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_08.jpg)
-
-![KakaoTalk_20221231_102028167_10.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_10.jpg)
-
-![KakaoTalk_20221231_102028167_01.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_01.jpg)
-
-![KakaoTalk_20221231_102028167_03.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_03.jpg)
-
-![KakaoTalk_20221231_102028167_05.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_05.jpg)
-
-![KakaoTalk_20221231_102028167_07.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_07.jpg)
-
-![KakaoTalk_20221231_102028167_09.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_09.jpg)
-
-![KakaoTalk_20221231_102028167_11.jpg](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/KakaoTalk_20221231_102028167_11.jpg)
 
 ## 🚩Try : 1
 
@@ -108,8 +94,8 @@ class Solution(object):
 → 이렇게 while문의 조건을 수정했다.
 
 그랬더니 TimeLimit은 처리됐는데 wrong answer가 나왔다.
+![wrong_answer](https://user-images.githubusercontent.com/101111603/210125642-366f0552-852e-4a0f-9c05-296811b2bdf5.jpg)
 
-![wrong answer.JPG](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/wrong_answer.jpg)
 
 ## 🚩Try : 2
 
@@ -131,12 +117,13 @@ class Solution(object):
         print(ans)
         return ans
 ```
+![wrong_answer 1](https://user-images.githubusercontent.com/101111603/210125648-2094f87f-7f0f-45b3-8ab6-9aee06d47915.jpg)
 
-![wrong answer.JPG](#739%20Daily%20Temperatures%209b0593b888cd49fd8eb6ea29c7b825f1/wrong_answer%201.jpg)
+
 
 ## 🤔🎯Submission
 
-이해가 되지 않아, 결국은 참고자료를 봤다. (출처 : [https://youtu.be/cTBiBSnjO3c](https://youtu.be/cTBiBSnjO3c))
+이해가 되지 않아, 결국은 [참고자료](https://youtu.be/cTBiBSnjO3c)를 봤다. 
 
 ```python
 class Solution(object):
@@ -168,8 +155,6 @@ class Solution(object):
     
 
 # 💡Rememberance
-
----
 
 - 스택, 그리고 자료구조에 대해 다시 공부해야겠다.
 - 스택은 개념은 쉽지만 코드를 짤 때는 뭐가 나와야 하고 뭐가 들어가야 하는지 이런 거를 잘 봐야 할 것 같다.
