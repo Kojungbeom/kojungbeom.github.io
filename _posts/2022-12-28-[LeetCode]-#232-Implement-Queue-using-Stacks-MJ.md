@@ -1,14 +1,13 @@
-# #232. Implement Queue using Stacks
+---
+title: LeetCode - 232. Implement Queue using Stacks
+author: MINJEONG KIM
+date: 2022-12-28
+category: Jekyll
+layout: post
+---
 
-progress: Done
-review: 🥜
-site: LeetCode
-등급: Easy
-링크: https://leetcode.com/problems/implement-queue-using-stacks/
-복습: No
-유형: 스택/큐, 자료구조
-작성일시: 2022년 12월 28일 오전 10:44
-체크박스2: No
+# [#232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)
+`LeetCode`의 `Easy`단계 문제이다. 이 문제 역시 올리지 않아도 되지만, 내게는 꽤 도움이 되었던 워밍업 문제였기에 첨부한다.
 
 # 📖Description
 
