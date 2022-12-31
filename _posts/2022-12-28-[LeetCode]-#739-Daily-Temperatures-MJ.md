@@ -6,7 +6,7 @@ category: Jekyll
 layout: post
 ---
 
-# [#739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/
+# [#739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
 `LeetCode`의 `Medium`난이도의 문제이다.
 
 # 📖Description
@@ -159,5 +159,5 @@ class Solution(object):
 - 스택, 그리고 자료구조에 대해 다시 공부해야겠다.
 - 스택은 개념은 쉽지만 코드를 짤 때는 뭐가 나와야 하고 뭐가 들어가야 하는지 이런 거를 잘 봐야 할 것 같다.
 - 이 문제는 내가 직접 짜지 않았기 때문에 나중에 다시 복습해봐야 할 것 같다.
-- 영상을 보고 직접 하나하나 그림을 그려 과정을 살펴보았다. 그 후 다시 코드를 보니 이해가 되었다. 무엇이든 코드를 짜기 전에 머릿속에 있는 것을 그림이나 숫자로 그리거나 나열해본 후에 돌입해야 할 것 같다.
+- 영상을 보고 직접 하나하나 그림을 그려 과정을 살펴보았다. 그 후 다시 코드를 보니 이해가 되었다. **무엇이든 코드를 짜기 전에 머릿속에 있는 것을 그림이나 숫자로 그리거나 나열해본 후에 돌입해야 할 것 같다.**
 - 저번 괄호 문제는 ‘짝’을 맞춰야 하기 때문에 stack을 사용했다면 이 문제는 브루트포스가 아니라 더 간결하게 더 큰 온도만 남도록 하기 위해 stack을 사용하였다. (아니 정확한 이유는 아직 잘 가늠이 안 간다) 그래도 이렇게 정리하면서 조금 이라도 이해해서 다행이다. 다음에는 아무것도 안 보고 혼자서 짜보고 싶다.
