@@ -1,4 +1,10 @@
-# 2022-12-28-#739-Daily-Temperatures
+---
+title: LeetCode - 739. Daily-Temperatures
+author: EUNJI KWAK
+date: 2022-12-28
+category: Jekyll
+layout: post
+---
 
 # [문제]
 
