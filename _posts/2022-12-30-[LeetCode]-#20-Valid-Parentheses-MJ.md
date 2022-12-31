@@ -7,7 +7,7 @@ layout: post
 ---
 
 # [#20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
-`LeetCode'의 `Easy`단계 문제이다.
+`LeetCode`의 `Easy`단계 문제이다.
 지난 시간 백준 9012 괄호 문제의 연장선이라고 생각하면 된다.
 
 # 📖Description
@@ -87,7 +87,7 @@ class Solution(object):
 
 Reason 1 Dictionary Definition 딕셔너리 `brackets`를 잘못 정의함
 
-Reason2.
+
 
 ```python
 SyntaxError: invalid syntax
@@ -127,9 +127,7 @@ class Solution(object):
 ```
 ![result3](https://user-images.githubusercontent.com/101111603/210125963-a01a1782-a142-4cf1-ab0d-ac0de6312d2a.jpg)
 
-→ 마지막 Testcase만 통과되지 않았다.
-
-`enumerate`를 사용했기 때문에 발생한 것으로 보인다.
+→ 마지막 Testcase만 통과되지 않았다. `enumerate`를 사용했기 때문에 발생한 것으로 보인다.
 
 ## My submission
 
@@ -257,6 +255,6 @@ class Solution(object):
 
 # 💡Remembrance
 
-- 짝을 맞추는 문제에서는 `stack`을 사용하는 게 더 효율적이다.
-- 지난 문제에서 stack을 활용한 괄호문제를 풀었기 때문에 조금 더 수월했고, stack에 대한 복습과 이해도 저번보다 더 잘 되었다. 역시 반복학습이 중요해!
-- 여러 사람들의 코드를 보니 코드 구성이 대부분 비슷하였으나, 이해하기 쉬운 코드로 짜는게 가장 좋은 것 같다. 그런 의미로 선배의 코드를 보고 반성했다. 메모리나 런타임이 가장 적게 나오는 코드보다 선배 코드를 이해하는 게 더 쉬웠던 것 같다. 배워간다!
+- 짝을 맞추는 문제에서는 **`stack`을 사용하는 게 더 효율적**이다.
+- 지난 문제에서 stack을 활용한 괄호문제를 풀었기 때문에 조금 더 수월했고, **stack에 대한 복습과 이해도 저번보다 더 잘 되었다.** 역시 반복학습이 중요해!
+- 여러 사람들의 코드를 보니 코드 구성이 대부분 비슷하였으나, **이해하기 쉬운 코드로 짜는게 가장 좋은 것 같다.** 그런 의미로 선배의 코드를 보고 반성했다. 메모리나 런타임이 가장 적게 나오는 코드보다 선배 코드를 이해하는 게 더 쉬웠던 것 같다. 배워간다!
