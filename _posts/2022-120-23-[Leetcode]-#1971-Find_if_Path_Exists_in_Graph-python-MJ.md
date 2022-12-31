@@ -6,9 +6,8 @@ category: Jekyll
 layout: post
 ---
 
-# #1971. Find if Path Exists in Graph
-등급: Easy
-링크: https://leetcode.com/problems/find-if-path-exists-in-graph/
+# [#1971. Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/
+`leeetcode`문제이고, 등급은 `easy`이다.
 유형: 백트래킹(DFS/BFS), 그래프
 
 
