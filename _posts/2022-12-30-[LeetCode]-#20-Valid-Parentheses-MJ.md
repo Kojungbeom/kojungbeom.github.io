@@ -1,14 +1,14 @@
-# #20. Valid Parentheses
+---
+title: LeetCode - 20. Valid Parentheses
+author: MINJEONG KIM
+date: 2022-12-30
+category: Jekyll
+layout: post
+---
 
-progress: Done
-review: 🥜
-site: LeetCode
-등급: Easy
-링크: https://leetcode.com/problems/valid-parentheses/
-복습: No
-유형: 스택/큐
-작성일시: 2022년 12월 28일 오후 4:54
-체크박스2: Yes
+# [#20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
+`LeetCode'의 `Easy`단계 문제이다.
+지난 시간 백준 9012 괄호 문제의 연장선이라고 생각하면 된다.
 
 # 📖Description
 
@@ -125,8 +125,7 @@ class Solution(object):
                 return False
         return True
 ```
-
-![result3.JPG](#20%20Valid%20Parentheses%2069a581f4df0b4f8fab14eec521af3854/result3.jpg)
+![result3](https://user-images.githubusercontent.com/101111603/210125963-a01a1782-a142-4cf1-ab0d-ac0de6312d2a.jpg)
 
 → 마지막 Testcase만 통과되지 않았다.
 
