@@ -1,4 +1,3 @@
-# 2022-12-24-#1971-Find-if-Path-Exists-in-Graph
 
 # [문제]([https://leetcode.com/problems/find-if-path-exists-in-graph/](https://leetcode.com/problems/find-if-path-exists-in-graph/))
 
@@ -8,7 +7,7 @@ You want to determine if there is a **valid path** that exists from vertex `s
 
 Given `edges` and the integers `n`, `source`, and `destination`, return `true` *if there is a **valid path** from* `source` *to* `destination`*, or* `false` *otherwise.*
 
-[문제해석[
+[문제해석]
 
 n개의 노드와 노드와 노드 사이 연결인 edge가 주어지고, source(시작점)와 destination(목적지)가 주어졌을때 시작점에서 목적지로 갈 수 있는지 True/False로 리턴하시오.
 
@@ -24,7 +23,7 @@ Explanation: There are two paths from vertex 0 to vertex 2:
 
 ### example 2:
 
-![Untitled](2022-12-24-#1971-Find-if-Path-Exists-in-Graph%20a2cf2b80b74a4b49b01236ef491b5c0b/Untitled.png)
+![./GRAPH.png](./GRAPH.png)
 
 ```
 Input: n = 6, edges = [[0,1],[0,2],[3,5],[5,4],[4,3]], source = 0, destination = 5
