@@ -1,5 +1,5 @@
 ---
-title: BOJ - 20. Valid parantheses
+title: LEET - 20. Valid parantheses
 author: EUNJI KWAK
 date: 2022-12-30
 category: Jekyll
