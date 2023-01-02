@@ -1,4 +1,10 @@
-# 2023-1-1-[Leet]-#198-House-Robber-EJ01
+---
+title: LEETCODE - 198. HouseRobber
+author: EUNJI KWAK
+date: 2023-1-2
+category: Jekyll
+layout: post
+---
 
 # [문제]
 
