@@ -1,4 +1,3 @@
-
 ---
 title: LeetCode - 1971. Find-if-Path-Exists-in-Graph
 author: EUNJI KWAK
