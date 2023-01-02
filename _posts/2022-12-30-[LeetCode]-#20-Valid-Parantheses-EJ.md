@@ -1,4 +1,10 @@
-# 2022-12-30-[Leet]-#20-Valid-Parantheses
+---
+title: BOJ - 20. Valid parantheses
+author: EUNJI KWAK
+date: 2022-12-30
+category: Jekyll
+layout: post
+---
 
 # [문제]
 
