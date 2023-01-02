@@ -132,5 +132,5 @@ class Solution:
 
 # [배운점]
 
-1. stack =First IN First OUT
+1. stack = Last IN First OUT
 2. 무엇을 append, pop, 몇 번 반복하는지 확실히 할 것!
