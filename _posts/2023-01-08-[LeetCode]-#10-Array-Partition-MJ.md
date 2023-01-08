@@ -1,11 +1,14 @@
-# #10. Array Partition
+---
+title: LeetCode - 561. Array Partition
+author: JUNGBEOM KO
+date: 2022-12-17
+category: Jekyll
+layout: post
+---
 
-progress: Not started
-site: LeetCode
-upload: No
-등급: Easy
-유형: 배열, 투 포인터/슬라이딩 윈도우
-작성일시: 2023년 1월 8일 오후 9:12
+# [#561. Array Partition](https://leetcode.com/problems/array-partition/)
+
+`LeetCode`의 `Eeasy`단계 문제이다.
 
 # 📖Problems
 
@@ -94,8 +97,8 @@ class Solution(object):
 
         return sum
 ```
+![561_solve](https://user-images.githubusercontent.com/101111603/211200163-411d3ebc-752c-43f8-8a81-851d4c21ddbe.jpg)
 
-![561 solve.JPG](#10%20Array%20Partition%208cb9fa3cac344bd0b982a85329443d8e/561_solve.jpg)
 
 ## 🚩Others submission
 
@@ -114,8 +117,8 @@ class Solution(object):
                 sum += n
         return sum
 ```
+![solve2](https://user-images.githubusercontent.com/101111603/211200167-f4acd08b-740e-4812-8bbc-c8a4cc511433.jpg)
 
-![solve2.JPG](#10%20Array%20Partition%208cb9fa3cac344bd0b982a85329443d8e/solve2.jpg)
 
 - 아이디어를 생각해내면 훨씬 더 단순해지는 것 같다.
 - 문제에서 `min()`을 쓰라는 느낌을 받아서 이 방식은 생각 못했을 것 같다.
@@ -130,8 +133,8 @@ class Solution(object):
     def arrayPairSum(self, nums):
         return sum(sorted(nums)[::2])
 ```
+![solve3](https://user-images.githubusercontent.com/101111603/211200177-647c2790-7571-4245-9602-4bb452cbb8bf.jpg)
 
-![solve3.JPG](#10%20Array%20Partition%208cb9fa3cac344bd0b982a85329443d8e/solve3.jpg)
 
 - 이전 1번처럼 결국엔 짝수값을 더하는 것이기 때문에 슬라이싱을 통해 2씩 더하면 끝난다.
 
