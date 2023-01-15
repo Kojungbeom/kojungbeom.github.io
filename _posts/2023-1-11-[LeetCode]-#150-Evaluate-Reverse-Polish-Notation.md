@@ -3,7 +3,7 @@ title: LeetCode - 150.Evaluate Reverse Polish Notation
 author: EUNJI KWAK
 date: 2023-1-11
 categories: [BeakJoon, EUNJI]
-tags: stack
+tags: [stack]
 ---
 
 # [문제](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
