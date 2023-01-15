@@ -1,5 +1,5 @@
 ---
-title: 프로그래머스 - 전화번호 목록
+title: 프로그래머스 - 폰켓몬
 author: MINJEONG KIM
 date: 2023-1-14
 categories: [Programmers, MINJEONG]
