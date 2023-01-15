@@ -1,15 +1,13 @@
-# #1845. 폰켓몬
+---
+title: 프로그래머스 - 전화번호 목록
+author: MINJEONG KIM
+date: 2023-1-14
+categories: [Programmers, MINJEONG]
+tags: [Programmers, MINJEONG, brute force, hash]
+---
 
-progress: In progress
-review: 🥜
-site: 프로그래머스
-upload: No
-등급: Level1
-링크: https://school.programmers.co.kr/learn/courses/30/lessons/1845
-유형: 브루트 포스(완전탐색), 해시 테이블
-작성일시: 2023년 1월 15일 오전 2:22
-
-# #1845. 폰켓몬
+# [#1845. 폰켓몬](https://school.programmers.co.kr/learn/courses/30/lessons/1845)
+프로그래머스 -고득점kit - 해시 - Level1
 
 # 📖Problems
 
