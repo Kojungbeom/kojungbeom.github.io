@@ -2,7 +2,7 @@
 title: LeetCode - 150. Evaluate Reverse Polish Notation
 author: MINJEONG KIM
 date: 2023-01-11
-categories: [LeetCode, MINJEONG]
+categories: [LeetCode, MINJEONG_L]
 tags: [BeakJoon, MINJEONG, stack, Medium]
 ---
 
@@ -127,7 +127,7 @@ class Solution:
 2. **submit 제출 시 통과가 되지 않았음**
     - 원인 : tokens = [“18”] 처럼 하나만 들어올 경우 answer는 18이 나와야 하는데 0이 나온다. 이는 마지막에 return answer를 했기 때문이다.
     - 최종답은 answer와 stack에 하나 남은 값과 같기 때문에,
-        
+      
         ex) tokens = ["2","1","+","3","*"]
         
         0 [2]
