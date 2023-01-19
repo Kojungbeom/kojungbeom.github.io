@@ -2,8 +2,8 @@
 title: LeetCode-70.Climbing Stairs
 author: EUNJI KWAK
 date: 2023-1-19
-category: Jekyll
-layout: post
+categories: [LeetCode,EUNJI_L]
+tags: []
 -—
 
 # [문제](https://leetcode.com/problems/climbing-stairs/description/)
