@@ -3,8 +3,9 @@ title: LeetCode-70.Climbing Stairs
 author: EUNJI KWAK
 date: 2023-1-19
 categories: [LeetCode,EUNJI_L]
-tags: []
--—
+tags: [다이나믹 알고리즘, 재귀함수, 피보나치수열]
+---
+
 
 # [문제](https://leetcode.com/problems/climbing-stairs/description/)
 
