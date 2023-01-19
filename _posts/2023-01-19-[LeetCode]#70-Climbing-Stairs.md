@@ -34,6 +34,8 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 ```
 
+
+
 # [풀이]
 
 1. **재귀함수 사용 → Time Limit Exceeded**
@@ -70,7 +72,10 @@ class Solution:
 
 - input: n에 따라 계산이 반복되기 때문에 시간 복잡도에서 걸린듯!
 
-1. **다이내믹 프로그래밍 → PASS!!!**
+
+
+
+2. **다이내믹 프로그래밍 → PASS!!!**
 - n=3
     - dp=[0,0,0,0], dp=[0,1,2,0]
     - for i in range(3,4): dp[3] = dp[2]+dp[1] = 2+1 = 3 → dp = [0,1,2,3]
