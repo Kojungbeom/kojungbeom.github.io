@@ -1,14 +1,12 @@
-# [LeetCode]#70-Climbing-Stairs
-
 ---
-title: LeetCode - 70. Climbing Stairs
+title: LeetCode-70.Climbing Stairs
 author: EUNJI KWAK
 date: 2023-1-19
 category: Jekyll
 layout: post
 -—
 
-# [문제]([https://leetcode.com/problems/climbing-stairs/description/](https://leetcode.com/problems/climbing-stairs/description/))
+# [문제](https://leetcode.com/problems/climbing-stairs/description/)
 
 You are climbing a staircase. It takes `n` steps to reach the top.
 
