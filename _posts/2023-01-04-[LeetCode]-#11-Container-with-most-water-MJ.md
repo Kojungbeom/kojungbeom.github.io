@@ -2,9 +2,10 @@
 title: LeetCode - 11. Container with most water
 author: MINJEONG KIM
 date: 2023-01-04
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, two-pointer, Medium]
 ---
+
 
 # [#11. Container with most water](https://leetcode.com/problems/container-with-most-water/description/)
 
