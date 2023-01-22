@@ -1,5 +1,3 @@
-# [Programmers]#스택큐_다리를지나는트럭
-
 ---
 title: Programmers-스택,큐-다리를-지나는-트럭
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [LeetCode, EUNJI_L]
 tags: [Queue, 큐]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/42583](https://school.programmers.co.kr/learn/courses/30/lessons/42583))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/42583)
 
 **트럭 여러 대**가 강을 가로지르는 **일차선 다리를 정해진 순으로 건너려 합니다.** **모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다.**
 
