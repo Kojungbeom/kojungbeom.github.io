@@ -2,8 +2,8 @@
 title: LeetCode - 198. House Robber
 author: MINJEONG KIM
 date: 2023-01-02
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, Medium, dp]
 ---
 
 # [#198. House Robber](https://leetcode.com/problems/house-robber/)
