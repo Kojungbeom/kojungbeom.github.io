@@ -1,14 +1,12 @@
-# [LeetCode]#242-Valid-Anagram
-
 ---
-title: LeetCode - 242. Valid-Anagram
+title: LeetCode-242.Valid-Anagram
 author: EUNJI KWAK
 date: 2023-1-17
 categories: [LeetCode, EUNJI_L]
 tags: [hash, 해시]
--—
+---
 
-# [문제]([https://leetcode.com/problems/valid-anagram/description/](https://leetcode.com/problems/valid-anagram/description/))
+# [문제](https://leetcode.com/problems/valid-anagram/description/)
 
 Given two strings `s` and `t`, return `true` *if* `t` *is an anagram of* `s`*, and* `false` *otherwise*.
 
