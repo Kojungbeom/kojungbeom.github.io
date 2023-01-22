@@ -1,14 +1,12 @@
-# [LeetCode]#217-Contains-Duplicate
-
 ---
-title: LeetCode - 217. Contains-Duplicate
+title: LeetCode-217.Contains-Duplicate
 author: EUNJI KWAK
 date: 2023-1-16
 categories: [LeetCode, EUNJI_L]
 tags: [hash, 해시]
--—
+---
 
-# [문제]([https://leetcode.com/problems/contains-duplicate/description/](https://leetcode.com/problems/contains-duplicate/description/))
+# [문제](https://leetcode.com/problems/contains-duplicate/description/)
 
 Given an integer array `nums`, return `true` if any value appears **at least twice** in the array, and return `false` if every element is distinct.
 
