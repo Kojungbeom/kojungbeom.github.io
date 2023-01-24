@@ -1,16 +1,13 @@
-# 힙 - 더 맵게
-
-progress: Done
-review: 🥜
-site: 프로그래머스
-upload: Yes
-등급: Level2
-링크: https://school.programmers.co.kr/learn/courses/30/lessons/42626
-알고리즘 개념: https://www.notion.so/Heap-0534d479740040a195d844181b898108
-유형: 힙
-작성일시: 2023년 1월 24일 오전 11:04
+---
+title: 프로그래머스 - 더 맵게
+author: MINJEONG KIM
+date: 2023-1-24
+categories: [Programmers, MINJEONG_P]
+tags: [Programmers, MINJEONG, Heap]
+---
 
 # [프로그래머스 - 코딩테스트 연습 - 고득점 kit - 힙 - #.더 맵게](https://school.programmers.co.kr/learn/courses/30/lessons/42626)
+
 
 # 📖Problems
 
@@ -104,8 +101,8 @@ def solution(scoville, K):
     else:
         return -1
 ```
+![%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2023-01-24_11-46-20](https://user-images.githubusercontent.com/101111603/214208385-20090594-c968-4e29-af65-c4791107b3b7.png)
 
-![스크린샷, 2023-01-24 11-46-20.png](%E1%84%92%E1%85%B5%E1%86%B8%20-%20%E1%84%83%E1%85%A5%20%E1%84%86%E1%85%A2%E1%86%B8%E1%84%80%E1%85%A6%20b695d17ee7994b78a6751508d0aa3ae2/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-01-24_11-46-20.png)
 
 🚩**초기** **Flow**
 
@@ -143,8 +140,8 @@ while True:
 코드 실행 >> 통과
 
 제출 >>
+![%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2023-01-24_11-36-27](https://user-images.githubusercontent.com/101111603/214208401-0a2a1e6f-3534-461c-846a-ba7f6316d3ae.png)
 
-![스크린샷, 2023-01-24 11-36-27.png](%E1%84%92%E1%85%B5%E1%86%B8%20-%20%E1%84%83%E1%85%A5%20%E1%84%86%E1%85%A2%E1%86%B8%E1%84%80%E1%85%A6%20b695d17ee7994b78a6751508d0aa3ae2/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-01-24_11-36-27.png)
 
 이유 : while 문 안에 자꾸 heapify를 시켜 너무 많은 연산이 수행되었다.
 
@@ -181,8 +178,8 @@ def solution(scoville, K):
 코드 실행 >> 통과
 
 제출 >>
+![%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2023-01-24_11-42-37](https://user-images.githubusercontent.com/101111603/214208413-cf5bb021-c1be-40ca-83ef-b819c126a648.png)
 
-![스크린샷, 2023-01-24 11-42-37.png](%E1%84%92%E1%85%B5%E1%86%B8%20-%20%E1%84%83%E1%85%A5%20%E1%84%86%E1%85%A2%E1%86%B8%E1%84%80%E1%85%A6%20b695d17ee7994b78a6751508d0aa3ae2/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-01-24_11-42-37.png)
 
 **런타임에러 >> index out of range 인 경우가 많다. 이는 반복문과 관련하여 무언가가 잘못 되었을 확률이 크다.**
 
