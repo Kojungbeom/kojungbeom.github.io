@@ -2,7 +2,7 @@
 title: LeetCode - 150.Evaluate Reverse Polish Notation
 author: EUNJI KWAK
 date: 2023-1-11
-categories: [BeakJoon, EUNJI]
+categories: [LeetCode, EUNJI_L]
 tags: [stack]
 ---
 
