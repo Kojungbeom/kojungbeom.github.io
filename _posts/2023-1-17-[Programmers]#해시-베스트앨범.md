@@ -1,8 +1,8 @@
 ---
-title: Programmers-베스트 앨범
+title: Programmers - 베스트 앨범
 author: EUNJI KWAK
 date: 2023-1-17
-categories: [BeakJoon, EUNJI_b]
+categories: [Programmers, EUNJI_p]
 tags: [Hash]
 ---
 
