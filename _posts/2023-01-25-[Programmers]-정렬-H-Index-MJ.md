@@ -1,13 +1,11 @@
-# 정렬 - H-Index
+---
+title: 프로그래머스 - H-Index
+author: MINJEONG KIM
+date: 2023-1-25
+categories: [Programmers, MINJEONG_P]
+tags: [Programmers, MINJEONG, Sort]
+---
 
-progress: Done
-review: 🥜
-site: 프로그래머스
-upload: Yes
-등급: Level2
-링크: https://school.programmers.co.kr/learn/courses/30/lessons/42747
-유형: 정렬
-작성일시: 2023년 1월 25일 오전 10:30
 
 # [프로그래머스 - 고득점 kit - 정렬 - H-Index](https://school.programmers.co.kr/learn/courses/30/lessons/42747)
 
