@@ -1,15 +1,12 @@
-# [Programmers]#정렬_H-index
-
 ---
 title: Programmers-H-index
 author: EUNJI KWAK
 date: 2023-1-25
 categories: [Programmers, EUNJI_p]
 tags: [sorting, sort, 정렬]
+---
 
--—
-
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/42747](https://school.programmers.co.kr/learn/courses/30/lessons/42747))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/42747)
 
 ### **문제 설명**
 
