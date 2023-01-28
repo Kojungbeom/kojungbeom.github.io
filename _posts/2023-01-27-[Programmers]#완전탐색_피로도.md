@@ -1,15 +1,12 @@
-# [Programmers]#완전탐색_피로도
-
 ---
 title: Programmers-피로도
 author: EUNJI KWAK
 date: 2023-1-27
 categories: [Programmers, EUNJI_p]
 tags: [완전탐색, 순열, Permutations, 재귀]
+---
 
--—
-
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/87946?language=python3](https://school.programmers.co.kr/learn/courses/30/lessons/87946?language=python3))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/87946?language=python3)
 
 XX게임에는 피로도 시스템(0 이상의 정수로 표현합니다)이 있으며, 일정 피로도를 사용해서 던전을 탐험할 수 있습니다. 이때, 각 던전마다 탐험을 시작하기 위해 필요한 "최소 필요 피로도"와 던전 탐험을 마쳤을 때 소모되는 "소모 피로도"가 있습니다. "최소 필요 피로도"는 해당 던전을 탐험하기 위해 가지고 있어야 하는 최소한의 피로도를 나타내며, "소모 피로도"는 던전을 탐험한 후 소모되는 피로도를 나타냅니다. 예를 들어 "최소 필요 피로도"가 80, "소모 피로도"가 20인 던전을 탐험하기 위해서는 유저의 현재 남은 피로도는 80 이상 이어야 하며, 던전을 탐험한 후에는 피로도 20이 소모됩니다.
 
