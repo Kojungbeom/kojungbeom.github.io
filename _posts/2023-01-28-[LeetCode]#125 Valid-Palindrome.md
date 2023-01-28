@@ -1,14 +1,12 @@
-# [LeetCode]#125.Valid-Palindrome
-
 ---
-title: LeetCode - 125.Valid-Palindrome
+title: LeetCode-125.Valid-Palindrome
 author: EUNJI KWAK
-date: 2023-1-26
+date: 2023-1-28
 categories: [LeetCode, EUNJI_l]
 tags: [Two Pointer, array]
--—
+---
 
-# [문제]([https://leetcode.com/problems/valid-palindrome/description/](https://leetcode.com/problems/valid-palindrome/description/))
+# [문제](https://leetcode.com/problems/valid-palindrome/description/)
 
 A phrase is a **palindrome** if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 
