@@ -1,14 +1,12 @@
-# [LeetCode]#347.Top K Frequent Elements
-
 ---
-title: LeetCode - [347.Top](http://347.Top)-K-Frequent-Elements
+title: LeetCode-347.Top-K-Frequent-Elements
 author: EUNJI KWAK
 date: 2023-1-26
 categories: [LeetCode, EUNJI_l]
 tags: [array, dictionary]
--—
+---
 
-# [문제]([https://leetcode.com/problems/top-k-frequent-elements/](https://leetcode.com/problems/top-k-frequent-elements/))
+# [문제](https://leetcode.com/problems/top-k-frequent-elements/)
 
 Given an integer array `nums` and an integer `k`, return *the* `k` *most frequent elements*. You may return the answer in **any order**.
 
