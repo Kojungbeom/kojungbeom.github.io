@@ -1,14 +1,12 @@
-# [LeetCode]#7997. Find the Town Judge
-
 ---
-title: LeetCode - 7**997. Find the Town Judge**
+title: LeetCode-7997.Find the Town Judge
 author: EUNJI KWAK
 date: 2023-1-26
-category: Jekyll
-layout: post
--—
+categories: [LeetCode, EUNJI_l]
+tags: [stack]
+---
 
-# [문제]([https://leetcode.com/problems/find-the-town-judge/](https://leetcode.com/problems/find-the-town-judge/))
+# [문제](https://leetcode.com/problems/find-the-town-judge/)
 
 In a town, there are `n` people labeled from `1` to `n`. There is a rumor that one of these people is secretly the town judge.
 
