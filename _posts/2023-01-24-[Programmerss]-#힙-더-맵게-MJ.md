@@ -1,5 +1,5 @@
 ---
-title: 프로그래머스 - 더 맵게
+title: 프로그래머스 - 더 맵게 (MJ)
 author: MINJEONG KIM
 date: 2023-1-24
 categories: [Programmers, MINJEONG_P]
