@@ -1,5 +1,5 @@
 ---
-title: LeetCode - 198. House Robber
+title: LeetCode - 198. House Robber (MJ)
 author: MINJEONG KIM
 date: 2023-01-02
 categories: [LeetCode, MINJEONG_L]
