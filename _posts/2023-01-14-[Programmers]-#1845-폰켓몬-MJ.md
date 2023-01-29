@@ -1,9 +1,9 @@
 ---
-title: 프로그래머스 - 폰켓몬
+title: 프로그래머스 - 폰켓몬 (MJ)
 author: MINJEONG KIM
 date: 2023-1-14
 categories: [Programmers, MINJEONG_P]
-tags: [Programmers, MINJEONG, brute force, hash]
+tags: [Programmers, MINJEONG, Brute-Force, Hash]
 ---
 
 # [#1845. 폰켓몬](https://school.programmers.co.kr/learn/courses/30/lessons/1845)
