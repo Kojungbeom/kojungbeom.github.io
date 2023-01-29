@@ -1,9 +1,9 @@
 ---
-title: LeetCode - 20. Valid Parentheses
+title: LeetCode - 20. Valid Parentheses (MJ)
 author: MINJEONG KIM
 date: 2022-12-30
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, Stack]
 ---
 
 # [#20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
