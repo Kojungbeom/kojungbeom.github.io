@@ -1,9 +1,9 @@
 ---
-title: LeetCode - 232. Implement Queue using Stacks
+title: LeetCode -232. Implement Queue using Stacks(MJ)
 author: MINJEONG KIM
 date: 2022-12-28
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, Stack, Queue]
 ---
 
 # [#232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)
