@@ -1,9 +1,9 @@
 ---
-title: LeetCode - 739. Daily Temperatures
+title: LeetCode - 739. Daily Temperatures (MJ)
 author: MINJEONG KIM
 date: 2022-12-28
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, Stack]
 ---
 
 # [#739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
