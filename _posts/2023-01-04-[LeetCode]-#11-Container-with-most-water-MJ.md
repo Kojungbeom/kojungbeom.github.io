@@ -1,5 +1,5 @@
 ---
-title: LeetCode - 11. Container with most water
+title: LeetCode - 11. Container with most water (MJ)
 author: MINJEONG KIM
 date: 2023-01-04
 categories: [LeetCode, MINJEONG_L]
