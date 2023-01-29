@@ -1,10 +1,11 @@
 ---
-title: LeetCode - 561. Array Partition
-author: JUNGBEOM KO
-date: 2022-12-17
-category: Jekyll
-layout: post
+title: LeetCode - 561. Array Partition (MJ)
+author: MINJEONG KIM
+date: 2023-01-08
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, Math]
 ---
+
 
 # [#561. Array Partition](https://leetcode.com/problems/array-partition/)
 
