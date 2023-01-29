@@ -1,5 +1,5 @@
 ---
-title: 프로그래머스 - 피로도
+title: 프로그래머스 - 피로도 (MJ)
 author: MINJEONG KIM
 date: 2023-01-27
 categories: [Programmers, MINJEONG_P]
