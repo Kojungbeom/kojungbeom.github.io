@@ -1,13 +1,10 @@
-# 다리를 지나는 트럭
-
-progress: Done
-review: 🥜
-site: 프로그래머스
-upload: Yes
-등급: Level2
-링크: https://school.programmers.co.kr/learn/courses/30/lessons/42583
-유형: 스택/큐
-작성일시: 2023년 1월 18일 오후 1:31
+---
+title: 프로그래머스 - 스택/큐 - 다리를 지나는 트럭(MJ)
+author: MINJEONG KIM
+date: 2023-01-18
+categories: [Programmers, MINJEONG_P]
+tags: [Programmers, MINJEONG, Queue]
+---
 
 # [#**스택/큐 - 다리를 지나는 트럭(Level.2)**](https://school.programmers.co.kr/learn/courses/30/lessons/42583)
 
