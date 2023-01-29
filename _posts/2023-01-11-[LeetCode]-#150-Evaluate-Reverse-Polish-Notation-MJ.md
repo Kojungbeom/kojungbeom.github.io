@@ -1,9 +1,9 @@
 ---
-title: LeetCode - 150. Evaluate Reverse Polish Notation
+title: LeetCode - 150. Evaluate Reverse Polish Notation (MJ)
 author: MINJEONG KIM
 date: 2023-01-11
 categories: [LeetCode, MINJEONG_L]
-tags: [BeakJoon, MINJEONG, stack, Medium]
+tags: [BeakJoon, MINJEONG, Stack, Medium]
 ---
 
 # **[150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)**
