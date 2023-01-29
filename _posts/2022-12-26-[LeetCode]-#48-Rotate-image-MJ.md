@@ -1,9 +1,9 @@
 ---
-title: LeetCode - 48. Rotate image
+title: LeetCode - 48. Rotate image(MJ)
 author: MINJEONG KIM
 date: 2022-12-26
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, Four Cells]
 ---
 
 # [#48. Rotate image](https://leetcode.com/problems/rotate-image/)
