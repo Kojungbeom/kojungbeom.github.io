@@ -1,5 +1,5 @@
 ---
-title: LeetCode - 1. Two sum (
+title: LeetCode - 1. Two sum (MJ)
 author: MINJEONG KIM
 date: 2022-12-26
 categories: [LeetCode, MINJEONG_L]
