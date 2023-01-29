@@ -1,5 +1,5 @@
 ---
-title: 프로그래머스 - H-Index
+title: 프로그래머스 - H-Index (MJ)
 author: MINJEONG KIM
 date: 2023-1-25
 categories: [Programmers, MINJEONG_P]
