@@ -1,14 +1,13 @@
 ---
-title: LeetCode - 1971. Find if Path Exists in Graph
+title: LeetCode - 1971. Find if Path Exists in Graph (MJ)
 author: MINJEONG KIM
 date: 2022-12-23
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, 백트래킹]
 ---
 
 # [1971. Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/)
 `leeetcode`문제이고, 등급은 `easy`이다.
-유형: 백트래킹(DFS/BFS), 그래프
 
 
 # 📖Description
