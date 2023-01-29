@@ -1,13 +1,10 @@
-# 베스트앨범
-
-progress: In progress
-review: 🥜
-site: 프로그래머스
-upload: Yes
-등급: Level3
-링크: https://school.programmers.co.kr/learn/courses/30/lessons/42579
-유형: 해시 테이블
-작성일시: 2023년 1월 20일 오후 1:26
+---
+title: 프로그래머스 - 베스트앨범(MJ)
+author: MINJEONG KIM
+date: 2023-01-17
+categories: [Programmers, MINJEONG_P]
+tags: [Programmers, MINJEONG, Hash]
+---
 
 # [고득점 kit - 해시 - 베스트앨범](https://school.programmers.co.kr/learn/courses/30/lessons/42579)
 
