@@ -1,9 +1,9 @@
 ---
-title: LeetCode - 1. Two Sum
+title: LeetCode - 1. Two sum (
 author: MINJEONG KIM
 date: 2022-12-26
-category: Jekyll
-layout: post
+categories: [LeetCode, MINJEONG_L]
+tags: [LeetCode, MINJEONG, Hash, Brute-Force]
 ---
 
 # [#1. Two sum](https://leetcode.com/problems/two-sum/)
