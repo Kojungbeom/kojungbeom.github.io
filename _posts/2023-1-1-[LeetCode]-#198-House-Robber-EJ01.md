@@ -2,8 +2,8 @@
 title: LEETCODE - 198. HouseRobber
 author: EUNJI KWAK
 date: 2023-1-2
-category: Jekyll
-layout: post
+categories: [LeetCode, EUNJI_L]
+tags: [LeetCode]
 ---
 
 # [문제]

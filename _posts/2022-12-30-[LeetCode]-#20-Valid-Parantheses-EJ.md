@@ -2,8 +2,8 @@
 title: LEET - 20. Valid parantheses
 author: EUNJI KWAK
 date: 2022-12-30
-category: Jekyll
-layout: post
+categories: [LeetCode, EUNJI_L]
+tags: [LeetCode]
 ---
 
 # [문제]

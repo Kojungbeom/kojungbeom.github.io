@@ -2,7 +2,7 @@
 title: LeetCode-347.Top-K-Frequent-Elements
 author: EUNJI KWAK
 date: 2023-1-26
-categories: [LeetCode, EUNJI_l]
+categories: [LeetCode, EUNJI_L]
 tags: [array, dictionary]
 ---
 

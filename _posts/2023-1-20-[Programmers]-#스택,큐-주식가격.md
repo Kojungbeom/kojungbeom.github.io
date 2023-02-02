@@ -2,7 +2,7 @@
 title: Programmers-주식가격
 author: EUNJI KWAK
 date: 2023-1-20
-categories: [Programmers, EUNJI_p]
+categories: [Programmers, EUNJI_P]
 tags: [queue, 큐, 스택]
 ---
 

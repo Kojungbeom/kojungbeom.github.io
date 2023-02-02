@@ -1,9 +1,9 @@
 ---
-title: [LeetCode] 36. Valid Sudoku
+title: LeetCode - 36. Valid Sudoku
 author: JUNGBEOM KO
 date: 2023-1-25
-category: Jekyll
-layout: post
+categories: [LeetCode, JUNGBEOM_L]
+tags: [LeetCode, JUNGBEOM]
 ---
 
 # [LeetCode] 36. Valid Sudoku

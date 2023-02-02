@@ -2,7 +2,7 @@
 title: Programmers - 더맵게
 author: EUNJI KWAK
 date: 2023-1-23
-categories: [Programmers, EUNJI_p]
+categories: [Programmers, EUNJI_P]
 tags: [Heap, 힙]
 ---
 

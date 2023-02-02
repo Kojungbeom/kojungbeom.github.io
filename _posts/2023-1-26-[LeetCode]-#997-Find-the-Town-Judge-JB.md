@@ -1,9 +1,9 @@
 ---
-title: [LeetCode] 997. Find the Town Judge
+title: LeetCode - 997. Find the Town Judge
 author: JUNGBEOM KO
 date: 2023-1-26
-category: Jekyll
-layout: post
+categories: [LeetCode, JUNGBEOM_L]
+tags: [LeetCode, JUNGBEOM]
 ---
 
 # [LeetCode] 997. Find the Town Judge

@@ -2,7 +2,7 @@
 title: Programmers-피로도
 author: EUNJI KWAK
 date: 2023-1-27
-categories: [Programmers, EUNJI_p]
+categories: [Programmers, EUNJI_P]
 tags: [완전탐색, 순열, Permutations, 재귀]
 ---
 

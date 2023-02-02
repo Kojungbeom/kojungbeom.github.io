@@ -2,8 +2,8 @@
 title: LeetCode - 1971. Find-if-Path-Exists-in-Graph
 author: EUNJI KWAK
 date: 2022-12-24
-category: Jekyll
-layout: post
+categories: [LeetCode, EUNJI_L]
+tags: [LeetCode]
 ---
 
 # [문제](https://leetcode.com/problems/find-if-path-exists-in-graph/)

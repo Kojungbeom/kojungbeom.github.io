@@ -2,7 +2,7 @@
 title: Programmers-H-index
 author: EUNJI KWAK
 date: 2023-1-25
-categories: [Programmers, EUNJI_p]
+categories: [Programmers, EUNJI_P]
 tags: [sorting, sort, 정렬]
 ---
 

@@ -2,7 +2,7 @@
 title: Programmers-스택,큐-다리를-지나는-트럭
 author: EUNJI KWAK
 date: 2023-1-18
-categories: [Programmers, EUNJI_p]
+categories: [Programmers, EUNJI_P]
 tags: [Queue, 큐]
 ---
 

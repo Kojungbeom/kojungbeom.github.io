@@ -2,8 +2,8 @@
 title: LeetCode-7997.Find the Town Judge
 author: EUNJI KWAK
 date: 2023-1-26
-categories: [LeetCode, EUNJI_l]
-tags: [stack]
+categories: [LeetCode, EUNJI_L]
+tags: [LeetCode]
 ---
 
 # [문제](https://leetcode.com/problems/find-the-town-judge/)
@@ -72,7 +72,7 @@ class Solution:
 ```
 
 - test case를 모두 통과하였으나,, 다른 test case에서 막힘
-    
+  
     ```python
     4
     [[1,3],[1,4],[2,3],[2,4],[4,3]]

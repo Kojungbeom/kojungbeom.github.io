@@ -2,7 +2,7 @@
 title: LeetCode-125.Valid-Palindrome
 author: EUNJI KWAK
 date: 2023-1-28
-categories: [LeetCode, EUNJI_l]
+categories: [LeetCode, EUNJI_L]
 tags: [Two Pointer, array]
 ---
 
