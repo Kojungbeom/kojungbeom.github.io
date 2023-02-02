@@ -2,8 +2,8 @@
 title: LeetCode - 739. Daily-Temperatures
 author: EUNJI KWAK
 date: 2022-12-28
-categories: [BaekJoon, EUNJI_B]
-tags: [BaekJoon]
+categories: [LeetCode, EUNJI_L]
+tags: [LeetCode]
 ---
 
 # [문제]
