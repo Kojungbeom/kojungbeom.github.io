@@ -1,14 +1,12 @@
-# [LeetCode]#167. TwoSum II-Input_Array_Is_Sorted
-
 ---
 title: LeetCode - 167.Two-sum-2-input-array-is-sorted
 author: EUNJI KWAK
 date: 2023-2-5
 categories: [LeetCode, EUNJI_l]
 tags: [Two Pointer, array]
--—
+---
 
-# [문제]([https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/))
+# [문제](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
 
 Given a **1-indexed** array of integers `numbers` that is already ***sorted in non-decreasing order***, find two numbers such that they add up to a specific `target` number. Let these two numbers be `numbers[index1]` and `numbers[index2]` where `1 <= index1 < index2 <= numbers.length`.
 
