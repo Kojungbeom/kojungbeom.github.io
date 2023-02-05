@@ -1,5 +1,3 @@
-# [Programmers]#그리디_단속카메라
-
 ---
 title: Programmers - 단속카메라
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [Programmers, EUNJI_p]
 tags: [그리디]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/42884](https://school.programmers.co.kr/learn/courses/30/lessons/42884))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/42884)
 
 ### **문제 설명**
 
