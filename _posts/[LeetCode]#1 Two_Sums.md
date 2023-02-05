@@ -1,14 +1,12 @@
-# [LeetCode]#1.Two_Sums
-
 ---
-title: LeetCode - 1.Two-sums
+title: LeetCode - 1.Two sums
 author: EUNJI KWAK
 date: 2023-2-5
 categories: [LeetCode, EUNJI_l]
 tags: [array, 해싱]
--—
+---
 
-# [문제]([https://leetcode.com/problems/valid-palindrome/description/](https://leetcode.com/problems/two-sum/))
+# [문제](https://leetcode.com/problems/two-sum/)
 
 Given an array of integers `nums` and an integer `target`, return *indices of the two numbers such that they add up to `target`*.
 
