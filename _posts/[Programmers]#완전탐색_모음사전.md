@@ -1,5 +1,3 @@
-# [Programmers]#완전탐색_모음사전
-
 ---
 title: Programmers - 모음사전
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [Programmers, EUNJI_p]
 tags: [완전탐색]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/84512](https://school.programmers.co.kr/learn/courses/30/lessons/84512))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/84512)
 
 ### **문제 설명**
 
