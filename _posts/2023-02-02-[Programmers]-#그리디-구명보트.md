@@ -2,11 +2,13 @@
 title: Programmers - 구명보트
 author: EUNJI KWAK
 date: 2023-2-2
-categories: [Programmers, EUNJI_p]
+categories: [Programmers, EUNJI_P]
 tags: [Heap, 힙]
 ---
 
-# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/42885)
+
+
+# 문제
 
 ### **문제 설명**
 

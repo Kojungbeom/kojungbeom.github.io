@@ -2,7 +2,7 @@
 title: LeetCode - 167.Two-sum-2-input-array-is-sorted
 author: EUNJI KWAK
 date: 2023-2-5
-categories: [LeetCode, EUNJI_l]
+categories: [LeetCode, EUNJI_L]
 tags: [Two Pointer, array]
 ---
 

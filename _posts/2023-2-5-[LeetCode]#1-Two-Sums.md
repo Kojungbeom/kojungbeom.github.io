@@ -2,7 +2,7 @@
 title: LeetCode - 1.Two sums
 author: EUNJI KWAK
 date: 2023-2-5
-categories: [LeetCode, EUNJI_l]
+categories: [LeetCode, EUNJI_L]
 tags: [array, 해싱]
 ---
 

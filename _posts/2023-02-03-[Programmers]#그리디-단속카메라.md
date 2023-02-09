@@ -2,7 +2,7 @@
 title: Programmers - 단속카메라
 author: EUNJI KWAK
 date: 2023-2-3
-categories: [Programmers, EUNJI_p]
+categories: [Programmers, EUNJI_P]
 tags: [그리디]
 ---
 
