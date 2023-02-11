@@ -1,5 +1,3 @@
-# [Programmers]#DP_등굣길
-
 ---
 title: Programmers - 등굣길
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [Programmers, EUNJI_p]
 tags: [다이나믹 프로그래밍, DP, Dynamic Programming]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/42898](https://school.programmers.co.kr/learn/courses/30/lessons/42898))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/42898)
 
 ### **문제 설명**
 
