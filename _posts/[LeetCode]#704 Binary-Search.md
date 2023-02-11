@@ -1,14 +1,12 @@
-# [LeetCode]#704.Binary-Search
-
 ---
 title: LeetCode - 704.Binary-Search
 author: EUNJI KWAK
 date: 2023-2-12
 categories: [LeetCode, EUNJI_l]
 tags: [Binary Search]
--—
+---
 
-# [문제]([https://leetcode.com/problems/binary-search/](https://leetcode.com/problems/binary-search/))
+# [문제](https://leetcode.com/problems/binary-search/)
 
 Given an array of integers `nums` which is sorted in ascending order, and an integer `target`, write a function to search `target` in `nums`. If `target` exists, then return its index. Otherwise, return `-1`.
 
