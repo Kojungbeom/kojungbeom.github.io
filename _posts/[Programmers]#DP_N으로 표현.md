@@ -1,5 +1,3 @@
-# [Programmers]#DP_N으로 표현
-
 ---
 title: Programmers - N으로 표현
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [Programmers, EUNJI_p]
 tags: [다이나믹 프로그래밍, DP, Dynamic Programming]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/42895](https://school.programmers.co.kr/learn/courses/30/lessons/42895))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/42895)
 
 ### **문제 설명**
 
