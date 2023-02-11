@@ -1,14 +1,12 @@
-# [LeetCode]#22.Generate-Parantheses
-
 ---
 title: LeetCode - 22.Generate-Parantheses
 author: EUNJI KWAK
 date: 2023-2-12
 categories: [LeetCode, EUNJI_l]
 tags: [stack]
--—
+---
 
-# [문제]([https://leetcode.com/problems/generate-parentheses/](https://leetcode.com/problems/generate-parentheses/))
+# [문제](https://leetcode.com/problems/generate-parentheses/)
 
 Given `n` pairs of parentheses, write a function to *generate all combinations of well-formed parentheses*.
 
