@@ -4,7 +4,7 @@ author: EUNJI KWAK
 date: 2023-3-5
 categories: [LeetCode, EUNJI_l]
 tags: [Binary Search]
--—
+---
 
 # [문제](https://leetcode.com/problems/first-bad-version/?envType=study-plan&id=algorithm-i)
 
