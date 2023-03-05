@@ -1,5 +1,3 @@
-# [Programmers]#이분탐색-입국심사
-
 ---
 title: Programmers - 입국심사
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [Programmers, EUNJI_p]
 tags: [이분탐색]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/43238](https://school.programmers.co.kr/learn/courses/30/lessons/43238))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/43238)
 
 ### **문제 설명**
 
