@@ -1,5 +1,3 @@
-# [Programmers]#그래프-가장-먼-노드
-
 ---
 title: Programmers - 가장먼노드
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [Programmers, EUNJI_p]
 tags: [그래프]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/49189](https://school.programmers.co.kr/learn/courses/30/lessons/49189))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/49189)
 
 ### **문제 설명**
 
@@ -39,11 +37,13 @@ n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까�
 ## 그래프 문제 푸는 법: BFS
 
 - DFS는 안되는 이유: 깊이가 깊어지는 간선부터 탐색하기 때문에 깊이 차원에서 모순이 생김
-- BFS 푸는 법: 방문 노드 설정
+- BFS 푸는 법: 가까운 지점을 모두 방문/방문했던 정점으로 시작하여 다시 인접한 지점을 차례대로 방문/큐 사용/그때 그때 방문 여부 확인
 
 ## FLOW
 
-1. 
+1. 상위 노드를 key값으로 설정하고, 하위 노드를 value값을 append시킴
+2. 추가한 하위 노드를 방문했다고 표시
+3. 모든 노드를 방문했을 시에 반복문 종료
 
 ## 📌코드
 
