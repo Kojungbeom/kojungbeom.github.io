@@ -1,5 +1,3 @@
-# [Programmers]#그래프-순위
-
 ---
 title: Programmers - 순위
 author: EUNJI KWAK
@@ -8,7 +6,7 @@ categories: [Programmers, EUNJI_p]
 tags: [그래프]
 ---
 
-# [문제]([https://school.programmers.co.kr/learn/courses/30/lessons/49191](https://school.programmers.co.kr/learn/courses/30/lessons/49191))
+# [문제](https://school.programmers.co.kr/learn/courses/30/lessons/49191)
 
 ### **문제 설명**
 
